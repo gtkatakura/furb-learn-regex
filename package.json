@@ -1,0 +1,19 @@
+{
+  "name": "furb-learn-regex",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gtkatakura/furb-learn-regex.git"
+  },
+  "author": "gtkatakura <gt.katakura@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gtkatakura/furb-learn-regex/issues"
+  },
+  "homepage": "https://github.com/gtkatakura/furb-learn-regex#readme"
+}

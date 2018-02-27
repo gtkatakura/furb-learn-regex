@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/gtkatakura/furb-learn-regex/issues"
   },
-  "homepage": "https://github.com/gtkatakura/furb-learn-regex#readme"
+  "homepage": "https://github.com/gtkatakura/furb-learn-regex#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^6.1.2",
+    "@commitlint/config-conventional": "^6.1.2",
+    "husky": "^0.14.3"
+  }
 }

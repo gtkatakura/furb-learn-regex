@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "repository": {
@@ -20,11 +22,18 @@
   "devDependencies": {
     "@commitlint/cli": "^6.1.2",
     "@commitlint/config-conventional": "^6.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "husky": "^0.14.3"
+    "husky": "^0.14.3",
+    "parcel-bundler": "^1.6.2"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }

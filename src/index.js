@@ -1,10 +1,20 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
+import { AppContainer } from 'react-hot-loader';
 
-const App = () => (
-  <div>
-    <h1>Learn Regex - Hello World!</h1>
-  </div>
-);
+import App from './components/App';
 
-render(<App />, document.getElementById('root'));
+const render = Component => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('root'),
+  );
+};
+
+render(App);
+
+if (module.hot) {
+  module.hot.accept('./components/App', () => { render(App); });
+}

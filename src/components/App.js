@@ -1,9 +1,8 @@
 import React from 'react';
+import Login from './Login';
 
 const App = () => (
-  <div>
-    <h1>Learn Regex - Hello World!</h1>
-  </div>
+  <Login />
 );
 
 export default App;

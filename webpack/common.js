@@ -1,6 +1,6 @@
 const paths = {
   root: `${__dirname}/..`,
-  src: `${__dirname}/../src`,
+  client: `${__dirname}/../client`,
   dist: `${__dirname}/../dist`,
 };
 
@@ -8,7 +8,7 @@ module.exports = {
   paths,
   loaders: {
     html: {
-      template: `${paths.src}/index.html`,
+      template: `${paths.client}/index.html`,
       filename: 'index.html',
       inject: 'body',
     },
@@ -26,7 +26,7 @@ module.exports = {
     entry: [
       'babel-polyfill',
       'normalize-css',
-      `${paths.src}/index`,
+      `${paths.client}/index`,
     ],
     output: {
       path: paths.dist,

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production --config=webpack/production",
-    "dev": "webpack-dev-server --mode=development --config=webpack/development",
+    "dev": "node server/index.js",
     "commitmsg": "commitlint -e $GIT_PARAMS"
   },
   "repository": {
@@ -45,14 +45,27 @@
     "parcel-bundler": "^1.6.2",
     "style-loader": "^0.20.2",
     "url-loader": "^0.6.2",
-    "webpack": "^4.0.1",
+    "webpack": "^3.8.1",
     "webpack-cli": "^2.0.9",
-    "webpack-dev-server": "^3.1.0"
+    "webpack-dev-middleware": "^1.12.2",
+    "webpack-dev-server": "^3.1.0",
+    "webpack-hot-middleware": "^2.21.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "bootstrap": "^4.0.0",
+    "convict": "^4.0.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
     "lodash": "^4.17.5",
+    "mustache-express": "^1.2.5",
     "normalize-css": "^2.3.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-google-auth": "^1.0.2",
+    "passport-google-oauth": "^1.0.0",
+    "passport-jwt": "^3.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-hot-loader": "^4.0.0",

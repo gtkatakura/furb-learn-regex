@@ -8,8 +8,12 @@ module.exports = merge(shared, {
   devtool: 'cheap-eval-source-map',
   entry: [
     'react-hot-loader/patch',
+    'webpack-hot-middleware/client',
     ...shared.entry,
   ],
+  output: {
+    publicPath: '/',
+  },
   module: {
     rules: [
       ...shared.module.rules,

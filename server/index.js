@@ -1,25 +1,23 @@
 const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
+const favicon = require('serve-favicon');
 
 const config = require('./config');
-const webpackConfig = require('../webpack/development');
 
-const app = express();
-const compiler = webpack(webpackConfig);
-const port = config.get('http.port');
+const createServer = (path, { app = express() } = {}) => {
+  const port = config.get('http.port');
 
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-}));
+  app.use((request, response, next) => {
+    require('./routes/authentication')(request, response, next);
+  });
 
-app.use(webpackHotMiddleware(compiler));
+  app.use(favicon(`${path}/favicon.ico`));
+  app.use(express.static(path));
 
-app.use((request, response, next) => {
-  require('./routes/authentication')(request, response, next);
-});
+  const server = app.listen(port, () => {
+    console.log(`Server listening on port ${port}`);
+  });
 
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
-});
+  return { app, server };
+};
+
+module.exports = { createServer };

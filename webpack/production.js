@@ -40,5 +40,8 @@ module.exports = merge(shared, {
       minify: { collapseWhitespace: true },
     })),
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+    }),
   ],
 });

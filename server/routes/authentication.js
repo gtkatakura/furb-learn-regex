@@ -16,14 +16,11 @@ function generateUserToken(req, res) {
   const accessToken = generateAccessToken(req.user.id);
 
   res.cookie('X-JWT-Token', accessToken);
+  res.cookie('X-User-Name', req.user.name);
   res.redirect('/');
 }
 
 app.use(passport.initialize());
-
-app.get('/', (request, response) => {
-  response.sendFile(`${__dirname}/../client/index.html`);
-});
 
 app.get('/api/authentication/google/start', passport.authenticate('google', {
   session: false,

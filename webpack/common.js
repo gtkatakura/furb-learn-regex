@@ -9,6 +9,7 @@ module.exports = {
   loaders: {
     html: {
       template: `${paths.client}/index.html`,
+      favicon: `${paths.client}/favicon.ico`,
       filename: 'index.html',
       inject: 'body',
     },

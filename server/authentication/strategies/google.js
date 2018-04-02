@@ -11,8 +11,8 @@ const create = ({ config, users }) => {
     return null;
   }
 
-  return new OAuth2Strategy(passportConfig, (request, accessToken, refreshToken, profile, done) => {
-    const user = users.findOrCreateUser(profile.displayName, 'google', profile.id);
+  return new OAuth2Strategy(passportConfig, async (request, accessToken, refreshToken, profile, done) => {
+    const user = await users.findOrCreateUser(profile.displayName, 'google', profile.id);
     return done(null, user);
   });
 };

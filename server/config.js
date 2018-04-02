@@ -51,6 +51,13 @@ const config = convict({
       },
     },
   },
+  mongodb: {
+    uri: {
+      doc: 'The URI from MongoDB',
+      default: 'mongodb://localhost/LearnREGEX',
+      env: 'MONGOLAB_URI',
+    },
+  },
 });
 
 config.validate();

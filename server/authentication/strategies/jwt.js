@@ -8,8 +8,8 @@ const create = ({ config, users }) => {
     audience: config.get('authentication.token.audience'),
   };
 
-  return new Strategy(jwtOptions, (payload, done) => {
-    const user = users.find(parseInt(payload.sub, 10));
+  return new Strategy(jwtOptions, async (payload, done) => {
+    const user = await users.find(payload.sub);
 
     if (user) {
       return done(null, user, payload);

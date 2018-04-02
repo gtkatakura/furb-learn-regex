@@ -11,8 +11,8 @@ const create = ({ config, users }) => {
     return null;
   }
 
-  return new Strategy(passportConfig, (accessToken, refreshToken, profile, done) => {
-    const user = users.findOrCreateUser(profile.displayName, 'facebook', profile.id);
+  return new Strategy(passportConfig, async (accessToken, refreshToken, profile, done) => {
+    const user = await users.findOrCreateUser(profile.displayName, 'facebook', profile.id);
     return done(null, user);
   });
 };

@@ -1,31 +1,39 @@
-const users = [
-  {
-    id: 1,
-    name: 'Graham',
-    providers: [],
-  },
-];
+const { User } = require('../models/user');
 
-const find = id => users.find(user => user.id === id);
+const find = id => User.find({ _id: id });
 
 const findByExternalId = (providerName, id) => {
-  return users.find(user => user.providers.find((provider) => provider.name === providerName && provider.id === id));
+  return new Promise((resolve, reject) => {
+    User.find({
+      'providers.id': id,
+      'providers.name': providerName,
+    }, (err, response) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(response[0]);
+      }
+    });
+  });
 };
 
 const createUser = (name, provider, id) => {
-  const user = {
-    id: users.length + 1,
-    name,
-    providers: [{ provider, id }],
-  };
-
-  users.push(user);
-
-  return user;
+  return new Promise((resolve, reject) => {
+    new User({
+      name,
+      providers: [{ id, name: provider }],
+    }).save((err, response) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(response);
+      }
+    });
+  });
 };
 
-const findOrCreateUser = (name, provider, id) => {
-  const user = findByExternalId(provider, id);
+const findOrCreateUser = async (name, provider, id) => {
+  const user = await findByExternalId(provider, id);
   return user || createUser(name, provider, id);
 };
 

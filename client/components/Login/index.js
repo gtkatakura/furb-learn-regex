@@ -25,7 +25,7 @@ const Login = () => (
           </div>
         </div>
       </div>
-      <div className="main">
+      {/* <div className="main">
         <input type="text" className="form-control" placeholder="E-mail" />
         <input type="password" className="form-control" placeholder="Senha" />
         <span className="clearfix" />
@@ -42,7 +42,7 @@ const Login = () => (
             <button type="submit" className="btn btn-large btn-danger float-right">Entrar</button>
           </div>
         </div>
-      </div>
+      </div> */}
     </form>
   </div>
 );

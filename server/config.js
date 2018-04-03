@@ -55,7 +55,7 @@ const config = convict({
     uri: {
       doc: 'The URI from MongoDB',
       default: 'mongodb://localhost/LearnREGEX',
-      env: 'MONGOLAB_URI',
+      env: 'MONGODB_URI',
     },
   },
 });

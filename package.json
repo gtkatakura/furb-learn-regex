@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm run build",
     "start": "node app.js",
     "build": "webpack --config=webpack/production",
     "commitmsg": "commitlint -e $GIT_PARAMS",

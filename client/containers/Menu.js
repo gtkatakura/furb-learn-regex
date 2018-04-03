@@ -2,13 +2,10 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import Menu from '../components/Menu';
-import userActions from '../actions/users';
+import { logout } from '../actions/users';
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  logout: userActions.logout,
+  logout,
 }, dispatch);
 
-export default connect(
-  null,
-  mapDispatchToProps,
-)(Menu);
+export default connect(null, mapDispatchToProps)(Menu);

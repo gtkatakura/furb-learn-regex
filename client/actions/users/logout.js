@@ -1,7 +1,7 @@
-import Cookies from 'js-cookie';
+import cookies from '../../http/cookies';
 
 const logout = () => dispatch => {
-  Cookies.remove('X-User-Name');
+  cookies.remove('X-User-Name');
   dispatch({ type: 'USER_LOGOUT' });
 };
 

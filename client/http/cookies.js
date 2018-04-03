@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import Cookies from 'js-cookie';
 
 const all = () => (
   document.cookie.split('; ')
@@ -13,4 +14,6 @@ const all = () => (
 
 const find = name => _.get(all().find(cookie => cookie.name === name), 'value');
 
-export default { all, find };
+const remove = name => Cookies.remove(name);
+
+export default { all, find, remove };

@@ -43,4 +43,8 @@ app.get(
   generateUserToken,
 );
 
+const exercisesRoute = require('./exercises');
+
+app.use('/api/exercises', exercisesRoute);
+
 module.exports = app;

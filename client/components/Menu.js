@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router';
+import _ from 'lodash/fp';
 
-const Menu = ({ logout }) => (
+const getInitials = _.flow(
+  _.split(' '),
+  _.map(_.first),
+  _.join(''),
+);
+
+const Menu = ({ logout, userName }) => (
   <nav className="navbar navbar-expand-md  navbar-light bg-light">
     <div className="container">
       <Link className="navbar-brand" to="/minhas-atividades">
@@ -22,7 +29,7 @@ const Menu = ({ logout }) => (
           <li className="nav-item mx-1">
             <Link className="nav-link" to="/" onClick={logout}>
               <i className="fa d-inline fa-lg fa-user-circle-o" />
-              <span>GTK</span>
+              <span>{getInitials(userName)}</span>
             </Link>
           </li>
         </ul>

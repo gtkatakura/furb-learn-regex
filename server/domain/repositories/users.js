@@ -1,6 +1,6 @@
 const { User } = require('../models/user');
 
-const find = id => User.find({ _id: id });
+const find = id => User.findById(id);
 
 const findByExternalId = (providerName, id) => {
   return new Promise((resolve, reject) => {

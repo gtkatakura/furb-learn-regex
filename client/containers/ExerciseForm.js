@@ -6,13 +6,14 @@ import { reduxForm } from 'redux-form';
 import { create } from '../actions/exercises';
 
 import ExerciseForm from '../components/ExerciseForm';
+import getCurrentExerciseOrDefault from '../selectors/getCurrentExerciseOrDefault';
 
 const ExerciseFormContainer = ({ handleSubmit, onSubmit, ...props }) => (
   <ExerciseForm onSubmit={handleSubmit(onSubmit)} {...props} />
 );
 
-const mapStateToProps = (state, { params }) => ({
-  initialValues: state.exercise.entities.find(exercise => exercise.description === params.description),
+const mapStateToProps = (...args) => ({
+  initialValues: getCurrentExerciseOrDefault(...args),
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

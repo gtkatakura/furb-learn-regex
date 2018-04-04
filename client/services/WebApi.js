@@ -1,3 +1,5 @@
+import cookies from '../http/cookies';
+
 class WebApi {
   constructor(route) {
     this.route = route;
@@ -9,6 +11,7 @@ class WebApi {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
+        'Authorization': cookies.find('X-JWT-Token'),
       },
       body: body && JSON.stringify(body),
     });

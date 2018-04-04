@@ -6,7 +6,7 @@ import { required } from '../validations';
 import ExerciseStep from './ExerciseStep';
 
 const newStep = steps => {
-  const maxLimit = _.max(_.map(steps.getAll(), 'limit')) || 3;
+  const maxLimit = _.max(_.map(steps.getAll(), 'limit')) || 2;
 
   steps.push({
     limit: Number(maxLimit) + 1,
@@ -42,12 +42,6 @@ class ExerciseSteps extends React.Component {
     const { fields, meta: { touched, error, submitFailed } } = this.props;
     const currentStep = fields.get(this.state.currentStep);
     const limit = +_.get(currentStep, 'limit');
-
-    if (!fields.getAll()) {
-      fields.push({
-        limit: 3,
-      });
-    }
 
     return (
       <fieldset className="form-group">

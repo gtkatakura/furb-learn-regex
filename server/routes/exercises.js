@@ -36,4 +36,9 @@ app.post('/', async (request, response) => {
   response.json(true);
 });
 
+app.delete('/:id', async (request, response) => {
+  await ExerciseRepository.destroy({ _id: request.params.id });
+  response.json(true);
+});
+
 module.exports = app;

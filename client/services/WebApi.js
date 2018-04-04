@@ -29,6 +29,10 @@ class WebApi {
   update(body) {
     return this.fetch({ method: 'PUT', body });
   }
+
+  delete() {
+    return this.fetch({ method: 'DELETE' });
+  }
 }
 
 export default WebApi;

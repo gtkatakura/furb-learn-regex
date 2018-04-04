@@ -20,11 +20,14 @@ const fromModel = Model => {
 
   const create = attributes => new Model(attributes).save();
 
+  const destroy = params => Model.remove(params);
+
   return {
     all,
     find,
     update,
     create,
+    destroy,
   };
 };
 

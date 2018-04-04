@@ -6,7 +6,7 @@ import { required } from '../validations';
 
 import ExerciseSteps from './ExerciseSteps';
 
-const ExerciseForm = ({ onSubmit, submitting }) => (
+const ExerciseForm = ({ onSubmit, onDestroyClick, submitting, initialValues }) => (
   <div className="container">
     <div className="row">
       <div className="col-md-12 p-3">
@@ -22,7 +22,10 @@ const ExerciseForm = ({ onSubmit, submitting }) => (
             validate={required}
           />
           <FieldArray name="steps" component={ExerciseSteps} />
-          <button type="submit" className="btn btn-primary float-right" disabled={submitting}>Salvar</button>
+          <div className="float-right">
+            {initialValues._id && <button type="button" className="btn btn-danger mr-1" onClick={() => onDestroyClick(initialValues)}>Excluir</button>}
+            <button type="submit" className="btn btn-primary" disabled={submitting}>Salvar</button>
+          </div>
         </form>
       </div>
     </div>

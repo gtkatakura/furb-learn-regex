@@ -21,6 +21,19 @@ app.get('/', async (request, response) => {
   });
 });
 
+app.put('/', async (request, response) => {
+  const model = request.body;
+
+  Exercise.findById(model._id, (err, exercise) => {
+    exercise.set(model);
+    exercise.save((err2) => {
+      if (!err2) {
+        response.json(true);
+      }
+    })
+  });
+});
+
 app.post('/', async (request, response) => {
   const model = Object.assign(request.body, {
     createdAt: new Date(),

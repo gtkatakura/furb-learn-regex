@@ -22,6 +22,10 @@ class WebApi {
   create(body) {
     return this.fetch({ method: 'POST', body });
   }
+
+  update(body) {
+    return this.fetch({ method: 'PUT', body });
+  }
 }
 
 export default WebApi;

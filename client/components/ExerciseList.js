@@ -17,7 +17,11 @@ const ExerciseList = ({ exercises }) => (
         <tbody>
           {exercises.map((exercise, key) => (
             <tr key={key.toString()}>
-              <th scope="row">{exercise.description}</th>
+              <th scope="row">
+                <Link to={`/professor/exercicios/${exercise.description}`}>
+                  {exercise.description}
+                </Link>
+              </th>
               <td>{exercise.regularExpression}</td>
               <td>{moment(exercise.createdAt).fromNow()}</td>
             </tr>

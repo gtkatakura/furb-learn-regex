@@ -5,6 +5,7 @@ import Root from './Root';
 import ProfessorScreen from '../ProfessorScreen';
 import ProfessorDashboardScreen from '../ProfessorScreen/DashboardScreen';
 import ExerciseScreen from '../ProfessorScreen/ExerciseScreen';
+import InDevelopmentScreen from '../InDevelopmentScreen';
 import NotFound from '../../components/NotFound';
 import history from '../../history';
 
@@ -19,6 +20,7 @@ const AppContainer = () => (
         <Route path="exercicios/criar" component={ExerciseScreen} />
         <Route path="exercicios/:description" component={ExerciseScreen} />
       </Route>
+      <Route path="minhas-atividades" component={InDevelopmentScreen} />
     </Route>
     <Route path="*" component={NotFound} />
   </Router>

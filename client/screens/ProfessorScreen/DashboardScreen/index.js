@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ExercisesScreen from './ExercisesScreen';
+import InDevelopmentScreen from '../../InDevelopmentScreen';
 import TabList from '../../../containers/TabList';
 import TabLink from '../../../containers/TabLink';
 
@@ -9,10 +10,10 @@ const ProfessorDashboardScreen = () => (
     <div className="row">
       <div className="col-md-12">
         <TabList>
-          <TabLink to="/professor/turmas" component={() => <span>turmas</span>}>
+          <TabLink to="/professor/turmas" component={InDevelopmentScreen}>
             Turmas
           </TabLink>
-          <TabLink to="/professor/atividades" component={() => <span>atividades</span>}>
+          <TabLink to="/professor/atividades" component={InDevelopmentScreen}>
             Atividades
           </TabLink>
           <TabLink to="/professor/exercicios" component={ExercisesScreen}>

@@ -15,6 +15,7 @@ module.exports = merge(shared, {
   devtool: 'source-map',
   output: {
     filename: '[name]-[hash].js',
+    publicPath: '/',
   },
   module: {
     rules: [

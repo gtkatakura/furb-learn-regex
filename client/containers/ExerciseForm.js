@@ -1,5 +1,5 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
@@ -21,8 +21,8 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   onDestroyClick: destroy,
 }, dispatch);
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(
-  reduxForm({
-    form: 'exercise',
-  })(ExerciseFormContainer)
-));
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps),
+  reduxForm({ form: 'exercise' }),
+)(ExerciseFormContainer);

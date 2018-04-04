@@ -1,6 +1,10 @@
 import React from 'react';
+import { FieldArray } from 'redux-form';
+
 import { TextField } from '../components/forms';
 import { required } from '../validations';
+
+import ExerciseSteps from './ExerciseSteps';
 
 const ExerciseForm = ({ onSubmit, submitting }) => (
   <div className="container">
@@ -17,6 +21,7 @@ const ExerciseForm = ({ onSubmit, submitting }) => (
             label="Expressão Regular"
             validate={required}
           />
+          <FieldArray name="steps" component={ExerciseSteps} />
           <button type="submit" className="btn btn-primary float-right" disabled={submitting}>Salvar</button>
         </form>
       </div>

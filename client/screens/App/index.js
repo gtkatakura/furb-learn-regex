@@ -9,6 +9,7 @@ import NotFound from '../../components/NotFound';
 import history from '../../history';
 
 import './theme.css';
+import './custom.css';
 
 const AppContainer = () => (
   <Router history={history}>

@@ -4,8 +4,8 @@ const initialValue = {
   entities: [],
 };
 
-const exerciseReducer = (state = initialValue, { type, payload }) => {
-  if (type === 'EXERCISE_FETCH_REQUESTED') {
+const activityReducer = (state = initialValue, { type, payload }) => {
+  if (type === 'ACTIVITY_FETCH_REQUESTED') {
     return {
       loaded: false,
       isLoading: true,
@@ -13,7 +13,7 @@ const exerciseReducer = (state = initialValue, { type, payload }) => {
     };
   }
 
-  if (type === 'EXERCISE_FETCH_SUCCEEDED') {
+  if (type === 'ACTIVITY_FETCH_SUCCEEDED') {
     return {
       loaded: true,
       isLoading: false,
@@ -21,7 +21,7 @@ const exerciseReducer = (state = initialValue, { type, payload }) => {
     };
   }
 
-  if (type === 'EXERCISE_FETCH_FAILED') {
+  if (type === 'ACTIVITY_FETCH_FAILED') {
     return {
       ...state,
       loaded: false,
@@ -33,4 +33,4 @@ const exerciseReducer = (state = initialValue, { type, payload }) => {
   return state;
 };
 
-export default exerciseReducer;
+export default activityReducer;

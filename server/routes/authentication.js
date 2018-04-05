@@ -44,7 +44,9 @@ app.get(
 );
 
 const exercisesRoute = require('./exercises');
+const activitiesRoute = require('./activities');
 
 app.use('/api/exercises', passport.authenticate('jwt', { session: false }), exercisesRoute);
+app.use('/api/activities', passport.authenticate('jwt', { session: false }), activitiesRoute);
 
 module.exports = app;

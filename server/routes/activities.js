@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const ExerciseRepository = require('../domain/repositories/exercise');
+const ActivityRepository = require('../domain/repositories/activity');
 
 const app = express.Router();
 
@@ -12,9 +12,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.get('/', async (request, response) => {
-  const entities = await ExerciseRepository.all({
-    professor: request.user,
-  });
+  const entities = await ActivityRepository.all();
 
   response.send(entities);
 });
@@ -22,21 +20,19 @@ app.get('/', async (request, response) => {
 app.put('/', async (request, response) => {
   const model = request.body;
 
-  await ExerciseRepository.update(model);
+  await ActivityRepository.update(model);
   response.json(true);
 });
 
 app.post('/', async (request, response) => {
-  const model = Object.assign(request.body, {
-    professor: request.user,
-  });
+  const model = request.body;
 
-  await ExerciseRepository.create(model);
+  await ActivityRepository.create(model);
   response.json(true);
 });
 
 app.delete('/:id', async (request, response) => {
-  await ExerciseRepository.destroy({ _id: request.params.id });
+  await ActivityRepository.destroy({ _id: request.params.id });
   response.json(true);
 });
 

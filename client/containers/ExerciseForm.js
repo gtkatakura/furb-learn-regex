@@ -3,7 +3,7 @@ import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { create, destroy } from '../actions/exercises';
+import { create } from '../actions/exercises';
 
 import ExerciseForm from '../components/ExerciseForm';
 import getCurrentExerciseOrDefault from '../selectors/getCurrentExerciseOrDefault';
@@ -18,7 +18,6 @@ const mapStateToProps = (...args) => ({
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   onSubmit: create,
-  onDestroyClick: destroy,
 }, dispatch);
 
 export default compose(

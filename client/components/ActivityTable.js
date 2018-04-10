@@ -4,33 +4,31 @@ import moment from 'moment';
 
 import TableBody from './TableBody';
 
-const ExerciseTable = ({ withLink = false, onSelecteds, collection }) => (
+const ActivityTable = ({ withLink = false, onSelecteds, collection }) => (
   <table className="table table-hover table-striped table-bordered">
     <thead className="thead-inverse">
       <tr>
         <th scope="col" className="text-center">#</th>
-        <th scope="col">Descrição</th>
-        <th scope="col">Expressão Regular</th>
+        <th scope="col">Nome</th>
         <th scope="col">Criado</th>
       </tr>
     </thead>
     <TableBody
       onSelecteds={onSelecteds}
-      elementKey={exercise => exercise._id}
+      elementKey={activity => activity._id}
       collection={collection}
-      render={exercise => ([
+      render={activity => ([
         <th scope="row">
           {withLink ? (
-            <Link to={`/professor/exercicios/${exercise.description}`}>
-              {exercise.description}
+            <Link to={`/professor/atividades/${activity.name}`}>
+              {activity.name}
             </Link>
-          ) : exercise.description}
+          ) : activity.name}
         </th>,
-        <td>{exercise.regularExpression}</td>,
-        <td>{moment(exercise.createdAt).fromNow()}</td>,
+        <td style={{ width: "15%" }}>{moment(activity.createdAt).fromNow()}</td>,
       ])}
     />
   </table>
 );
 
-export default ExerciseTable;
+export default ActivityTable;

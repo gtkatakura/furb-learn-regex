@@ -21,7 +21,7 @@ const ActivityList = ({ activities }) => (
                   {activity.name}
                 </Link>
               </th>
-              <td>{moment(activity.createdAt).fromNow()}</td>
+              <td style={{ width: "15%" }}>{moment(activity.createdAt).fromNow()}</td>
             </tr>
           ))}
         </tbody>

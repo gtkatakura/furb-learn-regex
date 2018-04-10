@@ -22,8 +22,8 @@ const ExerciseList = ({ exercises }) => (
                   {exercise.description}
                 </Link>
               </th>
-              <td>{exercise.regularExpression}</td>
-              <td>{moment(exercise.createdAt).fromNow()}</td>
+              <td style={{ width: "30%" }}>{exercise.regularExpression}</td>
+              <td style={{ width: "15%" }}>{moment(exercise.createdAt).fromNow()}</td>
             </tr>
           ))}
         </tbody>

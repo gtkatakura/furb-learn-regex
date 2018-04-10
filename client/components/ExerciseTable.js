@@ -1,36 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router';
-import moment from 'moment';
+import React, { Fragment } from 'react';
+import Link from './Link';
 
-import TableBody from './TableBody';
+import ResourceTable from './ResourceTable';
 
-const ExerciseTable = ({ withLink = false, onSelecteds, collection }) => (
-  <table className="table table-hover table-striped table-bordered">
-    <thead className="thead-inverse">
-      <tr>
-        <th scope="col" className="text-center">#</th>
-        <th scope="col">Descrição</th>
-        <th scope="col">Expressão Regular</th>
-        <th scope="col">Criado</th>
-      </tr>
-    </thead>
-    <TableBody
-      onSelecteds={onSelecteds}
-      elementKey={exercise => exercise._id}
-      collection={collection}
-      render={exercise => ([
+const ActivityTable = ({ withLink = false, ...props }) => (
+  <ResourceTable
+    render={activity => (
+      <Fragment>
         <th scope="row">
-          {withLink ? (
-            <Link to={`/professor/exercicios/${exercise.description}`}>
-              {exercise.description}
-            </Link>
-          ) : exercise.description}
-        </th>,
-        <td>{exercise.regularExpression}</td>,
-        <td>{moment(exercise.createdAt).fromNow()}</td>,
-      ])}
-    />
-  </table>
+          <Link to={`/professor/exercicios/${activity.description}`} disabled={!withLink}>
+            {activity.description}
+          </Link>
+        </th>
+        <td>{activity.regularExpression}</td>
+      </Fragment>
+    )}
+    {...props}
+  >
+    <th>Descrição</th>
+    <th style={{ width: '200px' }}>Expressão Regular</th>
+  </ResourceTable>
 );
 
-export default ExerciseTable;
+export default ActivityTable;

@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { Field } from '../components/forms';
 import { required } from '../validations';
 import ExerciseStep from './ExerciseStep';
+import DeleteButton from './DeleteButton';
 
 const newStep = steps => {
   const maxLimit = _.max(_.map(steps.getAll(), 'limit')) || 2;
@@ -50,7 +51,8 @@ class ExerciseSteps extends React.Component {
         </label>
         <div className="card box-shadow">
           <div className="card-body">
-            <button type="button" className="btn btn-primary mb-2" onClick={() => newStep(fields)}>Nova Etapa</button>
+            <button type="button" className="btn btn-primary mb-2 mr-1" onClick={() => newStep(fields)}>Nova Etapa</button>
+            <DeleteButton onClick={() => fields.remove(this.state.currentStep)} />
             <ul className="list-group-horizontal">
               {fields.map((step, index) => (
                 <Field
@@ -93,13 +95,6 @@ class ExerciseSteps extends React.Component {
                     </div>
                   </div>
                 </div>
-                <button
-                  type="button"
-                  className="btn btn-danger mb-2"
-                  onClick={() => fields.remove(this.state.currentStep)}
-                >
-                  Excluir
-                </button>
               </div>
             </div>
           </div>

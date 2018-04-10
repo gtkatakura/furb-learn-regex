@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import moment from 'moment';
-import _ from 'lodash/fp';
 
+import ExerciseTable from './ExerciseTable';
 import './modal.css';
 
 class ExercisesListModal extends React.Component {
@@ -16,21 +15,11 @@ class ExercisesListModal extends React.Component {
     };
 
     this.toggle = this.toggle.bind(this);
+    this.onSelecteds = this.onSelecteds.bind(this);
   }
 
-  onCheckboxChange(event, exercise) {
-    if (event.target.checked) {
-      this.setState({
-        selecteds: _.uniq([
-          ...this.state.selecteds,
-          exercise,
-        ]),
-      });
-    } else {
-      this.setState({
-        selecteds: _.remove(this.state.selecteds, _.eq(exercise)),
-      });
-    }
+  onSelecteds(selecteds) {
+    this.setState({ selecteds });
   }
 
   onSave() {
@@ -60,28 +49,7 @@ class ExercisesListModal extends React.Component {
             Exercícios
           </ModalHeader>
           <ModalBody>
-            <table className="table table-hover table-striped table-bordered">
-              <thead className="thead-inverse">
-                <tr>
-                  <th scope="col" className="text-center">#</th>
-                  <th scope="col">Descrição</th>
-                  <th scope="col">Expressão Regular</th>
-                  <th scope="col">Criado</th>
-                </tr>
-              </thead>
-              <tbody>
-                {exercises.map((exercise, index) => (
-                  <tr key={index.toString()}>
-                    <th className="text-center">
-                      <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, exercise)} />
-                    </th>
-                    <th scope="row">{exercise.description}</th>
-                    <td>{exercise.regularExpression}</td>
-                    <td>{moment(exercise.createdAt).fromNow()}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <ExerciseTable prefixKey="modal_" onSelecteds={this.onSelecteds} exercises={exercises} />
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggle}>Cancelar</Button>

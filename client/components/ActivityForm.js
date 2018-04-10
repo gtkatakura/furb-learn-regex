@@ -1,48 +1,47 @@
 import React from 'react';
 import { FieldArray } from 'redux-form';
-import moment from 'moment';
 import _ from 'lodash';
 
 import { TextField } from '../components/forms';
 import { required } from '../validations';
 import ExercisesListModal from '../containers/ExercisesListModal';
+import ExerciseTable from './ExerciseTable';
+import DeleteButton from './DeleteButton';
 
-class ExerciseSelector extends React.Component {
+class ExercisesFieldset extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      checkeds: [],
+      selecteds: [],
     };
+
+    this.onSelecteds = this.onSelecteds.bind(this);
   }
 
-  onCheckboxChange(event, exercise) {
-    if (event.target.checked) {
-      this.setState({
-        checkeds: _.uniq([
-          ...this.state.checkeds,
-          exercise,
-        ]),
-      });
-    } else {
-      this.setState({
-        checkeds: _.remove(this.state.checkeds, _.eq(exercise)),
-      });
-    }
+  onSelecteds(selecteds) {
+    this.setState({ selecteds });
   }
 
   onDelete() {
-    for (let checked of this.state.checkeds) {
-      this.props.fields.remove(checked);
-    }
+    const exercises = this.props.fields.getAll();
+
+    _.reverse(this.state.selecteds).forEach(exercise => {
+      const index = exercises.indexOf(exercise);
+
+      if (index !== -1) {
+        this.props.fields.remove(index);
+      }
+    });
 
     this.setState({
-      checkeds: [],
+      selecteds: [],
     });
   }
 
   render() {
     const { fields, meta: { touched, error, submitFailed } } = this.props;
+
     return (
       <fieldset className="form-group">
         <label>
@@ -51,33 +50,9 @@ class ExerciseSelector extends React.Component {
         <div className="card box-shadow">
           <div className="card-body">
             <div className="col-md-12 p-3">
-              {/* <button type="button" className="btn btn-primary mb-2 mr-1">Adicionar</button> */}
               <ExercisesListModal onSave={exercises => exercises.forEach(e => fields.push(e))} />
-              <button type="button" className="btn btn-danger mb-2" disabled={this.state.checkeds.length === 0} onClick={() => this.onDelete()}>
-                Excluir
-              </button>
-              <table className="table table-hover table-striped table-bordered">
-                <thead className="thead-inverse">
-                  <tr>
-                    <th scope="col" className="text-center">#</th>
-                    <th scope="col">Descrição</th>
-                    <th scope="col">Expressão Regular</th>
-                    <th scope="col">Criado</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {(fields.getAll() || []).map((exercise, key) => (
-                    <tr key={exercise._id}>
-                      <td className="text-center">
-                        <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, key)} />
-                      </td>
-                      <td scope="row">{exercise.description}</td>
-                      <td style={{ width: "30%" }}>{exercise.regularExpression}</td>
-                      <td style={{ width: "15%" }}>{moment(exercise.createdAt).fromNow()}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <DeleteButton disabled={this.state.selecteds.length === 0} onClick={() => this.onDelete()} />
+              <ExerciseTable onSelecteds={this.onSelecteds} exercises={fields.getAll() || []} />
             </div>
           </div>
         </div>
@@ -96,7 +71,7 @@ const ActivityForm = ({ onSubmit, onDestroyClick, submitting, initialValues }) =
             label="Nome"
             validate={required}
           />
-          <FieldArray name="exercises" component={ExerciseSelector} />
+          <FieldArray name="exercises" component={ExercisesFieldset} />
           <div className="float-right">
             {initialValues._id && <button type="button" className="btn btn-danger mr-1" onClick={() => onDestroyClick(initialValues)}>Excluir</button>}
             <button type="submit" className="btn btn-primary" disabled={submitting}>Salvar</button>

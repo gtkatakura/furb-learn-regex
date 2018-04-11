@@ -1,8 +1,8 @@
 import React from 'react';
 import { FieldArray } from 'redux-form';
 
-import { TextField } from '../components/forms';
-import { required } from '../validations';
+import { TextField } from '../forms';
+import { required } from '../../validations';
 
 import ExerciseSteps from './ExerciseSteps';
 

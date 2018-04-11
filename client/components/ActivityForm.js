@@ -4,8 +4,8 @@ import _ from 'lodash';
 
 import { TextField } from '../components/forms';
 import { required } from '../validations';
-import ExercisesListModal from '../containers/ExercisesListModal';
-import ExerciseTable from './ExerciseTable';
+import ExercisesListModal from '../containers/exercises/ExercisesListModal';
+import ExerciseTable from './exercises/ExerciseTable';
 import { DeleteButton } from './buttons';
 
 class ExercisesFieldset extends React.Component {

@@ -3,10 +3,10 @@ import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { create } from '../actions/exercises';
+import { create } from '../../actions/exercises';
 
-import ExerciseForm from '../components/ExerciseForm';
-import getCurrentExerciseOrDefault from '../selectors/getCurrentExerciseOrDefault';
+import ExerciseForm from '../../components/exercises/ExerciseForm';
+import getCurrentExerciseOrDefault from '../../selectors/getCurrentExerciseOrDefault';
 
 const ExerciseFormContainer = ({ handleSubmit, onSubmit, ...props }) => (
   <ExerciseForm onSubmit={handleSubmit(onSubmit)} {...props} />

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
-import Link from './Link';
+import Link from '../Link';
 
-import ResourceTable from './ResourceTable';
+import ResourceTable from '../ResourceTable';
 
 const ActivityTable = ({ withLink = false, ...props }) => (
   <ResourceTable

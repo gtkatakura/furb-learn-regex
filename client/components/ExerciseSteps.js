@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Field } from '../components/forms';
 import { required } from '../validations';
 import ExerciseStep from './ExerciseStep';
-import DeleteButton from './DeleteButton';
+import { DeleteButton } from './buttons';
 
 const newStep = steps => {
   const maxLimit = _.max(_.map(steps.getAll(), 'limit')) || 2;

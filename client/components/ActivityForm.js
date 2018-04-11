@@ -6,7 +6,7 @@ import { TextField } from '../components/forms';
 import { required } from '../validations';
 import ExercisesListModal from '../containers/ExercisesListModal';
 import ExerciseTable from './ExerciseTable';
-import DeleteButton from './DeleteButton';
+import { DeleteButton } from './buttons';
 
 class ExercisesFieldset extends React.Component {
   constructor() {

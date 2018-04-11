@@ -1,7 +1,6 @@
 import React from 'react';
-import Link from './Link';
-
-import ResourceTable from './ResourceTable';
+import ResourceTable from 'components/ResourceTable';
+import Link from 'components/Link';
 
 const ActivityTable = ({ withLink = false, ...props }) => (
   <ResourceTable

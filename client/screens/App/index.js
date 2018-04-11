@@ -1,14 +1,15 @@
 import React from 'react';
 import { Router, Route } from 'react-router';
 
-import Root from './Root';
-import ProfessorScreen from '../ProfessorScreen';
-import ProfessorDashboardScreen from '../ProfessorScreen/DashboardScreen';
-import ActivityScreen from '../ProfessorScreen/ActivityScreen';
-import ExerciseScreen from '../ProfessorScreen/ExerciseScreen';
-import InDevelopmentScreen from '../InDevelopmentScreen';
-import NotFound from '../../components/NotFound';
+import ProfessorScreen from 'screens/ProfessorScreen';
+import ProfessorDashboardScreen from 'screens/ProfessorScreen/DashboardScreen';
+import ActivityScreen from 'screens/ProfessorScreen/ActivityScreen';
+import ExerciseScreen from 'screens/ProfessorScreen/ExerciseScreen';
+import InDevelopmentScreen from 'screens/InDevelopmentScreen';
+import NotFound from 'components/NotFound';
 import history from '../../history';
+
+import Root from './Root';
 
 import './theme.css';
 import './custom.css';

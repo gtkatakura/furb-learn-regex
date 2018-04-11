@@ -3,10 +3,10 @@ import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { create, destroy } from '../actions/activities';
 
-import ActivityForm from '../components/ActivityForm';
-import getCurrentActivity from '../selectors/getCurrentActivity';
+import ActivityForm from 'components/ActivityForm';
+import getCurrentActivity from 'selectors/getCurrentActivity';
+import { create, destroy } from 'actions/activities';
 
 const ActivityFormContainer = ({ handleSubmit, onSubmit, ...props }) => (
   <ActivityForm onSubmit={handleSubmit(onSubmit)} {...props} />

@@ -1,12 +1,11 @@
 import React from 'react';
 import { FieldArray } from 'redux-form';
+import { TextField } from 'components/forms';
+import { DeleteButton } from 'components/buttons';
+import ExerciseTable from 'components/exercises/ExerciseTable';
+import ExercisesListModal from 'containers/exercises/ExercisesListModal';
+import { required } from 'validations';
 import _ from 'lodash';
-
-import { TextField } from '../components/forms';
-import { required } from '../validations';
-import ExercisesListModal from '../containers/exercises/ExercisesListModal';
-import ExerciseTable from './exercises/ExerciseTable';
-import { DeleteButton } from './buttons';
 
 class ExercisesFieldset extends React.Component {
   constructor() {

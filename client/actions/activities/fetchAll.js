@@ -1,4 +1,4 @@
-import WebApi from '../../services/WebApi';
+import WebApi from 'services/WebApi';
 
 const fetchAll = () => async dispatch => {
   try {

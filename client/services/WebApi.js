@@ -1,4 +1,4 @@
-import cookies from '../http/cookies';
+import cookies from 'http/cookies';
 
 class WebApi {
   constructor(route) {

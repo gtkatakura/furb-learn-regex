@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ResourceList from './ResourceList';
+import ResourceList from 'components/ResourceList';
 import ActivityTable from './ActivityTable';
 
 const ActivityList = ({ ...props }) => (

@@ -1,8 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Menu from '../components/Menu';
-import { logout } from '../actions/users';
+import Menu from 'components/Menu';
+import { logout } from 'actions/users';
 
 const mapStateToProps = state => ({
   userName: state.user.name,

@@ -1,4 +1,4 @@
-import WebApi from '../../services/WebApi';
+import WebApi from 'services/WebApi';
 import fetchAll from './fetchAll';
 
 const destroy = values => async dispatch => {

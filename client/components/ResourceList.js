@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
-import { DeleteButton } from './buttons';
+import { DeleteButton } from 'components/buttons';
 
 class ResourceList extends React.Component {
   constructor(props) {

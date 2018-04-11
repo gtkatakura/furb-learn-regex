@@ -1,8 +1,8 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ExerciseList from '../../components/exercises/ExerciseList';
-import { destroy } from '../../actions/exercises';
+import ExerciseList from 'components/exercises/ExerciseList';
+import { destroy } from 'actions/exercises';
 
 const mapStateToProps = state => ({
   resources: state.exercise.entities,

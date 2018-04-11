@@ -6,6 +6,13 @@
     "no-restricted-syntax": "off",
     "no-plusplus": "off"
   },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack/development.js"
+      }
+    }
+  },
   "env": {
     "browser": true
   }

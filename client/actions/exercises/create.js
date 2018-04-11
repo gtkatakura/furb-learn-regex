@@ -1,5 +1,5 @@
 import { replace } from 'react-router-redux';
-import WebApi from '../../services/WebApi';
+import WebApi from 'services/WebApi';
 
 const create = values => async dispatch => {
   if (values._id) {

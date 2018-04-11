@@ -1,3 +1,5 @@
+const path = require('path');
+
 const paths = {
   root: `${__dirname}/..`,
   client: `${__dirname}/../client`,
@@ -41,6 +43,12 @@ module.exports = {
         { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream' },
         { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml' },
         { test: /\.png(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/png' },
+      ],
+    },
+    resolve: {
+      modules: [
+        path.resolve('./client'),
+        path.resolve('./node_modules'),
       ],
     },
   },

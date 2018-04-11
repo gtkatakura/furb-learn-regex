@@ -1,4 +1,4 @@
-import cookies from '../../http/cookies';
+import cookies from 'http/cookies';
 
 const logout = () => dispatch => {
   cookies.remove('X-User-Name');

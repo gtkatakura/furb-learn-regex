@@ -3,12 +3,11 @@ import React from 'react';
 import ResourceList from './ResourceList';
 import ActivityTable from './ActivityTable';
 
-const ActivityList = ({ onDestroy, activities }) => (
+const ActivityList = ({ ...props }) => (
   <ResourceList
     newLink="/professor/atividades/criar"
     component={ActivityTable}
-    collection={activities}
-    onDestroy={onDestroy}
+    {...props}
   />
 );
 

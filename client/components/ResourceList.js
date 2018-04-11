@@ -25,19 +25,23 @@ class ResourceList extends React.Component {
     this.setState({ selecteds: [] });
   }
 
+  hasSelecteds() {
+    return this.state.selecteds.length !== 0;
+  }
+
   render() {
-    const { newLink, collection, component: TableComponent } = this.props;
+    const { newLink, resources, component: ResourceTable } = this.props;
 
     return (
       <div>
-        <Link className="btn btn-primary m-1" href={newLink} to={newLink}>Criar</Link>
+        <Link className="btn btn-primary m-1" to={newLink}>Criar</Link>
         <DeleteButton
           className="btn btn-danger"
           onClick={this.onDestroyButton}
-          disabled={this.state.selecteds.length === 0}
+          disabled={!this.hasSelecteds()}
         />
-        <div className="col-md-12 p-3">
-          <TableComponent onSelecteds={this.onSelecteds} collection={collection} withLink />
+        <div className="col-md-12">
+          <ResourceTable onSelecteds={this.onSelecteds} resources={resources} withLink />
         </div>
       </div>
     );
@@ -46,7 +50,7 @@ class ResourceList extends React.Component {
 
 ResourceList.propTypes = {
   newLink: PropTypes.string.isRequired,
-  collection: PropTypes.arrayOf(PropTypes.object).isRequired,
+  resources: PropTypes.arrayOf(PropTypes.object).isRequired,
   component: PropTypes.func.isRequired,
   onDestroy: PropTypes.func.isRequired,
 };

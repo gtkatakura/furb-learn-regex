@@ -5,7 +5,7 @@ import ExerciseList from '../components/ExerciseList';
 import { destroy } from '../actions/exercises';
 
 const mapStateToProps = state => ({
-  exercises: state.exercise.entities,
+  resources: state.exercise.entities,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

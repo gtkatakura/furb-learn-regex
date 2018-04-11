@@ -52,7 +52,7 @@ class ExercisesFieldset extends React.Component {
             <div className="col-md-12 p-3">
               <ExercisesListModal onSave={exercises => exercises.forEach(e => fields.push(e))} />
               <DeleteButton disabled={this.state.selecteds.length === 0} onClick={() => this.onDelete()} />
-              <ExerciseTable onSelecteds={this.onSelecteds} collection={fields.getAll() || []} />
+              <ExerciseTable onSelecteds={this.onSelecteds} resources={fields.getAll() || []} />
             </div>
           </div>
         </div>

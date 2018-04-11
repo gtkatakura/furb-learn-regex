@@ -5,7 +5,7 @@ import ActivityList from '../components/ActivityList';
 import { destroy } from '../actions/activities';
 
 const mapStateToProps = state => ({
-  activities: state.activity.entities,
+  resources: state.activity.entities,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

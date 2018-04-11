@@ -13,7 +13,7 @@ class ResourceTable extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.collection !== this.props.collection) {
+    if (newProps.resources !== this.props.resources) {
       this.setState({ selecteds: [] });
     }
   }
@@ -41,7 +41,7 @@ class ResourceTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.collection.map((resource, index) => (
+          {this.props.resources.map((resource, index) => (
             <tr key={this.props.elementKey(resource)}>
               <td className="text-center">
                 <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, resource)} />
@@ -58,7 +58,7 @@ class ResourceTable extends React.Component {
 
 ResourceTable.propTypes = {
   onSelecteds: PropTypes.func.isRequired,
-  collection: PropTypes.arrayOf(PropTypes.object).isRequired,
+  resources: PropTypes.arrayOf(PropTypes.object).isRequired,
   render: PropTypes.func.isRequired,
   children: PropTypes.object.isRequired,
   elementKey: PropTypes.func,

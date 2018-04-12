@@ -2,16 +2,16 @@ import React, { Fragment } from 'react';
 import ResourceTable from 'components/ResourceTable';
 import Link from 'components/Link';
 
-const ActivityTable = ({ withLink = false, ...props }) => (
+const ExerciseTable = ({ withLink = false, ...props }) => (
   <ResourceTable
-    render={activity => (
+    render={resource => (
       <Fragment>
         <th scope="row">
-          <Link to={`/professor/exercicios/${activity.description}`} disabled={!withLink}>
-            {activity.description}
+          <Link to={`/professor/exercicios/${encodeURIComponent(resource.description)}`} disabled={!withLink}>
+            {resource.description}
           </Link>
         </th>
-        <td>{activity.regularExpression}</td>
+        <td>{resource.regularExpression}</td>
       </Fragment>
     )}
     {...props}
@@ -21,4 +21,4 @@ const ActivityTable = ({ withLink = false, ...props }) => (
   </ResourceTable>
 );
 
-export default ActivityTable;
+export default ExerciseTable;

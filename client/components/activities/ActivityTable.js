@@ -6,7 +6,7 @@ const ActivityTable = ({ withLink = false, ...props }) => (
   <ResourceTable
     render={activity => (
       <th>
-        <Link to={`/professor/atividades/${activity.name}`} disabled={!withLink}>
+        <Link to={`/professor/atividades/${encodeURIComponent(activity.name)}`} disabled={!withLink}>
           {activity.name}
         </Link>
       </th>

@@ -6,7 +6,7 @@ const ClassRoomTable = ({ withLink = false, ...props }) => (
   <ResourceTable
     render={classRoom => (
       <th scope="row">
-        <Link to={`/professor/turmas/${classRoom.name}`} disabled={!withLink}>
+        <Link to={`/professor/turmas/${encodeURIComponent(classRoom.name)}`} disabled={!withLink}>
           {classRoom.name}
         </Link>
       </th>

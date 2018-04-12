@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { DeleteButton } from 'components/buttons';
 import { Field } from 'components/forms';
 import { required } from 'validations';
@@ -87,7 +87,17 @@ class ExerciseSteps extends React.Component {
                           validate={required}
                           component={({ input: { value } }) => (
                             <span>
-                              {generateValues(value, limit).map((v, i) => <span key={i.toString()}>{v}<br /></span>)}
+                              {generateValues(value, limit).map((values, i) => (
+                                <span key={i.toString()}>
+                                  {values.split(' ').map(generated => (console.log(generated),
+                                    new RegExp(`^(${value})$`, 'g').test(generated) ? (
+                                      <Fragment>
+                                        <mark>{generated}</mark>
+                                        {' '}
+                                      </Fragment>) : `${generated} `
+                                  ))}<br />
+                                </span>
+                              ))}
                             </span>
                           )}
                         />

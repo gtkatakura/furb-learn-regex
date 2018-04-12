@@ -33,13 +33,30 @@ validação (RF)
 
 ### Exercícios
 
-- [x] `Descrição` é um campo obrigatório.
+- [x] `Descrição` é um campo obrigatório
 - [x] `Expressão Regular` é um campo obrigatório
 - [ ] `Expressão Regular` só deve permitir letras minúsculas, números e os caracteres especiais `|`, `(`, `)`, `{`, `}`, `+`, `*` e `?`
 - [ ] Em `Etapas`:
   - [ ] `Valores` deve ser gerado com base nos símbolos extraídos de `Expressão Regular`
     - [x] Extração de caracteres minúsculos
     - [ ] Extração de números (saber diferenciar entre o literal `1` e a notação especial `{1}`)
+
+### Atividades
+
+- [x] `Nome` é um campo obrigatório
+- [x] Permitir vincular `Exercícios`
+  - [x] Buscar informações sempre que abrir a tela de `Exercícios`
+  - [x] Não exibir `Exercícios` já adicionados na listagem
+- [ ] Ao menos um `Exercício` deve ser informado para continuar o cadastro
+
+### Turmas
+
+- [x] `Nome` é um campo obrigatório
+- [x] Permitir cadastrar `Tarefas`
+  - [x] `Atividade` deve ser um combo conforme as `Atividades` cadastradas pelo usuário
+  - [ ] `Atividade` é um campo obrigatório
+  - [x] `Prazo de Entrega` é um campo obrigatório
+- [ ] Ao menos uma `Tarefa` deve ser informada para continuar o cadastro
 
 ## Melhorias
 
@@ -49,7 +66,7 @@ validação (RF)
 - [ ] `Expressão Regular` deve validar o uso correto dos caracteres especiais
 - [ ] Em `Etapas`:
   - [ ] `Limite de símbolos` não pode ser maior que `10`
-  - [ ] deveria notificar quando um `Limite de símbolos` for inferior a uma `Etapa` anterior ou superior a uma `Etapa` posterior
+  - [ ] Deveria notificar quando um `Limite de símbolos` for inferior a uma `Etapa` anterior ou superior a uma `Etapa` posterior
 
 ### Interfaces
 

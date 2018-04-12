@@ -22,33 +22,25 @@ function generateUserToken(req, res) {
 
 app.use(passport.initialize());
 
-app.get('/api/authentication/google/start', passport.authenticate('google', {
+app.get('/authentication/google/start', passport.authenticate('google', {
   session: false,
   scope: ['openid', 'profile', 'email'],
 }));
 
 app.get(
-  '/api/authentication/google/redirect',
+  '/authentication/google/redirect',
   passport.authenticate('google', { session: false }),
   generateUserToken,
 );
 
-app.get('/api/authentication/facebook/start', passport.authenticate('facebook', {
+app.get('/authentication/facebook/start', passport.authenticate('facebook', {
   session: false,
 }));
 
 app.get(
-  '/api/authentication/facebook/redirect',
+  '/authentication/facebook/redirect',
   passport.authenticate('facebook', { session: false }),
   generateUserToken,
 );
-
-const exercisesRoute = require('./exercises');
-const activitiesRoute = require('./activities');
-const classRoomsRoute = require('./classRooms');
-
-app.use('/api/exercises', passport.authenticate('jwt', { session: false }), exercisesRoute);
-app.use('/api/activities', passport.authenticate('jwt', { session: false }), activitiesRoute);
-app.use('/api/classRooms', passport.authenticate('jwt', { session: false }), classRoomsRoute);
 
 module.exports = app;

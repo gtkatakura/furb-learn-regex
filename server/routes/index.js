@@ -1,8 +1,12 @@
-// const express = require('express');
-// const exercisesRoute = require('./exercises');
+const express = require('express');
+const passport = require('passport');
 
-// const app = express.Router();
+const app = express.Router();
 
-// app.use('/api/exercises', exercisesRoute);
+const authenticationRoute = require('./authentication');
+const entitiesRoute = require('./entities');
 
-// module.exports = app;
+app.use('/api', authenticationRoute);
+app.use('/api', passport.authenticate('jwt', { session: false }), entitiesRoute);
+
+module.exports = app;

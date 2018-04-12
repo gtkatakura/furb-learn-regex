@@ -7,7 +7,7 @@ const createServer = (path, { app = express() } = {}) => {
   const port = config.get('http.port');
 
   app.use((request, response, next) => {
-    require('./routes/authentication')(request, response, next);
+    require('./routes')(request, response, next);
   });
 
   app.use(favicon(`${path}/favicon.ico`));

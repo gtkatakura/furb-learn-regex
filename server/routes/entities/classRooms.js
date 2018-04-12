@@ -1,15 +1,8 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 
-const ClassRoomRepository = require('../domain/repositories/classRoom');
+const ClassRoomRepository = require('../../domain/repositories/classRoom');
 
 const app = express.Router();
-
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
-
-app.use(bodyParser.json());
 
 app.get('/', async (request, response) => {
   const entities = await ClassRoomRepository.all();

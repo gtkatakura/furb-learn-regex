@@ -5,7 +5,9 @@ const ActivityRepository = require('../../domain/repositories/activity');
 const app = express.Router();
 
 app.get('/', async (request, response) => {
-  const entities = await ActivityRepository.all();
+  const entities = await ActivityRepository.all({
+    createdBy: request.user,
+  });
 
   response.send(entities);
 });
@@ -18,7 +20,9 @@ app.put('/', async (request, response) => {
 });
 
 app.post('/', async (request, response) => {
-  const model = request.body;
+  const model = Object.assign(request.body, {
+    createdBy: request.user,
+  });
 
   await ActivityRepository.create(model);
   response.json(true);

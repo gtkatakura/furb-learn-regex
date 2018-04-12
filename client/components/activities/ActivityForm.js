@@ -41,6 +41,8 @@ class ExercisesFieldset extends React.Component {
   render() {
     const { fields, meta: { touched, error, submitFailed } } = this.props;
 
+    const exceptions = _.map(fields.getAll(), '_id');
+
     return (
       <fieldset className="form-group">
         <label>
@@ -49,7 +51,10 @@ class ExercisesFieldset extends React.Component {
         <div className="card box-shadow">
           <div className="card-body">
             <div className="col-md-12 p-3">
-              <ExercisesListModal onSave={exercises => exercises.forEach(e => fields.push(e))} />
+              <ExercisesListModal
+                exceptions={exceptions}
+                onSave={exercises => exercises.forEach(e => fields.push(e))}
+              />
               <DeleteButton disabled={this.state.selecteds.length === 0} onClick={() => this.onDelete()} />
               <ExerciseTable onSelecteds={this.onSelecteds} resources={fields.getAll() || []} />
             </div>

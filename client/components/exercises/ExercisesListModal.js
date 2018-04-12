@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import _ from 'lodash';
 
 import ExerciseTable from './ExerciseTable';
 import './modal.css';
@@ -39,7 +40,12 @@ class ExercisesListModal extends React.Component {
   }
 
   render() {
-    const { exercises } = this.props;
+    const { exercises, exceptions } = this.props;
+
+    const resources = _.filter(
+      exercises,
+      exercise => !exceptions.includes(exercise._id),
+    );
 
     return (
       <Fragment>
@@ -49,7 +55,7 @@ class ExercisesListModal extends React.Component {
             Exercícios
           </ModalHeader>
           <ModalBody>
-            <ExerciseTable onSelecteds={this.onSelecteds} resources={exercises} />
+            <ExerciseTable onSelecteds={this.onSelecteds} resources={resources} />
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggle}>Cancelar</Button>

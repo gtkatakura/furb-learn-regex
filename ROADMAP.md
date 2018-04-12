@@ -13,7 +13,7 @@
 Facebook (Requisito Funcional - RF)
 - [ ] permitir a utilização de perfis de usuário – professor e aluno (RF)
 - [ ] permitir o professor criar e gerenciar turmas (RF)
-- [ ] permitir o professor criar atividades sobre expressões regulares (RF)
+- [x] permitir o professor criar atividades sobre expressões regulares (RF)
 - [ ] gerar um conjunto de valores válidos e inválidos para a atividade conforme a
 expressão regular especificada (RF)
 - [ ] permitir o professor distribuir as atividades para os alunos (RF)
@@ -23,10 +23,10 @@ professor (RF)
 - [ ] mostrar o andamento das atividades em tempo real para agilizar o processo de
 validação (RF)
 - [ ] permitir o usuário verificar a equivalência entre duas expressões regulares (RF)
-- [ ] seguir o protocolo OAuth para autenticação (Requisito Não Funcional - RNF)
-- [ ] ser desenvolvida em HTML5, CSS3 e JavaScript (RNF)
+- [x] seguir o protocolo OAuth para autenticação (Requisito Não Funcional - RNF)
+- [x] ser desenvolvida em HTML5, CSS3 e JavaScript (RNF)
 - [ ] utilizar WebSocket para a comunicação em tempo real (RNF)
-- [ ] ter suporte para os navegadores Chrome e Firefox (RNF)
+- [x] ter suporte para os navegadores Chrome e Firefox (RNF)
 
 
 ## Regras de Negócio

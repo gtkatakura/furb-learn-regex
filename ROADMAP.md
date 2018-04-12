@@ -66,6 +66,7 @@ validação (RF)
 
 - [ ] `Expressão Regular` não pode possuir mais de `4 símbolos` identificados
 - [ ] `Expressão Regular` deve validar o uso correto dos caracteres especiais
+- [ ] `Expressão Regular` quando for informada igual uma existente, deveria notificar o usuário
 - [ ] Em `Etapas`:
   - [ ] `Limite de símbolos` não pode ser maior que `10`
   - [ ] Deveria notificar quando um `Limite de símbolos` for inferior a uma `Etapa` anterior ou superior a uma `Etapa` posterior

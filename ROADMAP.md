@@ -58,6 +58,7 @@ validação (RF)
   - [x] `Atividade` deve ser um combo conforme as `Atividades` cadastradas pelo usuário
   - [x] `Atividade` é um campo obrigatório
   - [x] `Prazo de Entrega` é um campo obrigatório
+  - [x] `Prazo de Entrega` precisa ser uma data superior ou igual ao dia de hoje
 - [ ] Ao menos uma `Tarefa` deve ser informada para continuar o cadastro
 
 ## Melhorias

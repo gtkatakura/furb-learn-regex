@@ -50,3 +50,12 @@ validação (RF)
 - [ ] Em `Etapas`:
   - [ ] `Limite de símbolos` não pode ser maior que `10`
   - [ ] deveria notificar quando um `Limite de símbolos` for inferior a uma `Etapa` anterior ou superior a uma `Etapa` posterior
+
+### Interfaces
+
+- [ ] Em listagens:
+  - [ ] Mecanismo de notificação de `Carregando` para o usuário saber que dados estão sendo buscados e precisa ser aguardado
+  - [ ] Trocar os checkbox de exclusões por ícones de lixeira
+  - [ ] Paginação no `Painel do Professor` e em telas modais de seleção
+- [ ] Procurar por um componente para datas mais adequado do que o `HTML5` provê
+- [ ] Procurar por um componente de seleção que permita efetuar paginação e pesquisa por texto

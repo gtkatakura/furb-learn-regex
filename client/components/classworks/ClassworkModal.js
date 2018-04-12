@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react';
+import { bindActionCreators, compose } from 'redux';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import { reduxForm } from 'redux-form';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Field } from 'components/forms';
 import { required } from 'validations';
+import ActivitySelect from 'containers/activities/ActivitySelect';
+import { fetchAll } from 'actions/activities';
 
 class ClassworkModal extends React.Component {
   constructor(props) {
@@ -20,6 +24,7 @@ class ClassworkModal extends React.Component {
   onSave() {
     this.props.handleSubmit(values => {
       const formatteds = Object.assign({}, values, {
+        activity: JSON.parse(values.activity),
         deadline: moment(values.deadline).format(),
       });
 
@@ -33,6 +38,10 @@ class ClassworkModal extends React.Component {
   }
 
   toggle() {
+    if (!this.state.modal) {
+      this.props.load();
+    }
+
     this.setState({
       modal: !this.state.modal,
     });
@@ -44,7 +53,7 @@ class ClassworkModal extends React.Component {
     return (
       <Fragment>
         <button type="button" className="btn btn-primary mb-2 mr-1" onClick={this.toggle}>Adicionar</button>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} backdrop="static" className="modal-dialog-expand">
+        <Modal isOpen={this.state.modal} toggle={this.toggle} backdrop="static">
           <ModalHeader toggle={this.toggle}>
             Tarefa
           </ModalHeader>
@@ -53,6 +62,7 @@ class ClassworkModal extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-12 p-3">
+                    <ActivitySelect name="activity" />
                     <Field
                       type="date"
                       name="deadline"
@@ -74,4 +84,11 @@ class ClassworkModal extends React.Component {
   }
 }
 
-export default reduxForm({ form: 'classwork' })(ClassworkModal);
+const mapDispatchToProps = dispatch => bindActionCreators({
+  load: fetchAll,
+}, dispatch);
+
+export default compose(
+  connect(null, mapDispatchToProps),
+  reduxForm({ form: 'classwork' }),
+)(ClassworkModal);

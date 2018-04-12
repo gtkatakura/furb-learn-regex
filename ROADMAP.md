@@ -1,5 +1,14 @@
 # Roadmap
 
+## Objetivos Específicos
+
+- [ ] disponibilizar um canal interativo para o desenvolvimento e compartilhamento de atividades
+- [ ] ter um mecanismo de notificações em tempo real para o acompanhamento das atividades;
+- [ ] validar as expressões regulares especificadas, bem como determinar a equivalência entre duas expressões regulares.
+
+
+## Requisitos Funcionais e Não Funcionais
+
 - [ ] permitir o usuário cadastrar-se através de outras aplicações como Google e
 Facebook (Requisito Funcional - RF)
 - [ ] permitir a utilização de perfis de usuário – professor e aluno (RF)
@@ -18,3 +27,26 @@ validação (RF)
 - [ ] ser desenvolvida em HTML5, CSS3 e JavaScript (RNF)
 - [ ] utilizar WebSocket para a comunicação em tempo real (RNF)
 - [ ] ter suporte para os navegadores Chrome e Firefox (RNF)
+
+
+## Regras de Negócio
+
+### Exercícios
+
+- [x] `Descrição` é um campo obrigatório.
+- [x] `Expressão Regular` é um campo obrigatório
+- [ ] `Expressão Regular` só deve permitir letras minúsculas, números e os caracteres especiais `|`, `(`, `)`, `{`, `}`, `+`, `*` e `?`
+- [ ] Em `Etapas`:
+  - [ ] `Valores` deve ser gerado com base nos símbolos extraídos de `Expressão Regular`
+    - [x] Extração de caracteres minúsculos
+    - [ ] Extração de números (saber diferenciar entre o literal `1` e a notação especial `{1}`)
+
+## Melhorias
+
+### Exercícios
+
+- [ ] `Expressão Regular` não pode possuir mais de `4 símbolos` identificados
+- [ ] `Expressão Regular` deve validar o uso correto dos caracteres especiais
+- [ ] Em `Etapas`:
+  - [ ] `Limite de símbolos` não pode ser maior que `10`
+  - [ ] deveria notificar quando um `Limite de símbolos` for inferior a uma `Etapa` anterior ou superior a uma `Etapa` posterior

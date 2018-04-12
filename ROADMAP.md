@@ -74,7 +74,7 @@ validação (RF)
 ### Interfaces
 
 - [ ] Em listagens:
-  - [ ] Mecanismo de notificação de `Carregando` para o usuário saber que dados estão sendo buscados e precisa ser aguardado
+  - [x] Mecanismo de notificação de `Carregando` para o usuário saber que dados estão sendo buscados e precisa ser aguardado
   - [ ] Trocar os checkbox de exclusões por ícones de lixeira
   - [ ] Paginação no `Painel do Professor` e em telas modais de seleção
 - [ ] Procurar por um componente para datas mais adequado do que o `HTML5` provê

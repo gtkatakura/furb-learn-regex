@@ -59,3 +59,4 @@ validação (RF)
   - [ ] Paginação no `Painel do Professor` e em telas modais de seleção
 - [ ] Procurar por um componente para datas mais adequado do que o `HTML5` provê
 - [ ] Procurar por um componente de seleção que permita efetuar paginação e pesquisa por texto
+- [ ] Mostrar uma mensagem quando a sessão do usuário expirar (atualmente as requisições somente começam a falhar e nada é renderizado)

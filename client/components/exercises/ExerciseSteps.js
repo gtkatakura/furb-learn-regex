@@ -44,6 +44,14 @@ class ExerciseSteps extends React.Component {
     const currentStep = fields.get(this.state.currentStep);
     const limit = +_.get(currentStep, 'limit');
 
+    const toRegex = value => {
+      try {
+        return new RegExp(`^(${value})$`, 'g');
+      } catch (err) {
+        return { test: () => false };
+      }
+    };
+
     return (
       <fieldset className="form-group">
         <label>
@@ -89,8 +97,8 @@ class ExerciseSteps extends React.Component {
                             <span>
                               {generateValues(value, limit).map((values, i) => (
                                 <span key={i.toString()}>
-                                  {values.split(' ').map(generated => (console.log(generated),
-                                    new RegExp(`^(${value})$`, 'g').test(generated) ? (
+                                  {values.split(' ').map(generated => (
+                                    toRegex(value).test(generated) ? (
                                       <Fragment>
                                         <mark>{generated}</mark>
                                         {' '}

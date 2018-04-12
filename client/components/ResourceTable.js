@@ -37,7 +37,7 @@ class ResourceTable extends React.Component {
           <tr>
             <th className="text-center" style={{ width: '50px' }}>#</th>
             {this.props.children}
-            <th style={{ width: '200px' }}>Criado</th>
+            {this.props.withCreatedAt && <th style={{ width: '200px' }}>Criado</th>}
           </tr>
         </thead>
         <tbody>
@@ -47,7 +47,7 @@ class ResourceTable extends React.Component {
                 <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, resource)} />
               </td>
               {this.props.render(resource, index)}
-              <td>{moment(resource.createdAt).fromNow()}</td>
+              {this.props.withCreatedAt && <td>{moment(resource.createdAt).fromNow()}</td>}
             </tr>
           ))}
         </tbody>
@@ -60,12 +60,14 @@ ResourceTable.propTypes = {
   onSelecteds: PropTypes.func.isRequired,
   resources: PropTypes.arrayOf(PropTypes.object).isRequired,
   render: PropTypes.func.isRequired,
-  children: PropTypes.object.isRequired,
   elementKey: PropTypes.func,
+  withCreatedAt: PropTypes.bool,
+  // children: PropTypes.object.isRequired,
 };
 
 ResourceTable.defaultProps = {
   elementKey: _.get('_id'),
+  withCreatedAt: true,
 };
 
 export default ResourceTable;

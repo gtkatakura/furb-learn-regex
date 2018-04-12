@@ -1,5 +1,5 @@
+import _ from 'lodash/fp';
 import WebApi from 'services/WebApi';
-import fetchAll from './fetchAll';
 
 const destroy = values => async dispatch => {
   if (Array.isArray(values)) {
@@ -8,7 +8,10 @@ const destroy = values => async dispatch => {
     await new WebApi(`/api/classRooms/${values._id}`).delete();
   }
 
-  await fetchAll()(dispatch);
+  dispatch({
+    type: 'CLASS_ROOM_DELETED',
+    payload: _.map('_id', _.flatten([values])),
+  });
 };
 
 export default destroy;

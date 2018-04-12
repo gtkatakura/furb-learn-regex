@@ -1,3 +1,5 @@
+import _ from 'lodash/fp';
+
 const initialValue = {
   loaded: false,
   isLoading: false,
@@ -27,6 +29,13 @@ const createEntityReducer = entityName => (state = initialValue, { type, payload
       loaded: false,
       isLoading: false,
       error: payload,
+    };
+  }
+
+  if (type === `${entityName}_DELETED`) {
+    return {
+      ...state,
+      entities: _.filter(entity => !_.includes(payload, entity._id), state.entities)
     };
   }
 

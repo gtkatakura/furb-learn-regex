@@ -31,6 +31,12 @@ class ResourceTable extends React.Component {
   }
 
   render() {
+    const colSpan = (
+      1 +
+      (this.props.withCreatedAt ? 1 : 0) +
+      React.Children.count(this.props.children)
+    );
+
     return (
       <table className="table table-bordered table-striped table-hover">
         <thead>
@@ -41,15 +47,24 @@ class ResourceTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.props.resources.map((resource, index) => (
-            <tr key={this.props.elementKey(resource)}>
-              <td className="text-center">
-                <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, resource)} />
-              </td>
-              {this.props.render(resource, index)}
-              {this.props.withCreatedAt && <td>{moment(resource.createdAt).fromNow()}</td>}
-            </tr>
-          ))}
+          {this.props.isLoading
+            ? (
+              <tr>
+                <td colSpan={colSpan} className="text-center">
+                  Carregando...
+                </td>
+              </tr>
+            ) : (
+              this.props.resources.map((resource, index) => (
+                <tr key={this.props.elementKey(resource)}>
+                  <td className="text-center">
+                    <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, resource)} />
+                  </td>
+                  {this.props.render(resource, index)}
+                  {this.props.withCreatedAt && <td>{moment(resource.createdAt).fromNow()}</td>}
+                </tr>
+              ))
+            )}
         </tbody>
       </table>
     );
@@ -62,6 +77,7 @@ ResourceTable.propTypes = {
   render: PropTypes.func.isRequired,
   elementKey: PropTypes.func,
   withCreatedAt: PropTypes.bool,
+  isLoading: PropTypes.bool,
   // children: PropTypes.object.isRequired,
 };
 

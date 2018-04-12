@@ -30,7 +30,7 @@ class ResourceList extends React.Component {
   }
 
   render() {
-    const { newLink, resources, component: ResourceTable } = this.props;
+    const { newLink, component: ResourceTable, ...rest } = this.props;
 
     return (
       <div>
@@ -41,7 +41,7 @@ class ResourceList extends React.Component {
           disabled={!this.hasSelecteds()}
         />
         <div className="col-md-12">
-          <ResourceTable onSelecteds={this.onSelecteds} resources={resources} withLink />
+          <ResourceTable onSelecteds={this.onSelecteds} withLink {...rest} />
         </div>
       </div>
     );

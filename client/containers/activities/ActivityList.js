@@ -6,6 +6,7 @@ import { destroy } from 'actions/activities';
 
 const mapStateToProps = state => ({
   resources: state.activity.entities,
+  isLoading: state.activity.isLoading,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

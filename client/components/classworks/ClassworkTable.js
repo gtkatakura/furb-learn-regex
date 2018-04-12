@@ -12,14 +12,14 @@ const ClassworkTable = ({ ...props }) => (
           {classwork.activity.name}
         </td>
         <td>
-          {moment(classwork.deadline).calendar()}
+          {moment(classwork.deadline).format('L')}
         </td>
       </Fragment>
     )}
     {...props}
   >
     <th>Atividade</th>
-    <th style={{ width: '170px' }}>Prazo de Entrega</th>
+    <th style={{ width: '200px' }}>Prazo de Entrega</th>
   </ResourceTable>
 );
 

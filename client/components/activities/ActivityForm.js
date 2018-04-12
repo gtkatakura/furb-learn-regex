@@ -60,7 +60,7 @@ class ExercisesFieldset extends React.Component {
   }
 }
 
-const ActivityForm = ({ onSubmit, onDestroyClick, submitting, initialValues }) => (
+const ActivityForm = ({ onSubmit, submitting }) => (
   <div className="container">
     <div className="row">
       <div className="col-md-12 p-3">
@@ -72,7 +72,6 @@ const ActivityForm = ({ onSubmit, onDestroyClick, submitting, initialValues }) =
           />
           <FieldArray name="exercises" component={ExercisesFieldset} />
           <div className="float-right">
-            {initialValues._id && <button type="button" className="btn btn-danger mr-1" onClick={() => onDestroyClick(initialValues)}>Excluir</button>}
             <button type="submit" className="btn btn-primary" disabled={submitting}>Salvar</button>
           </div>
         </form>

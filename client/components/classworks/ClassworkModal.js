@@ -62,7 +62,10 @@ class ClassworkModal extends React.Component {
               <div className="container">
                 <div className="row">
                   <div className="col-md-12 p-3">
-                    <ActivitySelect name="activity" />
+                    <ActivitySelect
+                      name="activity"
+                      validate={required}
+                    />
                     <Field
                       type="date"
                       name="deadline"

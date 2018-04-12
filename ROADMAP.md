@@ -54,7 +54,7 @@ validação (RF)
 - [x] `Nome` é um campo obrigatório
 - [x] Permitir cadastrar `Tarefas`
   - [x] `Atividade` deve ser um combo conforme as `Atividades` cadastradas pelo usuário
-  - [ ] `Atividade` é um campo obrigatório
+  - [x] `Atividade` é um campo obrigatório
   - [x] `Prazo de Entrega` é um campo obrigatório
 - [ ] Ao menos uma `Tarefa` deve ser informada para continuar o cadastro
 

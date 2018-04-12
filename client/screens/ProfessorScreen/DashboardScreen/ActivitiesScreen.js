@@ -2,7 +2,7 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ActivityListContainer from 'containers/ActivityList';
+import ActivityListContainer from 'containers/activities/ActivityList';
 import fetchAll from 'actions/activities/fetchAll';
 
 const ActivitiesScreen = ({ load }) => {

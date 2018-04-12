@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import _ from 'lodash';
 
-import ActivityNavigator from 'components/ActivityNavigator';
+import ActivityNavigator from 'components/activities/ActivityNavigator';
 import getCurrentActivity from 'selectors/getCurrentActivity';
 
 const mapStateToProps = (...args) => ({

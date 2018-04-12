@@ -45,8 +45,10 @@ app.get(
 
 const exercisesRoute = require('./exercises');
 const activitiesRoute = require('./activities');
+const classRoomsRoute = require('./classRooms');
 
 app.use('/api/exercises', passport.authenticate('jwt', { session: false }), exercisesRoute);
 app.use('/api/activities', passport.authenticate('jwt', { session: false }), activitiesRoute);
+app.use('/api/classRooms', passport.authenticate('jwt', { session: false }), classRoomsRoute);
 
 module.exports = app;

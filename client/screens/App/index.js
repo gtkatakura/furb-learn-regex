@@ -4,6 +4,7 @@ import { Router, Route } from 'react-router';
 import ProfessorScreen from 'screens/ProfessorScreen';
 import ProfessorDashboardScreen from 'screens/ProfessorScreen/DashboardScreen';
 import ActivityScreen from 'screens/ProfessorScreen/ActivityScreen';
+import ClassRoomScreen from 'screens/ProfessorScreen/ClassRoomScreen';
 import ExerciseScreen from 'screens/ProfessorScreen/ExerciseScreen';
 import InDevelopmentScreen from 'screens/InDevelopmentScreen';
 import NotFound from 'components/NotFound';
@@ -21,6 +22,8 @@ const AppContainer = () => (
         <Route path=":section" component={ProfessorDashboardScreen} />
         <Route path="atividades/criar" component={ActivityScreen} />
         <Route path="atividades/:name" component={ActivityScreen} />
+        <Route path="turmas/criar" component={ClassRoomScreen} />
+        <Route path="turmas/:name" component={ClassRoomScreen} />
         <Route path="exercicios/criar" component={ExerciseScreen} />
         <Route path="exercicios/:description" component={ExerciseScreen} />
       </Route>

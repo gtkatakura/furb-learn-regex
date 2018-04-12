@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const config = require('../config');
 
 function generateAccessToken(userId) {
-  const expiresIn = '1 hour';
+  const expiresIn = '10 hour';
   const audience = config.get('authentication.token.audience');
   const issuer = config.get('authentication.token.issuer');
   const secret = config.get('authentication.token.secret');

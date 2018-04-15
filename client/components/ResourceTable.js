@@ -13,7 +13,7 @@ class ResourceTable extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.resources !== this.props.resources) {
+    if (!_.isEqual(newProps.resources, this.props.resources)) {
       this.setState({ selecteds: [] });
     }
   }

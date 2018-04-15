@@ -56,7 +56,7 @@ class ExercisesFieldset extends React.Component {
                 onSave={exercises => exercises.forEach(e => fields.push(e))}
               />
               <DeleteButton disabled={this.state.selecteds.length === 0} onClick={() => this.onDelete()} />
-              <ExerciseTable onSelecteds={this.onSelecteds} resources={fields.getAll() || []} />
+              <ExerciseTable withCreatedAt={false} onSelecteds={this.onSelecteds} resources={fields.getAll() || []} />
             </div>
           </div>
         </div>

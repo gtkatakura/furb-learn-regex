@@ -32,7 +32,6 @@ class ClassworkModal extends React.Component {
     })();
 
     if (this.props.valid) {
-      this.props.reset();
       this.toggle();
     }
   }
@@ -41,6 +40,8 @@ class ClassworkModal extends React.Component {
     if (!this.state.modal) {
       this.props.load();
     }
+
+    this.props.reset();
 
     this.setState({
       modal: !this.state.modal,

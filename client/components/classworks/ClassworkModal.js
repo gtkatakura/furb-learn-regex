@@ -5,7 +5,7 @@ import moment from 'moment';
 import { reduxForm } from 'redux-form';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Field } from 'components/forms';
-import { required } from 'validations';
+import { required, date } from 'validations';
 import ActivitySelect from 'containers/activities/ActivitySelect';
 import { fetchAll } from 'actions/activities';
 
@@ -70,7 +70,7 @@ class ClassworkModal extends React.Component {
                       type="date"
                       name="deadline"
                       label="Prazo de Entrega"
-                      validate={required}
+                      validate={[required, date.deadline]}
                     />
                   </div>
                 </div>

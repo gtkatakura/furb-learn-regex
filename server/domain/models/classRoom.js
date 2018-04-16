@@ -5,6 +5,7 @@ const { ClassWorkSchema } = require('./classwork');
 
 const ClassRoomSchema = new Schema({
   name: String,
+  token: String,
   classworks: [ClassWorkSchema],
   createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
 });

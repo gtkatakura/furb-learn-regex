@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { FieldArray } from 'redux-form';
-import { TextField } from 'components/forms';
+import { TextField, SpanField } from 'components/forms';
 import { DeleteButton } from 'components/buttons';
 import ClassworkModal from 'components/classworks/ClassworkModal';
 import ClassworkTable from 'components/classworks/ClassworkTable';
@@ -71,6 +71,10 @@ const ClassRoomForm = ({ onSubmit, submitting }) => (
             validate={required}
           />
           <FieldArray name="classworks" component={ClassworksFieldset} />
+          <SpanField
+            name="token"
+            label="Token de Acesso"
+          />
           <button type="submit" className="btn btn-primary float-right" disabled={submitting}>Salvar</button>
         </form>
       </div>

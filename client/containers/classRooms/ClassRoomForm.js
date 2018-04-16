@@ -3,6 +3,7 @@ import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
+import uuid from 'uuid/v4';
 
 import ClassRoomForm from 'components/classRooms/ClassRoomForm';
 import getCurrentClassRoom from 'selectors/getCurrentClassRoom';
@@ -13,7 +14,9 @@ const ClassRoomFormContainer = ({ handleSubmit, onSubmit, ...props }) => (
 );
 
 const mapStateToProps = (...args) => ({
-  initialValues: getCurrentClassRoom(...args) || {},
+  initialValues: getCurrentClassRoom(...args) || {
+    token: uuid(),
+  },
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

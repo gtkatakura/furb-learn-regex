@@ -55,7 +55,7 @@ class ExercisesListModal extends React.Component {
             Exercícios
           </ModalHeader>
           <ModalBody>
-            <ExerciseTable onSelecteds={this.onSelecteds} resources={resources} />
+            <ExerciseTable withCreatedAt={false} onSelecteds={this.onSelecteds} resources={resources} />
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggle}>Cancelar</Button>

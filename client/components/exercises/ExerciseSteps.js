@@ -46,7 +46,11 @@ class ExerciseSteps extends React.Component {
 
     const toRegex = value => {
       try {
-        return new RegExp(`^(${value})$`, 'g');
+        if (value) {
+          return new RegExp(`^(${value})$`, 'g');
+        }
+
+        return { test: () => false };
       } catch (err) {
         return { test: () => false };
       }

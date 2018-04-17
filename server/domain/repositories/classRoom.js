@@ -5,6 +5,9 @@ const repository = fromModel(ClassRoom);
 
 module.exports = Object.assign({}, repository, {
   all(params) {
-    return repository.all(params).populate('classworks.activity');
+    return repository.all(params).populate({
+      path: 'classworks.activity',
+      populate: { path: 'exercises' },
+    });
   },
 });

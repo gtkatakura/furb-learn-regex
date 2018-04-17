@@ -10,7 +10,7 @@ const ClassworkTable = ({ ...props }) => (
     render={classwork => (
       <Fragment>
         <th>
-          <Link to={`/professor/atividades/${encodeURIComponent(classwork.activity.name)}`} disabled={true}>
+          <Link to={`/professor/atividades/${encodeURIComponent(classwork.activity.name)}`}>
             {classwork.activity.name}
           </Link>
         </th>

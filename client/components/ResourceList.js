@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
+import confirm from 'util/confirm';
 
 class ResourceList extends React.Component {
   constructor(props) {
@@ -11,16 +12,17 @@ class ResourceList extends React.Component {
     };
 
     this.onSelecteds = this.onSelecteds.bind(this);
-    this.onDestroyButton = this.onDestroyButton.bind(this);
+    this.onDestroy = this.onDestroy.bind(this);
   }
 
   onSelecteds(selecteds) {
     this.setState({ selecteds });
   }
 
-  onDestroyButton() {
-    this.props.onDestroy(this.state.selecteds);
-    this.setState({ selecteds: [] });
+  async onDestroy(...args) {
+    if (await confirm('Tem certeza que deseja excluir esse registro?')) {
+      this.props.onDestroy(...args);
+    }
   }
 
   hasSelecteds() {
@@ -34,7 +36,7 @@ class ResourceList extends React.Component {
       <div>
         <Link className="btn btn-primary m-1" to={newLink}>Criar</Link>
         <div className="col-md-12">
-          <ResourceTable onDestroy={this.props.onDestroyButton} withLink {...rest} />
+          <ResourceTable withLink {...rest} onDestroy={this.onDestroy} />
         </div>
       </div>
     );

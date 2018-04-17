@@ -79,7 +79,7 @@ class ResourceTable extends React.Component {
 }
 
 ResourceTable.propTypes = {
-  onSelecteds: PropTypes.func.isRequired,
+  onSelecteds: PropTypes.func,
   resources: PropTypes.arrayOf(PropTypes.object).isRequired,
   render: PropTypes.func.isRequired,
   elementKey: PropTypes.func,

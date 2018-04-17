@@ -8,34 +8,14 @@ import ClassworkTable from 'components/classworks/ClassworkTable';
 import { required } from 'validations';
 
 class ClassworksFieldset extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.state = {
-      selecteds: [],
-    };
-
-    this.onSelecteds = this.onSelecteds.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
-  onSelecteds(selecteds) {
-    this.setState({ selecteds });
-  }
-
-  onDelete() {
-    const entities = this.props.fields.getAll();
-
-    _.reverse(this.state.selecteds).forEach(entity => {
-      const index = entities.indexOf(entity);
-
-      if (index !== -1) {
-        this.props.fields.remove(index);
-      }
-    });
-
-    this.setState({
-      selecteds: [],
-    });
+  onDelete(resource, index) {
+    this.props.fields.remove(index);
   }
 
   render() {
@@ -50,8 +30,7 @@ class ClassworksFieldset extends React.Component {
           <div className="card-body">
             <div className="col-md-12 p-3">
               <ClassworkModal onSave={values => fields.push(values)} />
-              <DeleteButton disabled={this.state.selecteds.length === 0} onClick={() => this.onDelete()} />
-              <ClassworkTable onSelecteds={this.onSelecteds} resources={fields.getAll() || []} />
+              <ClassworkTable onDestroy={this.onDelete} resources={fields.getAll() || []} />
             </div>
           </div>
         </div>

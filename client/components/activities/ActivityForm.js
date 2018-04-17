@@ -8,34 +8,14 @@ import { required } from 'validations';
 import _ from 'lodash';
 
 class ExercisesFieldset extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
-    this.state = {
-      selecteds: [],
-    };
-
-    this.onSelecteds = this.onSelecteds.bind(this);
+    this.onDelete = this.onDelete.bind(this);
   }
 
-  onSelecteds(selecteds) {
-    this.setState({ selecteds });
-  }
-
-  onDelete() {
-    const exercises = this.props.fields.getAll();
-
-    _.reverse(this.state.selecteds).forEach(exercise => {
-      const index = exercises.indexOf(exercise);
-
-      if (index !== -1) {
-        this.props.fields.remove(index);
-      }
-    });
-
-    this.setState({
-      selecteds: [],
-    });
+  onDelete(resource, index) {
+    this.props.fields.remove(index);
   }
 
   render() {
@@ -55,8 +35,7 @@ class ExercisesFieldset extends React.Component {
                 exceptions={exceptions}
                 onSave={exercises => exercises.forEach(e => fields.push(e))}
               />
-              <DeleteButton disabled={this.state.selecteds.length === 0} onClick={() => this.onDelete()} />
-              <ExerciseTable withCreatedAt={false} onSelecteds={this.onSelecteds} resources={fields.getAll() || []} />
+              <ExerciseTable onDestroy={this.onDelete} withCreatedAt={false} resources={fields.getAll() || []} />
             </div>
           </div>
         </div>

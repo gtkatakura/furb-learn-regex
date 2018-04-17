@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash/fp';
 import moment from 'moment';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faTrash from '@fortawesome/fontawesome-free-solid/faTrash';
 
 class ResourceTable extends React.Component {
   constructor() {
@@ -58,7 +60,12 @@ class ResourceTable extends React.Component {
               this.props.resources.map((resource, index) => (
                 <tr key={this.props.elementKey(resource)}>
                   <td className="text-center">
-                    <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, resource)} />
+                    {this.props.onSelecteds && <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, resource)} />}
+                    {this.props.onDestroy && <FontAwesomeIcon
+                      icon={faTrash}
+                      onClick={() => this.props.onDestroy(resource, index)}
+                      style={{ cursor: 'pointer' }}
+                    />}
                   </td>
                   {this.props.render(resource, index)}
                   {this.props.withCreatedAt && <td>{moment(resource.createdAt).fromNow()}</td>}

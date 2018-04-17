@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 
-import { DeleteButton } from 'components/buttons';
-
 class ResourceList extends React.Component {
   constructor(props) {
     super(props);
@@ -35,13 +33,8 @@ class ResourceList extends React.Component {
     return (
       <div>
         <Link className="btn btn-primary m-1" to={newLink}>Criar</Link>
-        <DeleteButton
-          className="btn btn-danger"
-          onClick={this.onDestroyButton}
-          disabled={!this.hasSelecteds()}
-        />
         <div className="col-md-12">
-          <ResourceTable onSelecteds={this.onSelecteds} withLink {...rest} />
+          <ResourceTable onDestroy={this.props.onDestroyButton} withLink {...rest} />
         </div>
       </div>
     );

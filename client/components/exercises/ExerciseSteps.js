@@ -64,7 +64,17 @@ class ExerciseSteps extends React.Component {
         <div className="card box-shadow">
           <div className="card-body">
             <button type="button" className="btn btn-primary mb-2 mr-1" onClick={() => newStep(fields)}>Nova Etapa</button>
-            <DeleteButton onClick={() => fields.remove(this.state.currentStep)} />
+            <DeleteButton
+              onClick={() => {
+                fields.remove(this.state.currentStep);
+
+                if (this.state.currentStep === fields.getAll().length - 1) {
+                  this.setState({
+                    currentStep: Math.max(this.state.currentStep - 1, 0),
+                  });
+                }
+              }}
+            />
             <ul className="list-group-horizontal">
               {fields.map((step, index) => (
                 <Field

@@ -6,14 +6,14 @@ const ExerciseStep = ({
   onClick,
   active,
 }) => (
-  <a
+  <div
     className={"list-group-item list-group-horizontal-item-action justify-content-between" + (active ? " active" : "") }
-    href={`#etapa-${number}`}
+    style={{ cursor: 'pointer' }}
     onClick={onClick}
   >
     <h6 className="my-0">Etapa {number}</h6>
     <small>Limite de até {value.limit || 'X'} símbolos</small>
-  </a>
+  </div>
 );
 
 export default ExerciseStep;

@@ -35,7 +35,7 @@ const createEntityReducer = entityName => (state = initialValue, { type, payload
   if (type === `${entityName}_DELETED`) {
     return {
       ...state,
-      entities: _.filter(entity => !_.includes(payload, entity._id), state.entities)
+      entities: _.filter(entity => !_.includes(entity._id, payload), state.entities)
     };
   }
 

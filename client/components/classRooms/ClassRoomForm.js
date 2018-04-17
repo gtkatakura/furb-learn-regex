@@ -1,7 +1,7 @@
 import React from 'react';
 import _ from 'lodash';
 import { FieldArray } from 'redux-form';
-import { TextField, SpanField } from 'components/forms';
+import { Form, TextField, SpanField } from 'components/forms';
 import { DeleteButton } from 'components/buttons';
 import ClassworkModal from 'components/classworks/ClassworkModal';
 import ClassworkTable from 'components/classworks/ClassworkTable';
@@ -60,11 +60,11 @@ class ClassworksFieldset extends React.Component {
   }
 }
 
-const ClassRoomForm = ({ onSubmit, submitting }) => (
+const ClassRoomForm = ({ submitting, ...props }) => (
   <div className="container">
     <div className="row">
       <div className="col-md-12 p-3">
-        <form onSubmit={onSubmit}>
+        <Form {...props}>
           <TextField
             name="name"
             label="Nome"
@@ -76,7 +76,7 @@ const ClassRoomForm = ({ onSubmit, submitting }) => (
             label="Token de Acesso"
           />
           <button type="submit" className="btn btn-primary float-right" disabled={submitting}>Salvar</button>
-        </form>
+        </Form>
       </div>
     </div>
   </div>

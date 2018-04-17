@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import moment from 'moment';
 
+import Link from 'components/Link';
 import ResourceTable from 'components/ResourceTable';
 
 const ClassworkTable = ({ ...props }) => (
@@ -8,9 +9,11 @@ const ClassworkTable = ({ ...props }) => (
     withCreatedAt={false}
     render={classwork => (
       <Fragment>
-        <td>
-          {classwork.activity.name}
-        </td>
+        <th>
+          <Link to={`/professor/atividades/${encodeURIComponent(classwork.activity.name)}`} disabled={true}>
+            {classwork.activity.name}
+          </Link>
+        </th>
         <td>
           {moment(classwork.deadline).format('L')}
         </td>

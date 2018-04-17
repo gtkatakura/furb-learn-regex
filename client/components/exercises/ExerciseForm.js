@@ -1,15 +1,15 @@
 import React from 'react';
 import { FieldArray } from 'redux-form';
-import { TextField } from 'components/forms';
+import { Form, TextField } from 'components/forms';
 import { required } from 'validations';
 
 import ExerciseSteps from './ExerciseSteps';
 
-const ExerciseForm = ({ onSubmit, submitting }) => (
+const ExerciseForm = ({ submitting, ...props }) => (
   <div className="container">
     <div className="row">
       <div className="col-md-12 p-3">
-        <form onSubmit={onSubmit}>
+        <Form {...props}>
           <TextField
             name="description"
             label="Descrição"
@@ -22,7 +22,7 @@ const ExerciseForm = ({ onSubmit, submitting }) => (
           />
           <FieldArray name="steps" component={ExerciseSteps} />
           <button type="submit" className="btn btn-primary float-right" disabled={submitting}>Salvar</button>
-        </form>
+        </Form>
       </div>
     </div>
   </div>

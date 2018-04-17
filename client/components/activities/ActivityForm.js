@@ -1,6 +1,6 @@
 import React from 'react';
 import { FieldArray } from 'redux-form';
-import { TextField } from 'components/forms';
+import { Form, TextField } from 'components/forms';
 import { DeleteButton } from 'components/buttons';
 import ExerciseTable from 'components/exercises/ExerciseTable';
 import ExercisesListModal from 'containers/exercises/ExercisesListModal';
@@ -65,11 +65,11 @@ class ExercisesFieldset extends React.Component {
   }
 }
 
-const ActivityForm = ({ onSubmit, submitting }) => (
+const ActivityForm = ({ submitting, ...props }) => (
   <div className="container">
     <div className="row">
       <div className="col-md-12 p-3">
-        <form onSubmit={onSubmit}>
+        <Form {...props}>
           <TextField
             name="name"
             label="Nome"
@@ -79,7 +79,7 @@ const ActivityForm = ({ onSubmit, submitting }) => (
           <div className="float-right">
             <button type="submit" className="btn btn-primary" disabled={submitting}>Salvar</button>
           </div>
-        </form>
+        </Form>
       </div>
     </div>
   </div>

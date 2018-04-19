@@ -13,7 +13,7 @@ const ActivityTable = ({ withLink = false, ...props }) => (
     )}
     {...props}
   >
-    <th>Nome</th>
+    <th>Descrição</th>
   </ResourceTable>
 );
 

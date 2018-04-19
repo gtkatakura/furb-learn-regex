@@ -10,6 +10,7 @@ const ExerciseForm = ({ submitting, ...props }) => (
     <div className="row">
       <div className="col-md-12 p-3">
         <Form {...props}>
+        <button type="submit" className="btn btn-primary mb-2" disabled={submitting}>Salvar</button>
           <TextField
             name="description"
             label="Descrição"
@@ -21,7 +22,6 @@ const ExerciseForm = ({ submitting, ...props }) => (
             validate={required}
           />
           <FieldArray name="steps" component={ExerciseSteps} />
-          <button type="submit" className="btn btn-primary float-right" disabled={submitting}>Salvar</button>
         </Form>
       </div>
     </div>

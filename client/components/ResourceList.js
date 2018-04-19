@@ -20,7 +20,7 @@ class ResourceList extends React.Component {
   }
 
   async onDestroy(...args) {
-    if (await confirm('Tem certeza que deseja excluir esse registro?')) {
+    if (await confirm('Tem certeza que deseja excluir?')) {
       this.props.onDestroy(...args);
     }
   }

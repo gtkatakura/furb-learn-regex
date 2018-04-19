@@ -12,7 +12,7 @@ const ExerciseStep = ({
     onClick={onClick}
   >
     <h6 className="my-0">Etapa {number}</h6>
-    <small>Limite de até {value.limit || 'X'} símbolos</small>
+    <small>Quantidade de até {String(value.limit || 'XX').padStart(2, '0')} símbolos</small>
   </div>
 );
 

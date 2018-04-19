@@ -6,6 +6,7 @@ import { DeleteButton } from 'components/buttons';
 import ClassworkModal from 'components/classworks/ClassworkModal';
 import ClassworkTable from 'components/classworks/ClassworkTable';
 import { required } from 'validations';
+import confirm from 'util/confirm';
 
 class ClassworksFieldset extends React.Component {
   constructor(props) {
@@ -14,8 +15,10 @@ class ClassworksFieldset extends React.Component {
     this.onDelete = this.onDelete.bind(this);
   }
 
-  onDelete(resource, index) {
-    this.props.fields.remove(index);
+  async onDelete(resource, index) {
+    if (await confirm('Tem certeza que deseja excluir?')) {
+      this.props.fields.remove(index);
+    }
   }
 
   render() {
@@ -24,7 +27,7 @@ class ClassworksFieldset extends React.Component {
     return (
       <fieldset className="form-group">
         <label>
-          Tarefas
+          Atividades
         </label>
         <div className="card box-shadow">
           <div className="card-body">
@@ -44,6 +47,7 @@ const ClassRoomForm = ({ submitting, ...props }) => (
     <div className="row">
       <div className="col-md-12 p-3">
         <Form {...props}>
+          <button type="submit" className="btn btn-primary mb-2" disabled={submitting}>Salvar</button>
           <TextField
             name="name"
             label="Nome"
@@ -56,7 +60,6 @@ const ClassRoomForm = ({ submitting, ...props }) => (
             className="col-md-4"
             copyToClipboard={token => `${window.location.origin}/turmas/inscrever-se/${token}`}
           />
-          <button type="submit" className="btn btn-primary float-right" disabled={submitting}>Salvar</button>
         </Form>
       </div>
     </div>

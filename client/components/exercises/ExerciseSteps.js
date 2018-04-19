@@ -16,18 +16,18 @@ const newStep = steps => {
 
 const extractSymbols = text => _.sortBy(_.uniq(text.match(/[a-zA-Z]/g)));
 
-const generateValues = (text, limit = 3) => {
+const generateWords = (text, limit = 3) => {
   const symbols = extractSymbols(text);
-  const values = [symbols];
+  const words = [symbols];
 
-  while (values.length < limit) {
-    const last = _.last(values);
+  while (words.length < limit) {
+    const last = _.last(words);
     const newValues = _.flatMap(last, value => symbols.map(symbol => value + symbol));
 
-    values.push(newValues);
+    words.push(newValues);
   }
 
-  return values.map(value => value.join(' '));
+  return words.map(value => value.join(' '));
 };
 
 class ExerciseSteps extends React.Component {
@@ -63,7 +63,7 @@ class ExerciseSteps extends React.Component {
         </label>
         <div className="card box-shadow">
           <div className="card-body">
-            <button type="button" className="btn btn-primary mb-2 mr-1" onClick={() => newStep(fields)}>Nova Etapa</button>
+            <button type="button" className="btn btn-primary mb-2 mr-1" onClick={() => newStep(fields)}>Criar</button>
             <DeleteButton
               onClick={() => {
                 fields.remove(this.state.currentStep);
@@ -91,7 +91,7 @@ class ExerciseSteps extends React.Component {
             <div className="card box-shadow mt-2">
               <div className="card-body">
                 <div className="form-group">
-                  <label>Limite de símbolos</label>
+                  <label>Quantidade de símbolos</label>
                   <Field
                     type="number"
                     name={`steps[${this.state.currentStep}].limit`}
@@ -100,7 +100,7 @@ class ExerciseSteps extends React.Component {
                   />
                 </div>
                 <div className="form-group">
-                  <label>Valores</label>
+                  <label>Palavras</label>
                   <div className="card box-shadow">
                     <div className="card-body">
                       <p className="card-text">
@@ -109,14 +109,14 @@ class ExerciseSteps extends React.Component {
                           validate={required}
                           component={({ input: { value } }) => (
                             <span>
-                              {generateValues(value, limit).map((values, i) => (
+                              {generateWords(value, limit).map((words, i) => (
                                 <span key={i.toString()}>
-                                  {values.split(' ').map(generated => (
-                                    toRegex(value).test(generated) ? (
+                                  {words.split(' ').map(word => (
+                                    toRegex(value).test(word) ? (
                                       <Fragment>
-                                        <mark>{generated}</mark>
+                                        <mark>{word}</mark>
                                         {' '}
-                                      </Fragment>) : `${generated} `
+                                      </Fragment>) : `${word} `
                                   ))}<br />
                                 </span>
                               ))}

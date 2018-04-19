@@ -21,7 +21,7 @@ const ClassworkTable = ({ ...props }) => (
     )}
     {...props}
   >
-    <th>Atividade</th>
+    <th>Descrição</th>
     <th style={{ width: '200px' }}>Prazo de Entrega</th>
   </ResourceTable>
 );

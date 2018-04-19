@@ -6,6 +6,7 @@ import ExerciseTable from 'components/exercises/ExerciseTable';
 import ExercisesListModal from 'containers/exercises/ExercisesListModal';
 import { required } from 'validations';
 import _ from 'lodash';
+import confirm from 'util/confirm';
 
 class ExercisesFieldset extends React.Component {
   constructor(props) {
@@ -14,8 +15,10 @@ class ExercisesFieldset extends React.Component {
     this.onDelete = this.onDelete.bind(this);
   }
 
-  onDelete(resource, index) {
-    this.props.fields.remove(index);
+  async onDelete(resource, index) {
+    if (await confirm('Tem certeza que deseja excluir?')) {
+      this.props.fields.remove(index);
+    }
   }
 
   render() {
@@ -49,15 +52,13 @@ const ActivityForm = ({ submitting, ...props }) => (
     <div className="row">
       <div className="col-md-12 p-3">
         <Form {...props}>
+          <button type="submit" className="btn btn-primary mb-2" disabled={submitting}>Salvar</button>
           <TextField
             name="name"
-            label="Nome"
+            label="Descrição"
             validate={required}
           />
           <FieldArray name="exercises" component={ExercisesFieldset} />
-          <div className="float-right">
-            <button type="submit" className="btn btn-primary" disabled={submitting}>Salvar</button>
-          </div>
         </Form>
       </div>
     </div>

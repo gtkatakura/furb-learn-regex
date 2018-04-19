@@ -7,6 +7,7 @@ const entities = [
   'exercises',
   'activities',
   'classRooms',
+  'student',
 ];
 
 app.use(bodyParser.urlencoded({

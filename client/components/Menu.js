@@ -11,7 +11,7 @@ const getInitials = _.flow(
 const Menu = ({ logout, userName }) => (
   <nav className="navbar navbar-expand-md  navbar-light bg-light">
     <div className="container">
-      <Link className="navbar-brand" to="/minhas-atividades">
+      <Link className="navbar-brand" to="/minhas-atividades/em-andamento">
         <b>Learn Regex</b>
       </Link>
       <div className="collapse navbar-collapse text-center justify-content-end" id="navbarLightSupportedContent">
@@ -22,7 +22,7 @@ const Menu = ({ logout, userName }) => (
             </Link>
           </li>
           <li className="nav-item mx-1">
-            <Link className="nav-link" to="/minhas-atividades">
+            <Link className="nav-link" to="/minhas-atividades/em-andamento">
               Minhas Atividades
             </Link>
           </li>

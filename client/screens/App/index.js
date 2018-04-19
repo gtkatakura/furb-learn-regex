@@ -6,7 +6,9 @@ import ProfessorDashboardScreen from 'screens/ProfessorScreen/DashboardScreen';
 import ActivityScreen from 'screens/ProfessorScreen/ActivityScreen';
 import ClassRoomScreen from 'screens/ProfessorScreen/ClassRoomScreen';
 import ExerciseScreen from 'screens/ProfessorScreen/ExerciseScreen';
-import InDevelopmentScreen from 'screens/InDevelopmentScreen';
+import StudentScreen from 'screens/StudentScreen';
+import StudentDashboardScreen from 'screens/StudentScreen/DashboardScreen';
+import SubscribeScreen from 'screens/SubscribeScreen';
 import NotFound from 'components/NotFound';
 import history from '../../history';
 
@@ -27,7 +29,10 @@ const AppContainer = () => (
         <Route path="exercicios/criar" component={ExerciseScreen} />
         <Route path="exercicios/:description" component={ExerciseScreen} />
       </Route>
-      <Route path="minhas-atividades" component={InDevelopmentScreen} />
+      <Route path="minhas-atividades" component={StudentScreen}>
+        <Route path=":section" component={StudentDashboardScreen} />
+      </Route>
+      <Route path="turmas/inscrever-se/:token" component={SubscribeScreen} />
     </Route>
     <Route path="*" component={NotFound} />
   </Router>

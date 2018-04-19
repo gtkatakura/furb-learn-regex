@@ -53,6 +53,8 @@ const ClassRoomForm = ({ submitting, ...props }) => (
           <SpanField
             name="token"
             label="Token de Acesso"
+            className="col-md-4"
+            copyToClipboard={token => `${window.location.origin}/turmas/inscrever-se/${token}`}
           />
           <button type="submit" className="btn btn-primary float-right" disabled={submitting}>Salvar</button>
         </Form>

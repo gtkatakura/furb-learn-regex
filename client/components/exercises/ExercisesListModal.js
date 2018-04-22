@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { AddButton, CancelButton } from 'components/buttons';
 import _ from 'lodash';
 
 import ExerciseTable from './ExerciseTable';
@@ -49,7 +50,7 @@ class ExercisesListModal extends React.Component {
 
     return (
       <Fragment>
-        <button type="button" className="btn btn-primary mb-2 mr-1" onClick={this.toggle}>Adicionar</button>
+        <AddButton className="mb-2 mr-1" onClick={this.toggle} />
         <Modal isOpen={this.state.modal} toggle={this.toggle} backdrop="static" className="modal-dialog-expand">
           <ModalHeader toggle={this.toggle}>
             Exercícios
@@ -58,8 +59,8 @@ class ExercisesListModal extends React.Component {
             <ExerciseTable withCreatedAt={false} onSelecteds={this.onSelecteds} resources={resources} />
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>Cancelar</Button>
-            <Button color="primary" onClick={() => this.onSave()}>Adicionar</Button>
+            <CancelButton onClick={this.toggle} />
+            <AddButton onClick={() => this.onSave()} />
           </ModalFooter>
         </Modal>
       </Fragment>

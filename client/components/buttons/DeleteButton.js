@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import DangerButton from './DangerButton';
+
 const DeleteButton = ({ ...props }) => (
-  <button
-    type="button"
-    className="btn btn-danger mb-2"
-    {...props}
-  />
+  <DangerButton {...props} />
 );
 
 DeleteButton.propTypes = {

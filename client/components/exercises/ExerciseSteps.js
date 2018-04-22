@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { DeleteButton } from 'components/buttons';
+import { CreateButton, DeleteButton } from 'components/buttons';
 import { Field } from 'components/forms';
 import { required } from 'validations';
 import _ from 'lodash';
@@ -63,8 +63,9 @@ class ExerciseSteps extends React.Component {
         </label>
         <div className="card box-shadow">
           <div className="card-body">
-            <button type="button" className="btn btn-primary mb-2 mr-1" onClick={() => newStep(fields)}>Criar</button>
+            <CreateButton className="mb-2 mr-1" onClick={() => newStep(fields)} />
             <DeleteButton
+              className="mb-2"
               onClick={() => {
                 fields.remove(this.state.currentStep);
 

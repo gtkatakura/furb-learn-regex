@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import confirm from 'util/confirm';
 
+import { CreateButton } from 'components/buttons';
+
 class ResourceList extends React.Component {
   constructor(props) {
     super(props);
@@ -34,7 +36,7 @@ class ResourceList extends React.Component {
 
     return (
       <div>
-        <Link className="btn btn-primary m-1" to={newLink}>Criar</Link>
+        <CreateButton className="m-1" redirectTo={newLink} />
         <div className="col-md-12">
           <ResourceTable withLink {...rest} onDestroy={this.onDestroy} />
         </div>

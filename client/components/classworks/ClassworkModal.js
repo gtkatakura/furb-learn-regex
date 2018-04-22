@@ -3,8 +3,9 @@ import { bindActionCreators, compose } from 'redux';
 import { connect } from 'react-redux';
 import moment from 'moment';
 import { reduxForm } from 'redux-form';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Field } from 'components/forms';
+import { AddButton, CancelButton } from 'components/buttons';
 import { required, date } from 'validations';
 import ActivitySelect from 'containers/activities/ActivitySelect';
 import { fetchAll } from 'actions/activities';
@@ -49,11 +50,9 @@ class ClassworkModal extends React.Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
-
     return (
       <Fragment>
-        <button type="button" className="btn btn-primary mb-2 mr-1" onClick={this.toggle}>Adicionar</button>
+        <AddButton className="mb-2 mr-1" onClick={this.toggle} />
         <Modal isOpen={this.state.modal} toggle={this.toggle} backdrop="static">
           <ModalHeader toggle={this.toggle}>
             Tarefa
@@ -79,8 +78,8 @@ class ClassworkModal extends React.Component {
             </form>
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={this.toggle}>Cancelar</Button>
-            <Button type="button" color="primary" onClick={this.onSave}>Adicionar</Button>
+            <CancelButton onClick={this.toggle} />
+            <AddButton onClick={this.onSave} />
           </ModalFooter>
         </Modal>
       </Fragment>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import _ from 'lodash';
 
-import ClassRoomNavigator from 'components/classRooms/ClassRoomNavigator';
+import ClassRoomNavigator from 'components/classRooms/Navigator';
 import getCurrentClassRoom from 'selectors/getCurrentClassRoom';
 
 const mapStateToProps = (...args) => ({

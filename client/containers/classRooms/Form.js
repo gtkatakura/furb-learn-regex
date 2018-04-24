@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
 import uuid from 'uuid/v4';
 
-import ClassRoomForm from 'components/classRooms/ClassRoomForm';
+import ClassRoomForm from 'components/classRooms/Form';
 import getCurrentClassRoom from 'selectors/getCurrentClassRoom';
 import { create, destroy } from 'actions/classRooms';
 

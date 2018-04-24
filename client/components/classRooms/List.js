@@ -1,7 +1,7 @@
 import React from 'react';
 import ResourceList from 'components/ResourceList';
 
-import ClassRoomTable from './ClassRoomTable';
+import ClassRoomTable from './Table';
 
 const ClassRoomList = ({ ...props }) => (
   <ResourceList

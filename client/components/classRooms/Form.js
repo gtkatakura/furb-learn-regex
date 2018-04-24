@@ -3,8 +3,8 @@ import _ from 'lodash';
 import { FieldArray } from 'redux-form';
 import { Form, TextField, SpanField } from 'components/forms';
 import { SaveButton } from 'components/buttons';
-import ClassworkModal from 'components/classworks/ClassworkModal';
-import ClassworkTable from 'components/classworks/ClassworkTable';
+import ClassworkModal from 'components/classworks/Modal';
+import ClassworkTable from 'components/classworks/Table';
 import { required } from 'validations';
 import confirm from 'util/confirm';
 

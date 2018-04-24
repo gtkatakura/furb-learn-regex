@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ClassRoomList from 'components/classRooms/ClassRoomList';
+import ClassRoomList from 'components/classRooms/List';
 import { destroy } from 'actions/classRooms';
 
 const mapStateToProps = state => ({

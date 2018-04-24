@@ -4,7 +4,7 @@ import { Form, TextField } from 'components/forms';
 import { required } from 'validations';
 import { SaveButton } from 'components/buttons';
 
-import ExerciseSteps from './ExerciseSteps';
+import ExerciseSteps from './Steps';
 
 const ExerciseForm = ({ submitting, ...props }) => (
   <div className="container">

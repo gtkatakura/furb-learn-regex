@@ -4,7 +4,7 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { AddButton, CancelButton } from 'components/buttons';
 import _ from 'lodash';
 
-import ExerciseTable from './ExerciseTable';
+import ExerciseTable from './Table';
 import './modal.css';
 
 class ExercisesListModal extends React.Component {

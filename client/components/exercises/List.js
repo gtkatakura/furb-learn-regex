@@ -1,7 +1,7 @@
 import React from 'react';
 import ResourceList from 'components/ResourceList';
 
-import ExerciseTable from './ExerciseTable';
+import ExerciseTable from './Table';
 
 const ExerciseList = ({ ...props }) => (
   <ResourceList

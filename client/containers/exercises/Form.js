@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
 
-import ExerciseForm from 'components/exercises/ExerciseForm';
+import ExerciseForm from 'components/exercises/Form';
 import getCurrentExerciseOrDefault from 'selectors/getCurrentExerciseOrDefault';
 import { create } from 'actions/exercises';
 

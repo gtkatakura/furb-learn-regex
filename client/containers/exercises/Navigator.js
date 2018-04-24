@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import _ from 'lodash';
 
-import ExerciseNavigator from 'components/exercises/ExerciseNavigator';
+import ExerciseNavigator from 'components/exercises/Navigator';
 import getCurrentExercise from 'selectors/getCurrentExercise';
 
 const mapStateToProps = (...args) => ({

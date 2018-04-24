@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
-import ActivityNavigator from 'containers/activities/ActivityNavigator';
-import ActivityForm from 'containers/activities/ActivityForm';
+import ActivityNavigator from 'containers/activities/Navigator';
+import ActivityForm from 'containers/activities/Form';
 
 const ExerciseScreen = () => (
   <Fragment>

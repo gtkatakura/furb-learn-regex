@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import ActivitySelect from 'components/activities/ActivitySelect';
+import ActivitySelect from 'components/activities/Select';
 
 const mapStateToProps = state => ({
   resources: state.activity.entities,

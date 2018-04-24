@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ResourceList from 'components/ResourceList';
-import ActivityTable from './ActivityTable';
+import ActivityTable from './Table';
 
 const ActivityList = ({ ...props }) => (
   <ResourceList

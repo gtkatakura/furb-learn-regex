@@ -1,7 +1,7 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import ActivityList from 'components/activities/ActivityList';
+import ActivityList from 'components/activities/List';
 import { destroy } from 'actions/activities';
 
 const mapStateToProps = state => ({

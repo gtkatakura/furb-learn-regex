@@ -7,7 +7,7 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Field } from 'components/forms';
 import { AddButton, CancelButton } from 'components/buttons';
 import { required, date } from 'validations';
-import ActivitySelect from 'containers/activities/ActivitySelect';
+import ActivitySelect from 'containers/activities/Select';
 import { fetchAll } from 'actions/activities';
 
 class ClassworkModal extends React.Component {

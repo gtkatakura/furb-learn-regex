@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
 
-import ActivityForm from 'components/activities/ActivityForm';
+import ActivityForm from 'components/activities/Form';
 import getCurrentActivity from 'selectors/getCurrentActivity';
 import { create } from 'actions/activities';
 

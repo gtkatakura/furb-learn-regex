@@ -10,6 +10,7 @@ import StudentScreen from 'screens/StudentScreen';
 import StudentDashboardScreen from 'screens/StudentScreen/DashboardScreen';
 import SubscribeScreen from 'screens/SubscribeScreen';
 import NotFound from 'components/NotFound';
+import InDevelopmentScreen from 'screens/InDevelopmentScreen';
 import history from '../../history';
 
 import Root from './Root';
@@ -31,6 +32,7 @@ const AppContainer = () => (
       </Route>
       <Route path="minhas-atividades" component={StudentScreen}>
         <Route path=":section" component={StudentDashboardScreen} />
+        <Route path="em-andamento/:exerciseId" component={InDevelopmentScreen} />
       </Route>
       <Route path="turmas/inscrever-se/:token" component={SubscribeScreen} />
     </Route>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import moment from 'moment';
+
 import fetch from 'actions/student/fetch';
 import withLifeCycle from 'util/withLifeCycle';
 
@@ -19,11 +21,14 @@ const ClassworkItem = ({ classwork }) => (
           </h4>
           <ul className="list-group">
             {classwork.activity.exercises.map(exercise => (
-              <a className="list-group-item list-group-item-action d-flex justify-content-between" href="#">
+              <Link
+                className="list-group-item list-group-item-action d-flex justify-content-between"
+                to={`/minhas-atividades/em-andamento/${exercise._id}`}
+              >
                 <h6 className="my-0">
                   {exercise.description}
                 </h6>
-              </a>
+              </Link>
             ))}
           </ul>
         </div>

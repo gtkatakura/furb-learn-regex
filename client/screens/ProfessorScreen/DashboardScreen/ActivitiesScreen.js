@@ -1,18 +1,16 @@
-import React from 'react';
+import { compose } from 'lodash/fp';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import withLifeCycle from 'util/withLifeCycle';
 
 import ActivityListContainer from 'containers/activities/List';
 import fetchAll from 'actions/activities/fetchAll';
 
-const ActivitiesScreen = ({ load }) => {
-  load();
-
-  return <ActivityListContainer />;
-};
-
 const mapDispatchToProps = dispatch => bindActionCreators({
-  load: fetchAll,
+  onMount: fetchAll,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(ActivitiesScreen);
+export default compose(
+  connect(null, mapDispatchToProps),
+  withLifeCycle,
+)(ActivityListContainer);

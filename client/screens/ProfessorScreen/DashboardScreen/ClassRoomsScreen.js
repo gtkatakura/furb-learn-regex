@@ -1,18 +1,16 @@
-import React from 'react';
+import { compose } from 'lodash/fp';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import withLifeCycle from 'util/withLifeCycle';
 
 import ClassRoomListContainer from 'containers/classRooms/List';
 import fetchAll from 'actions/classRooms/fetchAll';
 
-const ActivitiesScreen = ({ load }) => {
-  load();
-
-  return <ClassRoomListContainer />;
-};
-
 const mapDispatchToProps = dispatch => bindActionCreators({
-  load: fetchAll,
+  onMount: fetchAll,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(ActivitiesScreen);
+export default compose(
+  connect(null, mapDispatchToProps),
+  withLifeCycle,
+)(ClassRoomListContainer);

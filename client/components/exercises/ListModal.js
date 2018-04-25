@@ -8,28 +8,21 @@ import ExerciseTable from './Table';
 import './modal.css';
 
 class ExercisesListModal extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      modal: false,
-      selecteds: [],
-    };
-
-    this.toggle = this.toggle.bind(this);
-    this.onSelecteds = this.onSelecteds.bind(this);
+  state = {
+    modal: false,
+    selecteds: [],
   }
 
-  onSelecteds(selecteds) {
+  onSelecteds = (selecteds) => {
     this.setState({ selecteds });
   }
 
-  onSave() {
+  onSave = () => {
     this.props.onSave(this.state.selecteds);
     this.toggle();
   }
 
-  toggle() {
+  toggle = () => {
     if (!this.state.modal) {
       this.props.load();
     }
@@ -60,7 +53,7 @@ class ExercisesListModal extends React.Component {
           </ModalBody>
           <ModalFooter>
             <CancelButton onClick={this.toggle} />
-            <AddButton onClick={() => this.onSave()} />
+            <AddButton onClick={this.onSave} />
           </ModalFooter>
         </Modal>
       </Fragment>

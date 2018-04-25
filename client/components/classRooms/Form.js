@@ -9,13 +9,7 @@ import { required } from 'validations';
 import confirm from 'util/confirm';
 
 class ClassworksFieldset extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onDelete = this.onDelete.bind(this);
-  }
-
-  async onDelete(resource, index) {
+  onDelete = async (resource, index) => {
     if (await confirm('Tem certeza que deseja excluir?')) {
       this.props.fields.remove(index);
     }

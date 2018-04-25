@@ -6,22 +6,15 @@ import confirm from 'util/confirm';
 import { CreateButton } from 'components/buttons';
 
 class ResourceList extends React.Component {
-  constructor(props) {
-    super(props);
+  state = {
+    selecteds: [],
+  };
 
-    this.state = {
-      selecteds: [],
-    };
-
-    this.onSelecteds = this.onSelecteds.bind(this);
-    this.onDestroy = this.onDestroy.bind(this);
-  }
-
-  onSelecteds(selecteds) {
+  onSelecteds = selecteds => {
     this.setState({ selecteds });
   }
 
-  async onDestroy(...args) {
+  onDestroy = async (...args) => {
     if (await confirm('Tem certeza que deseja excluir?')) {
       this.props.onDestroy(...args);
     }

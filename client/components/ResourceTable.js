@@ -6,12 +6,8 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faTrash from '@fortawesome/fontawesome-free-solid/faTrash';
 
 class ResourceTable extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      selecteds: [],
-    };
+  state = {
+    selecteds: [],
   }
 
   componentWillReceiveProps(newProps) {

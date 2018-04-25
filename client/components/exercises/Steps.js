@@ -31,12 +31,8 @@ const generateWords = (text, limit = 3) => {
 };
 
 class ExerciseSteps extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentStep: 0,
-    };
+  state = {
+    currentStep: 0,
   }
 
   render() {

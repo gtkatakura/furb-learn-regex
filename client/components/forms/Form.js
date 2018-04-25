@@ -7,12 +7,6 @@ import confirm from 'util/confirm';
 const message = 'As alterações efetuadas serão perdidas, deseja continuar?';
 
 class Form extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
   componentDidMount() {
     this.unblock = browserHistory.listenBefore(({ pathname }) => {
       if (this.props.dirty) {
@@ -34,7 +28,7 @@ class Form extends React.Component {
     this.unblock();
   }
 
-  onSubmit(...args) {
+  onSubmit = (...args) => {
     this.unblock();
     return this.props.onSubmit(...args);
   }

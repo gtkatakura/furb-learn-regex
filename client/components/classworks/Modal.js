@@ -11,18 +11,11 @@ import ActivitySelect from 'containers/activities/Select';
 import { fetchAll } from 'actions/activities';
 
 class ClassworkModal extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      modal: false,
-    };
-
-    this.toggle = this.toggle.bind(this);
-    this.onSave = this.onSave.bind(this);
+  state = {
+    modal: false,
   }
 
-  onSave() {
+  onSave = () => {
     this.props.handleSubmit(values => {
       const formatteds = Object.assign({}, values, {
         activity: JSON.parse(values.activity),
@@ -37,7 +30,7 @@ class ClassworkModal extends React.Component {
     }
   }
 
-  toggle() {
+  toggle = () => {
     if (!this.state.modal) {
       this.props.load();
     }

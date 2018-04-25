@@ -8,6 +8,7 @@
   ],
   "plugins": [
     "transform-object-rest-spread",
+    "transform-class-properties",
     "react-hot-loader/babel",
     "lodash"
   ]

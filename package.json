@@ -97,6 +97,7 @@
     "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0",
     "serve-favicon": "^2.5.0",
+    "unstated": "^2.0.2",
     "uuid": "^3.2.1"
   }
 }

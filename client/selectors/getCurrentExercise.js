@@ -1,9 +1,9 @@
 import _ from 'lodash/fp';
 import getExercises from './getExercises';
 
-const getCurrentExercise = (state, { params: { description } }) => (
+const getCurrentExercise = (state, { params: { exerciseId, description } }) => (
   _.find(
-    { description },
+    exerciseId ? { _id: exerciseId } : { description },
     getExercises(state),
   )
 );

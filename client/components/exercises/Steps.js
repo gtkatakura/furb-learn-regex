@@ -3,6 +3,7 @@ import { CreateButton, DeleteButton } from 'components/buttons';
 import { Field } from 'components/forms';
 import { required } from 'validations';
 import _ from 'lodash';
+import { generateWords } from 'regex';
 
 import ExerciseStep from './Step';
 
@@ -12,22 +13,6 @@ const newStep = steps => {
   steps.push({
     limit: Number(maxLimit) + 1,
   });
-};
-
-const extractSymbols = text => _.sortBy(_.uniq(text.match(/[a-zA-Z]/g)));
-
-const generateWords = (text, limit = 3) => {
-  const symbols = extractSymbols(text);
-  const words = [symbols];
-
-  while (words.length < limit) {
-    const last = _.last(words);
-    const newValues = _.flatMap(last, value => symbols.map(symbol => value + symbol));
-
-    words.push(newValues);
-  }
-
-  return words.map(value => value.join(' '));
 };
 
 class ExerciseSteps extends React.Component {
@@ -108,7 +93,7 @@ class ExerciseSteps extends React.Component {
                             <span>
                               {generateWords(value, limit).map((words, i) => (
                                 <span key={i.toString()}>
-                                  {words.split(' ').map(word => (
+                                  {words.map(word => (
                                     toRegex(value).test(word) ? (
                                       <Fragment>
                                         <mark>{word}</mark>

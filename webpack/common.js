@@ -48,6 +48,7 @@ module.exports = {
     resolve: {
       modules: [
         path.resolve('./client'),
+        path.resolve('./shared'),
         path.resolve('./node_modules'),
       ],
     },

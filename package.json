@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run build",
-    "start": "node app.js",
+    "start": "babel-node app.js --presets=env",
     "build": "webpack --config=webpack/production",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "dev": "node app.dev.js"
+    "dev": "babel-node app.dev.js --presets=env"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "devDependencies": {
     "@commitlint/cli": "^6.1.2",
     "@commitlint/config-conventional": "^6.1.2",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.3",

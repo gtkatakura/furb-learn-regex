@@ -77,7 +77,7 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
 
   const nextStep = getNextStep({
     exercise,
-    currentStep: exercise.steps[0],
+    currentStep: answer.currentStep,
     solution: request.body.solution,
   });
 

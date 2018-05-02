@@ -9,7 +9,7 @@ const getNextStep = ({
     return null;
   }
 
-  const currentStepIndexOf = exercise.steps.indexOf(currentStep);
+  const currentStepIndexOf = exercise.steps.findIndex(step => step.limit === currentStep.limit);
   const nextStep = exercise.steps[currentStepIndexOf + 1];
 
   return nextStep;

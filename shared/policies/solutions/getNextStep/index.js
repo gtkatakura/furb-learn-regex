@@ -10,9 +10,11 @@ const getNextStep = ({
   }
 
   const currentStepIndexOf = exercise.steps.findIndex(step => step.limit === currentStep.limit);
-  const nextStep = exercise.steps[currentStepIndexOf + 1];
+  const nextStep = currentStepIndexOf !== -1
+    ? exercise.steps[currentStepIndexOf + 1]
+    : null;
 
-  return nextStep;
+  return nextStep || { limit: currentStep.limit + 1 };
 };
 
 module.exports = getNextStep;

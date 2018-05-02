@@ -34,14 +34,27 @@ app.use('*', (req, res, next) => {
   });
 });
 
-const watcher = chokidar.watch('./server');
+const watcherServer = chokidar.watch('./server');
 
-watcher.on('ready', () => {
-  watcher.on('all', () => {
+watcherServer.on('ready', () => {
+  watcherServer.on('all', () => {
     console.log('Clearing /server/ module cache from server');
 
     Object.keys(require.cache).forEach((id) => {
       if (/[/\\]server[/\\]/.test(id)) delete require.cache[id];
+    });
+  });
+});
+
+
+const watcherShared = chokidar.watch('./shared');
+
+watcherShared.on('ready', () => {
+  watcherShared.on('all', () => {
+    console.log('Clearing /shared/ module cache from shared');
+
+    Object.keys(require.cache).forEach((id) => {
+      if (/[/\\]shared[/\\]/.test(id)) delete require.cache[id];
     });
   });
 });

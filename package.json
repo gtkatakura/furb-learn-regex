@@ -8,7 +8,9 @@
     "start": "babel-node app.js --presets=env",
     "build": "webpack --config=webpack/production",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "dev": "babel-node app.dev.js --presets=env"
+    "dev": "babel-node app.dev.js --presets=env",
+    "test": "mocha --compilers js:babel-core/register shared/**/*.spec.js",
+    "test:watch": "mocha --compilers js:babel-core/register --watch shared/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.3",
+    "chai": "^4.1.2",
     "clean-webpack-plugin": "^0.1.18",
     "css-loader": "^0.28.10",
     "eslint": "^4.18.1",
@@ -41,6 +44,7 @@
     "less": "^3.0.1",
     "less-loader": "^4.0.6",
     "lodash-webpack-plugin": "^0.11.4",
+    "mocha": "^5.1.1",
     "parcel-bundler": "^1.6.2",
     "style-loader": "^0.20.2",
     "url-loader": "^0.6.2",
@@ -55,10 +59,10 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.10",
     "@fortawesome/react-fontawesome": "^0.0.18",
     "babel-cli": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
     "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "body-parser": "^1.18.2",
@@ -97,6 +101,7 @@
     "redux": "^3.7.2",
     "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0",
+    "regex2dfa": "^0.1.6",
     "serve-favicon": "^2.5.0",
     "unstated": "^2.0.2",
     "uuid": "^3.2.1"

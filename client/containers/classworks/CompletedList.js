@@ -10,7 +10,7 @@ import ClassworkItem from './ClassworkItem';
 
 const InProgressList = ({ classworks }) => (
   classworks.map(classwork => (
-    moment(classwork.deadline).isSameOrAfter(moment(), 'day') && <ClassworkItem classwork={classwork} />
+    moment(classwork.deadline).isBefore(moment(), 'day') && <ClassworkItem classwork={classwork} />
   ))
 );
 

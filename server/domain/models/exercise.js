@@ -9,6 +9,7 @@ const ExerciseSchema = new Schema({
   createdAt: Date,
   steps: [ExerciseStepSchema],
   professor: { type: Schema.Types.ObjectId, ref: 'User' },
+  answer: { type: Schema.Types.ObjectId, ref: 'Answer' }, // TODO: virtual
 }, {
   timestamps: true,
 });

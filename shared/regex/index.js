@@ -1,5 +1,17 @@
 import _ from 'lodash';
 
+export const toRegex = value => {
+  try {
+    if (value) {
+      return new RegExp(`^(${value})$`, 'g');
+    }
+
+    return { test: () => false };
+  } catch (err) {
+    return { test: () => false };
+  }
+};
+
 export const extractSymbols = text => _.sortBy(_.uniq(text.match(/[a-zA-Z]/g)));
 
 export const generateWords = (text, limit = 3) => {
@@ -17,7 +29,7 @@ export const generateWords = (text, limit = 3) => {
 };
 
 export const validWords = (text, limit = 3) => {
-  const re = new RegExp(`^(${text})$`, 'g');
+  const re = new RegExp(`^(${text})$`);
 
   return generateWords(text, limit)
     .map(words => words.filter(word => re.test(word)))
@@ -26,7 +38,7 @@ export const validWords = (text, limit = 3) => {
 };
 
 export const invalidWords = (text, limit = 3) => {
-  const re = new RegExp(`^(${text})$`, 'g');
+  const re = new RegExp(`^(${text})$`);
 
   return generateWords(text, limit)
     .map(words => words.filter(word => !re.test(word)))

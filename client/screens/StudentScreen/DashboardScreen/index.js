@@ -4,7 +4,7 @@ import TabList from 'containers/TabList';
 import TabLink from 'containers/TabLink';
 
 import InProgressList from 'containers/classworks/InProgressList';
-import InDevelopmentScreen from 'screens/InDevelopmentScreen';
+import CompletedList from 'containers/classworks/CompletedList';
 
 const StudentDashboardScreen = () => (
   <div className="container">
@@ -14,7 +14,7 @@ const StudentDashboardScreen = () => (
           <TabLink to="/minhas-atividades/em-andamento" component={InProgressList}>
             Em andamento
           </TabLink>
-          <TabLink to="/minhas-atividades/concluidas" component={InDevelopmentScreen}>
+          <TabLink to="/minhas-atividades/concluidas" component={CompletedList}>
             Concluídas
           </TabLink>
         </TabList>

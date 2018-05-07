@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Link } from 'react-router';
+import Link from 'components/Link';
 import moment from 'moment';
 import _ from 'lodash';
 
@@ -25,6 +25,7 @@ const ClassworkItem = ({ classwork }) => (
                   "bg-light": exercise.answer && exercise.answer.valid,
                 })}
                 to={`/minhas-atividades/em-andamento/${exercise._id}`}
+                disabled={!moment(classwork.deadline).isSameOrAfter(moment(), 'day')}
               >
                 <div
                   className={classNames({

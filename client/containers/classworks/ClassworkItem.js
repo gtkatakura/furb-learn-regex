@@ -15,7 +15,7 @@ const ClassworkItem = ({ classwork }) => (
               {' '}{moment(classwork.deadline).format('L')}
             </span>
             <span className="badge badge-secondary badge-pill">
-              {classwork.activity.exercises.length}
+              {_.filter(classwork.activity.exercises, 'answer.valid').length} / {classwork.activity.exercises.length}
             </span>
           </h4>
           <ul className="list-group">

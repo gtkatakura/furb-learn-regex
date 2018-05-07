@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { reduxForm } from 'redux-form';
 import _ from 'lodash';
 
@@ -29,6 +30,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default _.compose(
+  withRouter,
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({ form: 'resolution' }),
 )(ResolutionFormContainer);

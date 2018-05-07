@@ -8,7 +8,7 @@ import ClassRoomScreen from 'screens/ProfessorScreen/ClassRoomScreen';
 import ExerciseScreen from 'screens/ProfessorScreen/ExerciseScreen';
 import StudentScreen from 'screens/StudentScreen';
 import StudentDashboardScreen from 'screens/StudentScreen/DashboardScreen';
-import ResolutionForm from 'containers/classworks/ResolutionForm';
+import ResolutionScreen from 'screens/StudentScreen/ResolutionScreen';
 import SubscribeScreen from 'screens/SubscribeScreen';
 import NotFound from 'components/NotFound';
 import InDevelopmentScreen from 'screens/InDevelopmentScreen';
@@ -33,7 +33,7 @@ const AppContainer = () => (
       </Route>
       <Route path="minhas-atividades" component={StudentScreen}>
         <Route path=":section" component={StudentDashboardScreen} />
-        <Route path="em-andamento/:exerciseId" component={ResolutionForm} />
+        <Route path="em-andamento/:exerciseId" component={ResolutionScreen} />
       </Route>
       <Route path="turmas/inscrever-se/:token" component={SubscribeScreen} />
     </Route>

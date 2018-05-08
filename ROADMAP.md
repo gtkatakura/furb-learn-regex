@@ -2,23 +2,23 @@
 
 ## Objetivos Específicos
 
-- [ ] disponibilizar um canal interativo para o desenvolvimento e compartilhamento de atividades
+- [x] disponibilizar um canal interativo para o desenvolvimento e compartilhamento de atividades
 - [ ] ter um mecanismo de notificações em tempo real para o acompanhamento das atividades;
-- [ ] validar as expressões regulares especificadas, bem como determinar a equivalência entre duas expressões regulares.
+- [x] validar as expressões regulares especificadas, bem como determinar a equivalência entre duas expressões regulares.
 
 
 ## Requisitos Funcionais e Não Funcionais
 
 - [ ] permitir o usuário cadastrar-se através de outras aplicações como Google e
 Facebook (Requisito Funcional - RF)
-- [ ] permitir a utilização de perfis de usuário – professor e aluno (RF)
-- [ ] permitir o professor criar e gerenciar turmas (RF)
+- [x] permitir a utilização de perfis de usuário – professor e aluno (RF)
+- [x] permitir o professor criar e gerenciar turmas (RF)
 - [x] permitir o professor criar atividades sobre expressões regulares (RF)
-- [ ] gerar um conjunto de valores válidos e inválidos para a atividade conforme a
+- [x] gerar um conjunto de valores válidos e inválidos para a atividade conforme a
 expressão regular especificada (RF)
-- [ ] permitir o professor distribuir as atividades para os alunos (RF)
-- [ ] permitir os alunos resolverem as atividades propostas (RF)
-- [ ] validar as atividades submetidas pelos alunos conforme a resposta fornecida pelo
+- [x] permitir o professor distribuir as atividades para os alunos (RF)
+- [x] permitir os alunos resolverem as atividades propostas (RF)
+- [x] validar as atividades submetidas pelos alunos conforme a resposta fornecida pelo
 professor (RF)
 - [ ] mostrar o andamento das atividades em tempo real para agilizar o processo de
 validação (RF)

@@ -8,14 +8,16 @@ import withLifeCycle from 'util/withLifeCycle';
 
 import ClassworkItem from './ClassworkItem';
 
-const InProgressList = ({ classworks }) => (
-  classworks.map(classwork => (
-    moment(classwork.deadline).isBefore(moment(), 'day') && <ClassworkItem classwork={classwork} />
-  ))
+const InProgressList = ({ isLoading, classworks }) => (
+  isLoading
+    ? <p>Carregando...</p>
+    : classworks.length === 0 ? <p>Nenhuma atividade foi encontrada.</p>
+    : classworks.map(classwork => <ClassworkItem classwork={classwork} />)
 );
 
 const mapStateToProps = state => ({
-  classworks: state.classwork.entities,
+  isLoading: state.classwork.isLoading,
+  classworks: _.filter(state.classwork.entities, classwork => moment(classwork.deadline).isBefore(moment(), 'day')),
 });
 
 const mapDispatchToProps = dispatch => ({

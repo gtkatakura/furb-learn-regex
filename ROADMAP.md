@@ -40,7 +40,7 @@ validação (RF)
   - [ ] `Valores` deve ser gerado com base nos símbolos extraídos de `Expressão Regular`
     - [x] Extração de caracteres minúsculos
     - [ ] Extração de números (saber diferenciar entre o literal `1` e a notação especial `{1}`)
-- [ ] `Exclusão` não deveria ser permitida quando estiver sendo utilizado por uma `Atividade`
+- [x] `Exclusão` não deveria ser permitida quando estiver sendo utilizado por uma `Atividade`
 
 ### Atividades
 
@@ -49,7 +49,7 @@ validação (RF)
   - [x] Buscar informações sempre que abrir a tela de `Exercícios`
   - [x] Não exibir `Exercícios` já adicionados na listagem
 - [ ] Ao menos um `Exercício` deve ser informado para continuar o cadastro
-- [ ] `Exclusão` não deveria ser permitida quando estiver sendo utilizado por uma `Turma`
+- [x] `Exclusão` não deveria ser permitida quando estiver sendo utilizado por uma `Turma`
 
 ### Turmas
 
@@ -59,6 +59,7 @@ validação (RF)
   - [x] `Atividade` é um campo obrigatório
   - [x] `Prazo de Entrega` é um campo obrigatório
   - [x] `Prazo de Entrega` precisa ser uma data superior ou igual ao dia de hoje
+- [x] `Exclusão` não deveria ser permitida quando estiver vinculado a um `Aluno`
 - [ ] Ao menos uma `Tarefa` deve ser informada para continuar o cadastro
 
 ## Melhorias

@@ -1,5 +1,5 @@
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import createActions from 'util/createActions';
 
 import ExerciseList from 'components/exercises/List';
 import { destroy } from 'actions/exercises';
@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
   isLoading: state.exercise.isLoading,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({
+const mapDispatchToProps = createActions({
   onDestroy: destroy,
-}, dispatch);
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ExerciseList);

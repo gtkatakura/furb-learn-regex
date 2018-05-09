@@ -22,6 +22,8 @@ const create = ({ exerciseId, regularExpression }) => async dispatch => {
       },
     });
   } else {
+    await confirm('Resposta correta.');
+
     dispatch(replace('/minhas-atividades/em-andamento'));
   }
 };

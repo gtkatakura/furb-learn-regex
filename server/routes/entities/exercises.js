@@ -1,6 +1,8 @@
 const express = require('express');
+const HttpStatus = require('http-status-codes');
 
 const ExerciseRepository = require('../../domain/repositories/exercise');
+const ActivityRepository = require('../../domain/repositories/activity');
 
 const app = express.Router();
 
@@ -29,8 +31,14 @@ app.post('/', async (request, response) => {
 });
 
 app.delete('/:id', async (request, response) => {
-  await ExerciseRepository.destroy({ _id: request.params.id });
-  response.json(true);
+  if (await ActivityRepository.find({ exercises: request.params.id })) {
+    response.status(HttpStatus.NOT_ACCEPTABLE).json({
+      message: 'Não foi possível excluir este exercício porque o mesmo já está sendo utilizado por uma atividade.',
+    });
+  } else {
+    await ExerciseRepository.destroy({ _id: request.params.id });
+    response.json(true);
+  }
 });
 
 module.exports = app;

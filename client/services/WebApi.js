@@ -1,3 +1,4 @@
+import HttpStatus from 'http-status-codes';
 import cookies from 'http/cookies';
 
 class WebApi {
@@ -5,8 +6,8 @@ class WebApi {
     this.route = route;
   }
 
-  fetch({ method, body }) {
-    return fetch(this.route, {
+  async fetch({ method, body }) {
+    const response = await fetch(this.route, {
       method,
       headers: {
         'Accept': 'application/json',
@@ -15,6 +16,12 @@ class WebApi {
       },
       body: body && JSON.stringify(body),
     });
+
+    if (response.status === HttpStatus.NOT_ACCEPTABLE) {
+      throw await response.json();
+    }
+
+    return response;
   }
 
   async all() {

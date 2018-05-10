@@ -26,8 +26,8 @@ class ExercisesFieldset extends React.Component {
           Exercícios
         </label>
         <div className="card box-shadow">
-          <div className="card-body">
-            <div className="col-md-12 p-3">
+          <div className="card-body" style={{ paddingBottom: '0px' }}>
+            <div className="col-md-12" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
               <ExercisesListModal
                 exceptions={exceptions}
                 onSave={exercises => exercises.forEach(e => fields.push(e))}

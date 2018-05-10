@@ -24,8 +24,8 @@ class ClassworksFieldset extends React.Component {
           Atividades
         </label>
         <div className="card box-shadow">
-          <div className="card-body">
-            <div className="col-md-12 p-3">
+          <div className="card-body" style={{ paddingBottom: '0px' }}>
+            <div className="col-md-12" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
               <ClassworkModal onSave={values => fields.push(values)} />
               <ClassworkTable onDestroy={this.onDelete} resources={fields.getAll() || []} />
             </div>

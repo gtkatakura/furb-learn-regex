@@ -8,7 +8,7 @@ const ExerciseStep = ({
 }) => (
   <div
     className={"list-group-item list-group-horizontal-item-action justify-content-between" + (active ? " active" : "") }
-    style={{ cursor: 'pointer' }}
+    style={{ cursor: 'pointer', marginLeft: '0px', height: '64px', width: '192px' }}
     onClick={onClick}
   >
     <h6 className="my-0">Etapa {number}</h6>

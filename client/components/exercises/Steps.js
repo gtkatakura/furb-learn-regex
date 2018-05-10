@@ -81,7 +81,7 @@ class ExerciseSteps extends React.Component {
                     validate={required}
                   />
                 </div>
-                <div className="form-group">
+                <div className="form-group" style={{ marginBottom: '0px' }}>
                   <label>Palavras</label>
                   <div className="card box-shadow">
                     <div className="card-body">

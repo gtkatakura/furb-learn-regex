@@ -35,6 +35,7 @@ app.get(
 
 app.get('/authentication/facebook/start', passport.authenticate('facebook', {
   session: false,
+  scope: ['email'],
 }));
 
 app.get(

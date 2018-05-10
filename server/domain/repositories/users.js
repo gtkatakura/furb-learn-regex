@@ -17,11 +17,11 @@ const findByExternalId = (providerName, id) => {
   });
 };
 
-const createUser = (name, provider, id) => {
+const createUser = (name, provider, id, email) => {
   return new Promise((resolve, reject) => {
     new User({
       name,
-      providers: [{ id, name: provider }],
+      providers: [{ id, name: provider, email }],
     }).save((err, response) => {
       if (err) {
         reject(err);
@@ -32,9 +32,9 @@ const createUser = (name, provider, id) => {
   });
 };
 
-const findOrCreateUser = async (name, provider, id) => {
+const findOrCreateUser = async (name, provider, id, email) => {
   const user = await findByExternalId(provider, id);
-  return user || createUser(name, provider, id);
+  return user || createUser(name, provider, id, email);
 };
 
 module.exports = {

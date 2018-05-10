@@ -58,6 +58,16 @@ const config = convict({
       env: 'MONGODB_URI',
     },
   },
+  mailer: {
+    email: {
+      doc: 'The email from mailer',
+      env: 'MAILER_EMAIL',
+    },
+    password: {
+      doc: 'The password from mailer',
+      env: 'MAILER_PASSWORD',
+    },
+  },
 });
 
 config.validate();

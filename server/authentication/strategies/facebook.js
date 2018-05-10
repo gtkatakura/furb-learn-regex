@@ -5,6 +5,7 @@ const create = ({ config, users }) => {
     clientID: config.get('authentication.facebook.clientId'),
     clientSecret: config.get('authentication.facebook.clientSecret'),
     callbackURL: '/api/authentication/facebook/redirect',
+    profileFields: ['id', 'name', 'emails'],
   };
 
   if (!passportConfig.clientID) {
@@ -12,7 +13,13 @@ const create = ({ config, users }) => {
   }
 
   return new Strategy(passportConfig, async (accessToken, refreshToken, profile, done) => {
-    const user = await users.findOrCreateUser(profile.displayName, 'facebook', profile.id);
+    const user = await users.findOrCreateUser(
+      profile.displayName,
+      'facebook',
+      profile.id,
+      profile.emails[0].value,
+    );
+
     return done(null, user);
   });
 };

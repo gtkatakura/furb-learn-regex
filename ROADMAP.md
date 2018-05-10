@@ -59,6 +59,8 @@ validação (RF)
   - [x] `Atividade` é um campo obrigatório
   - [x] `Prazo de Entrega` é um campo obrigatório
   - [x] `Prazo de Entrega` precisa ser uma data superior ou igual ao dia de hoje
+  - [ ] `Notificar conclusões de exercícios` deve ser um campo de marcação
+    - [ ] Deve estar desabilitado por padrão
 - [x] `Exclusão` não deveria ser permitida quando estiver vinculado a um `Aluno`
 - [ ] Ao menos uma `Tarefa` deve ser informada para continuar o cadastro
 

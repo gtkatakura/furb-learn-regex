@@ -30,8 +30,15 @@ const WordsWithMark = ({ words: manyWords, regex }) => (
 
 const ResolutionForm = ({ currentStep, onSubmit, submitting }) => (
   !currentStep
-    ? <Loading />
-    : (
+    ? (
+      <div className="container">
+        <div className="row">
+          <div className="col-md-12 p-3">
+            <span>Carregando...</span>
+          </div>
+        </div>
+      </div>
+    ) : (
       <div className="container">
         <div className="row">
           <div className="col-md-12 p-3">

@@ -32,10 +32,15 @@ function generateUserToken(req, res) {
 
 app.use(passport.initialize());
 
-app.get('/authentication/google/start', passport.authenticate('google', {
-  session: false,
-  scope: ['openid', 'profile', 'email'],
-}));
+app.get('/authentication/google/start', (req, res, next) => {
+  req.session.returnUrl = url.parse(req.header('Referer')).pathname;
+
+  passport.authenticate('google', {
+    session: false,
+    scope: ['openid', 'profile', 'email'],
+  })(req, res, next);
+});
+
 
 app.get(
   '/authentication/google/redirect',

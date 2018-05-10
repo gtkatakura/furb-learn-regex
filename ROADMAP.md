@@ -9,7 +9,7 @@
 
 ## Requisitos Funcionais e Não Funcionais
 
-- [ ] permitir o usuário cadastrar-se através de outras aplicações como Google e
+- [x] permitir o usuário cadastrar-se através de outras aplicações como Google e
 Facebook (Requisito Funcional - RF)
 - [x] permitir a utilização de perfis de usuário – professor e aluno (RF)
 - [x] permitir o professor criar e gerenciar turmas (RF)

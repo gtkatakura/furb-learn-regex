@@ -1,10 +1,19 @@
 const express = require('express');
+const session = require('express-session');
 const passport = require('passport');
+const url = require('url');
 
 const strategies = require('../authentication/strategies');
 const { generateAccessToken } = require('../authentication/token');
 
 const app = express.Router();
+
+app.use(session({
+  secret: 'session-secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 60000 },
+}));
 
 Object.values(strategies).forEach(strategy => {
   if (strategy) {
@@ -17,7 +26,8 @@ function generateUserToken(req, res) {
 
   res.cookie('X-JWT-Token', accessToken);
   res.cookie('X-User-Name', req.user.name);
-  res.redirect('/');
+  res.redirect(req.session.returnUrl || '/');
+  delete req.session.returnUrl;
 }
 
 app.use(passport.initialize());
@@ -33,10 +43,14 @@ app.get(
   generateUserToken,
 );
 
-app.get('/authentication/facebook/start', passport.authenticate('facebook', {
-  session: false,
-  scope: ['email'],
-}));
+app.get('/authentication/facebook/start', (req, res, next) => {
+  req.session.returnUrl = url.parse(req.header('Referer')).pathname;
+
+  passport.authenticate('facebook', {
+    session: false,
+    scope: ['email'],
+  })(req, res, next);
+});
 
 app.get(
   '/authentication/facebook/redirect',

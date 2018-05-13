@@ -14,6 +14,9 @@ const Menu = ({ logout, userName }) => (
       <Link className="navbar-brand" to="/minhas-atividades/em-andamento">
         <b>Learn Regex</b>
       </Link>
+      <button type="button" className="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarLightSupportedContent" aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon" />
+      </button>
       <div className="collapse navbar-collapse text-center justify-content-end" id="navbarLightSupportedContent">
         <ul className="navbar-nav">
           <li className="nav-item mx-1">

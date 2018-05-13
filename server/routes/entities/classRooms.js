@@ -1,8 +1,10 @@
 const express = require('express');
 const HttpStatus = require('http-status-codes');
+const _ = require('lodash');
 
 const ClassRoomRepository = require('../../domain/repositories/classRoom');
 const StudentRepository = require('../../domain/repositories/student');
+const AnswerRepository = require('../../domain/repositories/answer');
 
 const app = express.Router();
 
@@ -60,6 +62,20 @@ app.get('/subscribe/:token', async (request, response) => {
   }
 
   response.json(classRoom);
+});
+
+app.get('/:id/answers', async (request, response) => {
+  const classRooms = await ClassRoomRepository.all({
+    _id: request.params.id,
+  });
+
+  const classRoom = classRooms[0];
+
+  const answers = await AnswerRepository.all({
+    exercise: _.flatMap(classRoom.classworks, 'activity.exercises'),
+  });
+
+  response.json(answers);
 });
 
 module.exports = app;

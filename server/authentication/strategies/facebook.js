@@ -5,7 +5,7 @@ const create = ({ config, users }) => {
     clientID: config.get('authentication.facebook.clientId'),
     clientSecret: config.get('authentication.facebook.clientSecret'),
     callbackURL: '/api/authentication/facebook/redirect',
-    profileFields: ['id', 'name', 'emails'],
+    profileFields: ['id', 'displayName', 'emails'],
   };
 
   if (!passportConfig.clientID) {

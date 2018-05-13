@@ -25,6 +25,7 @@ function generateUserToken(req, res) {
   const accessToken = generateAccessToken(req.user.id);
 
   res.cookie('X-JWT-Token', accessToken);
+  res.cookie('X-User-Id', req.user.id);
   res.cookie('X-User-Name', req.user.name);
   res.redirect(req.session.returnUrl || '/');
   delete req.session.returnUrl;

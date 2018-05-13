@@ -39,6 +39,19 @@ const createEntityReducer = entityName => (state = initialValue, { type, payload
     };
   }
 
+  if (type === `${entityName}_UPDATE`) {
+    const entity = _.find(['_id', payload._id], state.entities) || {};
+    const entities = _.difference(state.entities, [entity]);
+
+    return {
+      ...state,
+      entities: [
+        ...entities,
+        { ...entity, ...payload },
+      ],
+    };
+  }
+
   return state;
 };
 

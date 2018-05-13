@@ -97,7 +97,7 @@ const getStudentsByClassWork = (classwork, students) => (
 );
 
 const ClassworksAnswers = ({ classworks, students, answers }) => (
-  classworks.map(classwork => (
+  _.orderBy(classworks, 'deadline', 'desc').map(classwork => (
     <ClassworkAnswers
       classwork={classwork}
       answers={getAnswer(classwork, answers)}

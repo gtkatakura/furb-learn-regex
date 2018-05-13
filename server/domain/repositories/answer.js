@@ -1,4 +1,10 @@
 const { fromModel } = require('./factory');
 const { Answer } = require('../models/answer');
 
-module.exports = fromModel(Answer);
+const repository = fromModel(Answer);
+
+module.exports = Object.assign({}, repository, {
+  all(params) {
+    return repository.all(params).populate('student', 'name');
+  },
+});

@@ -10,6 +10,14 @@ const getNextStep = require('../../../shared/policies/solutions/getNextStep');
 
 const app = express.Router();
 
+app.get('/', async (request, response) => {
+  const students = await StudentRepository.all()
+    .populate('user', 'name')
+    .populate('classRooms');
+
+  response.json(students);
+});
+
 app.get('/me', async (request, response) => {
   const student = await StudentRepository.all({
     user: request.user,

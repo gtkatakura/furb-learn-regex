@@ -8,7 +8,11 @@ const message = 'As alterações efetuadas serão perdidas, deseja continuar?';
 
 class Form extends React.Component {
   componentDidMount() {
-    this.unblock = browserHistory.listenBefore(({ pathname }) => {
+    this.unblock = browserHistory.listenBefore(({ pathname, hash }) => {
+      if (browserHistory.getCurrentLocation().pathname === pathname) {
+        return true;
+      }
+
       if (this.props.dirty) {
         confirm(message).then(confirmed => {
           if (confirmed) {

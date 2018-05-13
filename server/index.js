@@ -17,6 +17,16 @@ const createServer = (path, { app = express() } = {}) => {
     console.log(`Server listening on port ${port}`);
   });
 
+  // const io = require('socket.io')(server);
+
+  // io.on('connection', socket => {
+  //   socket.on('action', action => {
+  //     io.emit('action', action);
+  //   });
+  // });
+
+  // app.io = io;
+
   return { app, server };
 };
 

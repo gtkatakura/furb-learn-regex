@@ -39,7 +39,7 @@ class ClassworksFieldset extends React.Component {
 const ClassRoomForm = ({ submitting, ...props }) => (
   <div className="container">
     <div className="row">
-      <div className="col-md-12 p-3">
+      <div className="col-md-12 pt-2">
         <Form {...props}>
           <SaveButton type="submit" className="mb-2" disabled={submitting} />
           <TextField

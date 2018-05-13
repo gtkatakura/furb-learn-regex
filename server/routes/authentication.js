@@ -48,7 +48,6 @@ app.get('/authentication/facebook/start', (req, res, next) => {
 
   passport.authenticate('facebook', {
     session: false,
-    scope: ['email'],
   })(req, res, next);
 });
 

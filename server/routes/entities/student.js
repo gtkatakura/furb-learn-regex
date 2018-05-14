@@ -117,6 +117,11 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
 
     await AnswerRepository.update(answer);
 
+    request.app.io.emit(`professors/${exercise.professor}/action`, {
+      type: 'ANSWER_UPDATE',
+      payload: Object.assign(answer, { exercise: exercise._id, student: request.user }),
+    });
+
     response.json({
       error: true,
       data: {
@@ -136,13 +141,13 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
 
     await AnswerRepository.update(answer);
 
+    request.app.io.emit(`professors/${exercise.professor}/action`, {
+      type: 'ANSWER_UPDATE',
+      payload: Object.assign(answer, { exercise: exercise._id, student: request.user }),
+    });
+
     response.json(true);
   }
-
-  request.app.io.emit(`professors/${exercise.professor}/action`, {
-    type: 'ANSWER_UPDATE',
-    payload: Object.assign(answer, { exercise: exercise._id, student: request.user }),
-  });
 });
 
 module.exports = app;

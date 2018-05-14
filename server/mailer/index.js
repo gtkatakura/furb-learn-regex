@@ -2,10 +2,15 @@ const nodemailer = require('nodemailer');
 const config = require('../config');
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 465,
+  secure: true,
   auth: {
     user: config.get('mailer.email'),
     pass: config.get('mailer.password'),
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
@@ -25,4 +30,4 @@ const send = ({ to, subject, html }) => {
   }));
 };
 
-export default { send };
+module.exports = { send };

@@ -1,9 +1,13 @@
 const express = require('express');
 const _ = require('lodash');
 
+const mailer = require('../../mailer');
+
 const StudentRepository = require('../../domain/repositories/student');
 const ExerciseRepository = require('../../domain/repositories/exercise');
 const AnswerRepository = require('../../domain/repositories/answer');
+const ActivityRepository = require('../../domain/repositories/activity');
+const ClassRoomsRepository = require('../../domain/repositories/classRoom');
 
 const { validWords, invalidWords } = require('../../../shared/regex');
 const getNextStep = require('../../../shared/policies/solutions/getNextStep');
@@ -129,6 +133,31 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
     await AnswerRepository.update(answer);
 
     response.json(true);
+
+    const activities = await ActivityRepository.all({
+      exercises: exercise._id,
+    });
+
+    const classRooms = await ClassRoomsRepository.all({
+      'classworks.activity': activities,
+    }).populate('createdBy');
+
+    if (classRooms.length !== 0) {
+      _.each(classRooms, classRoom => {
+        const classwork = _.find(classRoom.classworks, currentClassWork => (
+          currentClassWork.notifyExerciseConclusions &&
+          _.some(activities, activity => activity.equals(currentClassWork.activity))
+        ));
+
+        if (classwork) {
+          mailer.send({
+            to: classRoom.createdBy.email,
+            subject: `${request.user.name} concluiu um exercício`,
+            html: `${exercise.name} resolvido com a seguinte expressão regular: ${request.body.solution}`,
+          });
+        }
+      });
+    }
   }
 
   request.app.io.emit(`professors/${exercise.professor}/action`, {

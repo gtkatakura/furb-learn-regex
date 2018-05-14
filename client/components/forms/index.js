@@ -1,3 +1,4 @@
+export { default as CheckboxField } from './CheckboxField';
 export { default as Field } from './Field';
 export { default as Form } from './Form';
 export { default as SelectField } from './SelectField';

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 import { reduxForm } from 'redux-form';
 import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Field } from 'components/forms';
+import { Field, CheckboxField } from 'components/forms';
 import { AddButton, CancelButton } from 'components/buttons';
 import { required, date } from 'validations';
 import ActivitySelect from 'containers/activities/Select';
@@ -64,6 +64,10 @@ class ClassworkModal extends React.Component {
                       name="deadline"
                       label="Prazo de Entrega"
                       validate={[required, date.deadline]}
+                    />
+                    <CheckboxField
+                      name="notifyExerciseConclusions"
+                      label="Notificar conclusões de exercícios"
                     />
                   </div>
                 </div>

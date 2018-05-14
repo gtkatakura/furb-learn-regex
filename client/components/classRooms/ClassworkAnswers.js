@@ -23,7 +23,11 @@ class ClassworkAnswers extends React.Component {
 
     const getAnswersByStudent = (answers, student) => _.filter(answers, ['student._id', student._id]);
 
-    const getCompleteds = (answers, student) => _.filter(getAnswersByStudent(answers, student), 'valid').length;
+    const getCompleteds = (answers, student) => _.filter(
+      getAnswersByStudent(answers, student),
+      answer => _.some(answer.solutions, 'valid'),
+    ).length;
+
     const getInProgress = (answers, student) => getAnswersByStudent(answers, student).length - getCompleteds(answers, student);
 
     const getOnHold = (answers, student) => classwork.activity.exercises.length - getAnswersByStudent(answers, student).length;

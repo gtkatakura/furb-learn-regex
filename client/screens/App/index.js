@@ -29,7 +29,7 @@ const AppContainer = () => (
         <Route path="turmas/criar" component={ClassRoomScreen} />
         <Route path="turmas/:name" component={ClassRoomScreen} />
         <Route path="exercicios/criar" component={ExerciseScreen} />
-        <Route path="exercicios/:description" component={ExerciseScreen} />
+        <Route path="exercicios/:exerciseId" component={ExerciseScreen} />
       </Route>
       <Route path="minhas-atividades" component={StudentScreen}>
         <Route path=":section" component={StudentDashboardScreen} />

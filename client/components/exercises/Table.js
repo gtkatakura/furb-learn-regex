@@ -7,7 +7,7 @@ const ExerciseTable = ({ withLink = false, ...props }) => (
     render={resource => (
       <Fragment>
         <th scope="row">
-          <Link to={`/professor/exercicios/${encodeURIComponent(resource.description)}`}>
+          <Link to={`/professor/exercicios/${encodeURIComponent(resource._id)}`}>
             {resource.description}
           </Link>
         </th>

@@ -3,6 +3,7 @@ const HttpStatus = require('http-status-codes');
 
 const ExerciseRepository = require('../../domain/repositories/exercise');
 const ActivityRepository = require('../../domain/repositories/activity');
+const AnswerRepository = require('../../domain/repositories/answer');
 
 const app = express.Router();
 
@@ -39,6 +40,14 @@ app.delete('/:id', async (request, response) => {
     await ExerciseRepository.destroy({ _id: request.params.id });
     response.json(true);
   }
+});
+
+app.get('/:id/answers', async (request, response) => {
+  const answers = await AnswerRepository.all({
+    exercise: request.params.id,
+  });
+
+  response.json(answers);
 });
 
 module.exports = app;

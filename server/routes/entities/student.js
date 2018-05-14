@@ -107,10 +107,14 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
     solution: request.body.solution,
   });
 
-  answer.response.push(request.body.solution);
-
   if (nextStep) {
+    answer.solutions.push({
+      value: request.body.solution,
+      valid: false,
+    });
+
     answer.currentStep = nextStep;
+
     await AnswerRepository.update(answer);
 
     response.json({
@@ -125,7 +129,11 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
       },
     });
   } else {
-    answer.valid = true;
+    answer.solutions.push({
+      value: request.body.solution,
+      valid: true,
+    });
+
     await AnswerRepository.update(answer);
 
     response.json(true);

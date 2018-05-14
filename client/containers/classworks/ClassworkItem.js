@@ -4,6 +4,8 @@ import Link from 'components/Link';
 import moment from 'moment';
 import _ from 'lodash';
 
+const hasValidSolution = exercise => _.some(_.get(exercise, 'answer.solutions'), 'valid');
+
 const ClassworkItem = ({ classwork }) => (
   <div className="py-2">
     <div className="container">
@@ -15,32 +17,32 @@ const ClassworkItem = ({ classwork }) => (
               {' '}{moment(classwork.deadline).format('L')}
             </span>
             <span className="badge badge-secondary badge-pill">
-              {_.filter(classwork.activity.exercises, 'answer.valid').length} / {classwork.activity.exercises.length}
+              {_.filter(classwork.activity.exercises, hasValidSolution).length} / {classwork.activity.exercises.length}
             </span>
           </h4>
           <ul className="list-group">
             {classwork.activity.exercises.map(exercise => (
               <Link
                 className={classNames("list-group-item list-group-item-action d-flex justify-content-between", {
-                  "bg-light": exercise.answer && exercise.answer.valid,
+                  "bg-light": hasValidSolution(exercise),
                 })}
                 to={`/minhas-atividades/em-andamento/${exercise._id}`}
                 disabled={!moment(classwork.deadline).isSameOrAfter(moment(), 'day')}
               >
                 <div
                   className={classNames({
-                    'text-success': exercise.answer && exercise.answer.valid,
-                    'text-danger': exercise.answer && !exercise.answer.valid,
+                    'text-success': exercise.answer && hasValidSolution(exercise),
+                    'text-danger': exercise.answer && !hasValidSolution(exercise),
                   })}
                 >
                   <h6 className="my-0">
                     {exercise.description}
                   </h6>
-                  {_.get(exercise, 'answer.valid') && <small>{_.last(exercise.answer.response)}</small>}
+                  {_.some(_.get(exercise, 'answer.solutions')) && (<small>{_.last(exercise.answer.solutions).value}</small>)}
                 </div>
                 {exercise.answer && (
                   <span className="text-muted">
-                    {exercise.answer.response.length} tentativas
+                    {exercise.answer.solutions.length} tentativas
                   </span>
                 )}
               </Link>

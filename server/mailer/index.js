@@ -1,13 +1,14 @@
 const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
 const config = require('../config');
 
-const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport(smtpTransport({
   service: 'gmail',
   auth: {
     user: config.get('mailer.email'),
     pass: config.get('mailer.password'),
   },
-});
+}));
 
 const options = {
   from: '"Learn REGEX" <gtk.learn.regex@example.com>',
@@ -25,4 +26,4 @@ const send = ({ to, subject, html }) => {
   }));
 };
 
-export default { send };
+module.exports = { send };

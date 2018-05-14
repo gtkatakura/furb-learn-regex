@@ -61,10 +61,12 @@ const config = convict({
   mailer: {
     email: {
       doc: 'The email from mailer',
+      default: '',
       env: 'MAILER_EMAIL',
     },
     password: {
       doc: 'The password from mailer',
+      default: '',
       env: 'MAILER_PASSWORD',
     },
   },

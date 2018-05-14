@@ -171,7 +171,7 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
           mailer.send({
             to: classRoom.createdBy.email,
             subject: `${request.user.name} concluiu um exercício`,
-            html: `${exercise.name} resolvido com a seguinte expressão regular: ${request.body.solution}`,
+            html: `<b>${exercise.description}</b> resolvido com a seguinte expressão regular: <b>${request.body.solution}</b>`,
           });
         }
       });

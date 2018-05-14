@@ -1,4 +1,5 @@
 import _ from 'lodash/fp';
+import { toast } from 'react-toastify';
 
 const initialValue = {
   loaded: false,
@@ -42,6 +43,14 @@ const createEntityReducer = entityName => (state = initialValue, { type, payload
   if (type === `${entityName}_UPDATE`) {
     const entity = _.find(['_id', payload._id], state.entities) || {};
     const entities = _.difference(state.entities, [entity]);
+
+    if (type === 'ANSWER_UPDATE') {
+      const message = `${payload.student.name} acabou de enviar uma solução.`;
+
+      toast(message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
+    }
 
     return {
       ...state,

@@ -16,4 +16,6 @@ const find = name => _.get(all().find(cookie => cookie.name === name), 'value');
 
 const remove = name => Cookies.remove(name);
 
-export default { all, find, remove };
+const set = (name, value) => Cookies.set(name, value);
+
+export default { all, find, remove, set };

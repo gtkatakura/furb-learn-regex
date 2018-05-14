@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import _ from 'lodash/fp';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
+import faSignOutAlt from '@fortawesome/fontawesome-free-solid/faSignOutAlt';
+import faUserCircle from '@fortawesome/fontawesome-free-solid/faUserCircle';
 
 const getInitials = _.flow(
   _.split(' '),
@@ -30,10 +33,28 @@ const Menu = ({ logout, userName }) => (
             </Link>
           </li>
           <li className="nav-item mx-1">
-            <Link className="nav-link" to="/" onClick={logout}>
-              <i className="fa d-inline fa-lg fa-user-circle-o" />
-              <span>{getInitials(userName)}</span>
+            <Link className="nav-link" to="/minhas-informacoes">
+              <FontAwesomeIcon
+                className="fa d-inline fa-lg"
+                icon={faUserCircle}
+              />
+              <span>{` ${getInitials(userName)}`}</span>
             </Link>
+          </li>
+          <li className="nav-item">
+              <Link
+                className="nav-link"
+                to="/"
+                style={{ paddingTop: '12px' }}
+              >
+                <span>
+                  <FontAwesomeIcon
+                    icon={faSignOutAlt}
+                    onClick={logout}
+                    style={{ cursor: 'pointer' }}
+                  />
+                </span>
+              </Link>
           </li>
         </ul>
       </div>

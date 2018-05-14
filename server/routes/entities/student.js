@@ -31,21 +31,39 @@ app.get('/me', async (request, response) => {
     },
   });
 
-  const exercises = _.flatMap(_.flatMap(student[0].classRooms, 'classworks'), 'activity.exercises');
+  if (student[0]) {
+    const exercises = _.flatMap(_.flatMap(student[0].classRooms, 'classworks'), 'activity.exercises');
 
-  await Promise.all(exercises.map(async exercise => {
-    const answer = await AnswerRepository.find({
-      exercise,
-      student: request.user,
-    });
+    await Promise.all(exercises.map(async exercise => {
+      const answer = await AnswerRepository.find({
+        exercise,
+        student: request.user,
+      });
 
-    _.assign(exercise, {
-      regularExpression: undefined,
-      answer,
-    });
-  }));
+      _.assign(exercise, {
+        regularExpression: undefined,
+        answer,
+      });
+    }));
 
-  response.json(student[0]);
+    response.json(student[0]); _.flatMap(_.flatMap(student[0].classRooms, 'classworks'), 'activity.exercises');
+
+    await Promise.all(exercises.map(async exercise => {
+      const answer = await AnswerRepository.find({
+        exercise,
+        student: request.user,
+      });
+
+      _.assign(exercise, {
+        regularExpression: undefined,
+        answer,
+      });
+    }));
+
+    response.json(student[0]);
+  } else {
+    response.json({});
+  }
 });
 
 app.get('/me/exercises/:id/currentStep', async (request, response) => {

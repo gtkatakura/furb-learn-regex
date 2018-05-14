@@ -11,7 +11,7 @@ import StudentDashboardScreen from 'screens/StudentScreen/DashboardScreen';
 import ResolutionScreen from 'screens/StudentScreen/ResolutionScreen';
 import SubscribeScreen from 'screens/SubscribeScreen';
 import NotFound from 'components/NotFound';
-import InDevelopmentScreen from 'screens/InDevelopmentScreen';
+import UserInformationFormContainer from 'containers/users/InformationForm';
 import history from '../../history';
 
 import Root from './Root';
@@ -36,6 +36,7 @@ const AppContainer = () => (
         <Route path="em-andamento/:exerciseId" component={ResolutionScreen} />
       </Route>
       <Route path="turmas/inscrever-se/:token" component={SubscribeScreen} />
+      <Route path="minhas-informacoes" component={UserInformationFormContainer} />
     </Route>
     <Route path="*" component={NotFound} />
   </Router>

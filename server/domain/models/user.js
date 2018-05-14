@@ -5,6 +5,7 @@ const { ProviderSchema } = require('./provider');
 
 const UserSchema = new mongoose.Schema({
   name: String,
+  email: String,
   providers: [ProviderSchema],
 });
 

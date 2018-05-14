@@ -27,6 +27,8 @@ function generateUserToken(req, res) {
   res.cookie('X-JWT-Token', accessToken);
   res.cookie('X-User-Id', req.user.id);
   res.cookie('X-User-Name', req.user.name);
+  res.cookie('X-User-Email', req.user.email || req.user.providers[0].email);
+
   res.redirect(req.session.returnUrl || '/');
   delete req.session.returnUrl;
 }
@@ -54,6 +56,7 @@ app.get('/authentication/facebook/start', (req, res, next) => {
 
   passport.authenticate('facebook', {
     session: false,
+    scope: ['email'],
   })(req, res, next);
 });
 

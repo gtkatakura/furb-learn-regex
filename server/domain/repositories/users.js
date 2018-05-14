@@ -1,4 +1,5 @@
 const { User } = require('../models/user');
+const { fromModel } = require('./factory');
 
 const find = id => User.findById(id);
 
@@ -21,6 +22,7 @@ const createUser = (name, provider, id, email) => {
   return new Promise((resolve, reject) => {
     new User({
       name,
+      email,
       providers: [{ id, name: provider, email }],
     }).save((err, response) => {
       if (err) {
@@ -37,9 +39,9 @@ const findOrCreateUser = async (name, provider, id, email) => {
   return user || createUser(name, provider, id, email);
 };
 
-module.exports = {
+module.exports = Object.assign(fromModel(User), {
   find,
   findByExternalId,
   createUser,
   findOrCreateUser,
-};
+});

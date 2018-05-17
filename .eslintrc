@@ -5,7 +5,8 @@
     "arrow-parens": "off",
     "react/jsx-filename-extension": "off",
     "no-restricted-syntax": "off",
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "quote-props": ["error", "consistent"]
   },
   "settings": {
     "import/resolver": {

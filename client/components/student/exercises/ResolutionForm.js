@@ -3,8 +3,8 @@ import { PrimaryButton } from 'components/buttons';
 import { Form, TextField, Field } from 'components/forms';
 import withLifeCycle from 'util/withLifeCycle';
 
-import Loading from 'components/Loading';
 import solutionIsValid from 'validations/solutionIsValid';
+import { regex as regexIsValid } from 'validations';
 import { toRegex } from 'regex';
 
 const Word = ({ word, regex }) => (
@@ -50,7 +50,7 @@ const ResolutionForm = ({ currentStep, onSubmit, submitting }) => (
                 name="regularExpression"
                 label="Expressão Regular"
                 placeholder="descreva sua expressão regular aqui"
-                validate={solutionIsValid(currentStep)}
+                validate={[regexIsValid, solutionIsValid(currentStep)]}
               />
               <div className="form-group">
                 <legend>Entradas</legend>

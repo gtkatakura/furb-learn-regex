@@ -73,7 +73,7 @@ const mapStateToProps = (state, { params: { exerciseId } }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onMount: ({ exerciseId }) => fetchAll(exerciseId)(dispatch),
+  onMount: ({ exerciseId }) => exerciseId && fetchAll(exerciseId)(dispatch),
 });
 
 export default _.compose(

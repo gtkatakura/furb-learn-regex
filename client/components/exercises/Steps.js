@@ -6,6 +6,7 @@ import _ from 'lodash';
 import { generateWords } from 'regex';
 
 import ExerciseStep from './Step';
+import RegularExpressionField from './RegularExpressionField';
 
 const newStep = steps => {
   const maxLimit = _.max(_.map(steps.getAll(), 'limit')) || 2;
@@ -86,9 +87,8 @@ class ExerciseSteps extends React.Component {
                   <div className="card box-shadow">
                     <div className="card-body">
                       <p className="card-text">
-                        <Field
+                        <RegularExpressionField
                           name="regularExpression"
-                          validate={required}
                           component={({ input: { value } }) => (
                             <span>
                               {generateWords(value, limit).map((words, i) => (

@@ -5,6 +5,7 @@ import { required } from 'validations';
 import { SaveButton } from 'components/buttons';
 
 import ExerciseSteps from './Steps';
+import RegularExpressionField from './RegularExpressionField';
 
 const ExerciseForm = ({ submitting, ...props }) => (
   <div className="container">
@@ -17,10 +18,9 @@ const ExerciseForm = ({ submitting, ...props }) => (
             label="Descrição"
             validate={required}
           />
-          <TextField
+          <RegularExpressionField
             name="regularExpression"
             label="Expressão Regular"
-            validate={required}
           />
           <FieldArray name="steps" component={ExerciseSteps} />
         </Form>

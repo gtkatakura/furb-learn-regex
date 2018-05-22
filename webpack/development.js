@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const HtmlPlugin = require('html-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const merge = require('lodash/merge');
 
 const { shared, loaders, rules } = require('./common');
@@ -30,6 +31,9 @@ module.exports = merge(shared, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlPlugin(loaders.html),
+    new FriendlyErrorsWebpackPlugin({
+      clearConsole: true,
+    }),
   ],
   devServer: {
     host: 'localhost',

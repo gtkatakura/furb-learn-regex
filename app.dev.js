@@ -12,6 +12,7 @@ const compiler = webpack(config);
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
+  quiet: true,
 }));
 
 app.use(webpackHotMiddleware(compiler));

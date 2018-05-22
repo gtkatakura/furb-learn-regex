@@ -6,6 +6,10 @@ class WebApi {
     this.route = route;
   }
 
+  withRoute(url) {
+    return new WebApi(`${this.route}/${url}`);
+  }
+
   async fetch({ method, body }) {
     const response = await fetch(this.route, {
       method,

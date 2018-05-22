@@ -6,7 +6,7 @@ import { reduxForm } from 'redux-form';
 
 import ExerciseForm from 'components/exercises/Form';
 import getCurrentExerciseOrDefault from 'selectors/getCurrentExerciseOrDefault';
-import { create } from 'actions/exercises';
+import { save } from 'actions/professor/exercises';
 
 const ExerciseFormContainer = ({ handleSubmit, onSubmit, ...props }) => (
   <ExerciseForm onSubmit={handleSubmit(onSubmit)} {...props} />
@@ -17,7 +17,7 @@ const mapStateToProps = (...args) => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  onSubmit: create,
+  onSubmit: save,
 }, dispatch);
 
 export default compose(

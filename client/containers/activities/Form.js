@@ -6,7 +6,7 @@ import { reduxForm } from 'redux-form';
 
 import ActivityForm from 'components/activities/Form';
 import getCurrentActivity from 'selectors/getCurrentActivity';
-import { create } from 'actions/activities';
+import { save } from 'actions/professor/activities';
 
 const ActivityFormContainer = ({ handleSubmit, onSubmit, ...props }) => (
   <ActivityForm onSubmit={handleSubmit(onSubmit)} {...props} />
@@ -17,7 +17,7 @@ const mapStateToProps = (...args) => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  onSubmit: create,
+  onSubmit: save,
 }, dispatch);
 
 export default compose(

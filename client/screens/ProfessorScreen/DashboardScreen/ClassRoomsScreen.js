@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import withLifeCycle from 'util/withLifeCycle';
 
 import ClassRoomListContainer from 'containers/classRooms/List';
-import fetchAll from 'actions/classRooms/fetchAll';
+import { fetchAll } from 'actions/professor/classRooms';
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   onMount: fetchAll,

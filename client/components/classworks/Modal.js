@@ -8,7 +8,7 @@ import { Field, CheckboxField } from 'components/forms';
 import { AddButton, CancelButton } from 'components/buttons';
 import { required, date } from 'validations';
 import ActivitySelect from 'containers/activities/Select';
-import { fetchAll } from 'actions/activities';
+import { fetchAll } from 'actions/professor/activities';
 
 class ClassworkModal extends React.Component {
   state = {

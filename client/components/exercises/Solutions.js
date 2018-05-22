@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import withLifeCycle from 'util/withLifeCycle';
 import _ from 'lodash';
 
-import fetchAll from 'actions/exercises/answers/fetchAll';
+import fetchAll from 'actions/professor/exercises/answers/fetchAll';
 
 const toEntries = solutions => _.sortBy(
   _.entries(_.groupBy(solutions, 'value')),

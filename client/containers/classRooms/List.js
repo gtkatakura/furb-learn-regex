@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import createActions from 'util/createActions';
 
 import ClassRoomList from 'components/classRooms/List';
-import { destroy } from 'actions/classRooms';
+import { destroy } from 'actions/professor/classRooms';
 
 const mapStateToProps = state => ({
   resources: state.classRoom.entities,

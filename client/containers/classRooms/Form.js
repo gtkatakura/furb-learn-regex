@@ -7,7 +7,7 @@ import uuid from 'uuid/v4';
 
 import ClassRoomForm from 'components/classRooms/Form';
 import getCurrentClassRoom from 'selectors/getCurrentClassRoom';
-import { create, destroy } from 'actions/classRooms';
+import { save, destroy } from 'actions/professor/classRooms';
 
 const ClassRoomFormContainer = ({ handleSubmit, onSubmit, ...props }) => (
   <ClassRoomForm onSubmit={handleSubmit(onSubmit)} {...props} />
@@ -20,7 +20,7 @@ const mapStateToProps = (...args) => ({
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  onSubmit: create,
+  onSubmit: save,
   onDestroyClick: destroy,
 }, dispatch);
 

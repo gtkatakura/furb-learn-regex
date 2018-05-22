@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import createActions from 'util/createActions';
 
 import ActivityList from 'components/activities/List';
-import { destroy } from 'actions/activities';
+import { destroy } from 'actions/professor/activities';
 
 const mapStateToProps = state => ({
   resources: state.activity.entities,

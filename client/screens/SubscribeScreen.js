@@ -6,7 +6,7 @@ import withLifeCycle from 'util/withLifeCycle';
 
 import { Button } from 'components/buttons';
 
-import subscribe from 'actions/classRooms/subscribe';
+import { subscribe } from 'actions/professor/classRooms';
 
 const SubscribeScreen = ({ finished, classwork }) => (
   <div className="py-2 text-center">

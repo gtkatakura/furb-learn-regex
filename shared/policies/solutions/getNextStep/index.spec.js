@@ -16,21 +16,21 @@ describe('policies/solutions/getNextStep', () => {
     ],
   };
 
-  describe('quando a solucao valida todos os niveis', () => {
+  describe('quando o currentStep for o primeiro da lista', () => {
     const currentStep = step1;
     const solution = '(a|b)*bb(a|b)*';
 
-    it('deve retornar null', () => {
-      expect(getNextStep({ exercise, currentStep, solution })).to.eql(null);
+    it('deve retornar o segundo da lista', () => {
+      expect(getNextStep({ exercise, currentStep, solution })).to.eql(step2);
     });
   });
 
-  describe('quando a solucao valida somente o primeiro nivel', () => {
-    const currentStep = step1;
+  describe('quando o currentStep for o ultimo da lista', () => {
+    const currentStep = step3;
     const solution = 'bb|abb|bba|bbb';
 
-    it('deve retornar o segundo nivel', () => {
-      expect(getNextStep({ exercise, currentStep, solution })).to.eql(step2);
+    it('deve retornar null', () => {
+      expect(getNextStep({ exercise, currentStep, solution })).to.eql(null);
     });
   });
 });

@@ -1,4 +1,5 @@
 const express = require('express');
+const HttpStatus = require('http-status-codes');
 const _ = require('lodash');
 
 const mailer = require('../../mailer');
@@ -11,6 +12,7 @@ const ClassRoomsRepository = require('../../domain/repositories/classRoom');
 
 const { validWords, invalidWords } = require('../../../shared/regex');
 const getNextStep = require('../../../shared/policies/solutions/getNextStep');
+const solutionIsValid = require('../../../shared/policies/solutions/isValid');
 
 const app = express.Router();
 
@@ -105,39 +107,7 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
     valid: false,
   });
 
-  const nextStep = getNextStep({
-    exercise,
-    currentStep: answer.currentStep,
-    solution: request.body.solution,
-  });
-
-  if (nextStep) {
-    answer.solutions.push({
-      value: request.body.solution,
-      valid: false,
-    });
-
-    answer.currentStep = nextStep;
-
-    await AnswerRepository.update(answer);
-
-    request.app.io.emit(`professors/${exercise.professor}/action`, {
-      type: 'ANSWER_UPDATE',
-      payload: Object.assign(answer, { exercise: exercise._id, student: request.user }),
-    });
-
-    response.json({
-      error: true,
-      data: {
-        nextStep: {
-          words: {
-            valids: validWords(exercise.regularExpression, nextStep.limit),
-            invalids: invalidWords(exercise.regularExpression, nextStep.limit),
-          },
-        },
-      },
-    });
-  } else {
+  if (solutionIsValid(exercise, request.body.solution)) {
     answer.solutions.push({
       value: request.body.solution,
       valid: true,
@@ -176,6 +146,47 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
         }
       });
     }
+  } else {
+    answer.solutions.push({
+      value: request.body.solution,
+      valid: false,
+    });
+
+    const nextStep = getNextStep({
+      exercise,
+      currentStep: answer.currentStep,
+      solution: request.body.solution,
+    });
+
+    if (nextStep) {
+      answer.currentStep = nextStep;
+
+      await AnswerRepository.update(answer);
+
+      request.app.io.emit(`professors/${exercise.professor}/action`, {
+        type: 'ANSWER_UPDATE',
+        payload: Object.assign(answer, { exercise: exercise._id, student: request.user }),
+      });
+
+      response.json({
+        error: true,
+        data: {
+          nextStep: {
+            words: {
+              valids: validWords(exercise.regularExpression, nextStep.limit),
+              invalids: invalidWords(exercise.regularExpression, nextStep.limit),
+            },
+          },
+        },
+      });
+    }
+
+    response.status(HttpStatus.NOT_ACCEPTABLE).json({
+      message: [
+        'A expressão regular especificada não validou todas as palavras que pertencem à linguagem ou validou palavras que não pertencem.',
+        'No entanto, não existem mais etapas com outras palavras válidas e inválidas para auxiliar na resolução.'
+      ].join(' '),
+    });
   }
 });
 

@@ -16,7 +16,7 @@ export const extractSymbols = text => _.sortBy(_.uniq(text.match(/[a-zA-Z]/g)));
 
 export const generateWords = (text, limit = 3) => {
   const symbols = extractSymbols(text);
-  const words = [symbols];
+  const words = [[''], symbols];
 
   while (words.length < limit) {
     const last = _.last(words);

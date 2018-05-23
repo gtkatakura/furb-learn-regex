@@ -11,10 +11,10 @@ const Word = ({ word, regex }) => (
   toRegex(regex).test(word)
     ? (
       <React.Fragment>
-        <mark>{word}</mark>
+        <mark>{word || '∈'}</mark>
         {' '}
       </React.Fragment>
-    ) : `${word} `
+    ) : `${word || '∈'} `
 );
 
 const WordsWithMark = ({ words: manyWords, regex }) => (

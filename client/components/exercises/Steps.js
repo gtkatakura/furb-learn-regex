@@ -96,9 +96,9 @@ class ExerciseSteps extends React.Component {
                                   {words.map(word => (
                                     toRegex(value).test(word) ? (
                                       <Fragment>
-                                        <mark>{word}</mark>
+                                        <mark>{word || '∈'}</mark>
                                         {' '}
-                                      </Fragment>) : `${word} `
+                                      </Fragment>) : `${word || '∈'} `
                                   ))}<br />
                                 </span>
                               ))}

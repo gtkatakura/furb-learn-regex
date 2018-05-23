@@ -53,7 +53,7 @@ const ResolutionForm = ({ currentStep, onSubmit, submitting }) => (
                 validate={[regexIsValid, solutionIsValid(currentStep)]}
               />
               <div className="form-group">
-                <legend>Entradas</legend>
+                <legend>Palavras</legend>
                 <div className="row">
                   <div className="col-md-6 mb-3">
                     <label>Válidas</label>

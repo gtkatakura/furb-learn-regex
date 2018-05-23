@@ -82,7 +82,7 @@ app.get('/me/exercises/:id/currentStep', async (request, response) => {
     exercise,
   });
 
-  const limit = answer ? answer.currentStep.limit : 3;
+  const { limit } = answer ? answer.currentStep : exercise.steps[0];
 
   response.json({
     words: {

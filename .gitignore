@@ -5,3 +5,6 @@ dist/
 db/
 
 .env
+
+coverage
+.nyc_output

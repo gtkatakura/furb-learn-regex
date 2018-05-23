@@ -35,7 +35,7 @@ app.post('/', async (request, response) => {
 app.delete('/:id', async (request, response) => {
   if (await StudentRepository.find({ classRooms: request.params.id })) {
     response.status(HttpStatus.NOT_ACCEPTABLE).json({
-      message: 'Não foi possível excluir esta turma porque a mesma já possuí alunos cadastrados.',
+      message: 'Não foi possível excluir esta turma porque a mesma já possui alunos cadastrados.',
     });
   } else {
     await ClassRoomRepository.destroy({ _id: request.params.id });

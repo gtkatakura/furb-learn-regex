@@ -11,8 +11,8 @@ const create = ({ exerciseId, regularExpression }) => async dispatch => {
 
   if (data.error) {
     await confirm(
-      'A expressão regular especificada não validou todas as palavras esperadas e/ou validou palavras que não deveriam. ' +
-      'Mais valores foram adicionados aos campos de palavras válidas e inválidas.',
+      'A expressão regular especificada não validou todas as palavras que pertencem à linguagem ou validou palavras que não pertencem. ' +
+      'Para auxiliar na resolução, outras palavras foram adicionadas nos campos palavras válidas e inválidas.',
     );
 
     dispatch({

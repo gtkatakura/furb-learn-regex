@@ -55,9 +55,9 @@ const ResolutionForm = ({ currentStep, onSubmit, submitting }) => (
               <div className="form-group">
                 <legend>Palavras</legend>
                 <div className="row">
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 mb-3" style={{ display: 'flex', flexDirection: 'column' }}>
                     <label>Válidas</label>
-                    <div className="card box-shadow">
+                    <div className="card box-shadow" style={{ flexGrow: 1 }}>
                       <div className="card-body">
                         <Field
                           name="regularExpression"
@@ -73,9 +73,9 @@ const ResolutionForm = ({ currentStep, onSubmit, submitting }) => (
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-6 mb-3">
+                  <div className="col-md-6 mb-3" style={{ display: 'flex', flexDirection: 'column' }}>
                     <label>Inválidas</label>
-                    <div className="card box-shadow">
+                    <div className="card box-shadow" style={{ flexGrow: 1 }}>
                       <div className="card-body">
                         <Field
                           name="regularExpression"

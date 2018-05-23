@@ -13,6 +13,7 @@ const ClassRoomsRepository = require('../../domain/repositories/classRoom');
 const { validWords, invalidWords } = require('../../../shared/regex');
 const getNextStep = require('../../../shared/policies/solutions/getNextStep');
 const solutionIsValid = require('../../../shared/policies/solutions/isValid');
+const symbolsParser = require('../../../shared/regex/symbols/parser');
 
 const app = express.Router();
 
@@ -85,6 +86,7 @@ app.get('/me/exercises/:id/currentStep', async (request, response) => {
   const { limit } = answer ? answer.currentStep : exercise.steps[0];
 
   response.json({
+    symbols: symbolsParser.parse(exercise.regularExpression),
     words: {
       valids: validWords(exercise.regularExpression, limit),
       invalids: invalidWords(exercise.regularExpression, limit),

@@ -10,8 +10,13 @@ class WebApi {
     return new WebApi(`${this.route}/${url}`);
   }
 
-  async fetch({ method, body }) {
-    const response = await fetch(this.route, {
+  async fetch({ method, body, queryString }) {
+    const query = Object.keys(queryString || {})
+      .filter(k => queryString[k])
+      .map(k => `${encodeURIComponent(k)}=${encodeURIComponent(queryString[k])}`)
+      .join('&');
+
+    const response = await fetch(`${this.route}${query ? '?' + query : ''}`, {
       method,
       headers: {
         'Accept': 'application/json',
@@ -19,6 +24,7 @@ class WebApi {
         'Authorization': cookies.find('X-JWT-Token'),
       },
       body: body && JSON.stringify(body),
+      qs: queryString,
     });
 
     if (response.status === HttpStatus.NOT_ACCEPTABLE) {
@@ -28,8 +34,8 @@ class WebApi {
     return response;
   }
 
-  async all() {
-    const response = await this.fetch({ method: 'GET' });
+  async all(queryString) {
+    const response = await this.fetch({ method: 'GET', queryString });
     return response.json();
   }
 

@@ -5,6 +5,7 @@ import { Nav, NavItem } from 'reactstrap';
 
 import ExerciseForm from 'containers/exercises/Form';
 import Solutions from './Solutions';
+import Activities from './Activities';
 
 const ExerciseScreen = ({ location: { hash, pathname } }) => (
   <div className="container">
@@ -22,6 +23,15 @@ const ExerciseScreen = ({ location: { hash, pathname } }) => (
           </NavItem>
           <NavItem
             className={classNames('nav-link', {
+              active: hash === '#atividades',
+            })}
+          >
+            <Link to={`${pathname}#atividades`}>
+              Atividades
+            </Link>
+          </NavItem>
+          <NavItem
+            className={classNames('nav-link', {
               active: hash === '#solucoes',
             })}
           >
@@ -32,6 +42,9 @@ const ExerciseScreen = ({ location: { hash, pathname } }) => (
         </Nav>
         <div style={{ display: hash !== '' ? 'none' : 'block' }}>
           <ExerciseForm />
+        </div>
+        <div style={{ display: hash !== '#atividades' ? 'none' : 'block' }}>
+          <Activities />
         </div>
         <div style={{ display: hash !== '#solucoes' ? 'none' : 'block' }}>
           <Solutions />

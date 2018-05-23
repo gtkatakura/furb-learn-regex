@@ -6,10 +6,19 @@ const ClassRoomRepository = require('../../domain/repositories/classRoom');
 
 const app = express.Router();
 
+const _ = require('lodash/fp');
+
+const removeNilValues = _.flow(
+  _.toPairs,
+  _.filter(([key, value]) => value),
+  _.fromPairs,
+);
+
 app.get('/', async (request, response) => {
-  const entities = await ActivityRepository.all({
+  const entities = await ActivityRepository.all(removeNilValues({
     createdBy: request.user,
-  });
+    exercises: request.query.exerciseId,
+  }));
 
   response.send(entities);
 });

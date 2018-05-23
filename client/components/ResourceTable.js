@@ -39,7 +39,9 @@ class ResourceTable extends React.Component {
       <table className="table table-bordered table-striped table-hover">
         <thead>
           <tr>
-            <th className="text-center" style={{ width: '50px' }}>#</th>
+            {(this.props.onSelecteds || this.props.onDestroy) && (
+              <th className="text-center" style={{ width: '50px' }}>#</th>
+            )}
             {this.props.children}
             {this.props.withCreatedAt && <th style={{ width: '200px' }}>Criado</th>}
           </tr>
@@ -55,14 +57,16 @@ class ResourceTable extends React.Component {
             ) : (
               this.props.resources.map((resource, index) => (
                 <tr key={this.props.elementKey(resource)}>
-                  <td className="text-center">
-                    {this.props.onSelecteds && <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, resource)} />}
-                    {this.props.onDestroy && <FontAwesomeIcon
-                      icon={faTrash}
-                      onClick={() => this.props.onDestroy(resource, index)}
-                      style={{ cursor: 'pointer' }}
-                    />}
-                  </td>
+                  {(this.props.onSelecteds || this.props.onDestroy) && (
+                    <td className="text-center">
+                      {this.props.onSelecteds && <input type="checkbox" value="on" onChange={event => this.onCheckboxChange(event, resource)} />}
+                      {this.props.onDestroy && <FontAwesomeIcon
+                        icon={faTrash}
+                        onClick={() => this.props.onDestroy(resource, index)}
+                        style={{ cursor: 'pointer' }}
+                      />}
+                    </td>
+                  )}
                   {this.props.render(resource, index)}
                   {this.props.withCreatedAt && <td>{moment(resource.createdAt).fromNow()}</td>}
                 </tr>

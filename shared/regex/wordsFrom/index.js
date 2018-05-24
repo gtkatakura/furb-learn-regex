@@ -1,28 +1,27 @@
 const _ = require('lodash');
 
 const recursive = require('../../functions/recursive');
+const memoize = require('../../functions/memoize');
 
 const extractSymbols = text => _.sortBy(_.uniq(text.match(/[a-zA-Z]/g)));
 
-const base = recursive(self => (limit, { symbols, words }) => {
+const wordsFrom = recursive(self => (text, limit) => {
   if (limit === 0) {
-    return words;
+    return [['']];
   }
 
+  const symbols = extractSymbols(text);
+  const words = self(text, limit - 1);
   const currentLevel = _.last(words);
-  const nextLevel = _.flatMap(currentLevel, word => symbols.map(symbol => word + symbol));
 
-  return self(limit - 1, {
-    symbols,
-    words: [...words, nextLevel],
-  });
+  return [
+    ...words,
+    _.flatMap(currentLevel, word => symbols.map(symbol => word + symbol)),
+  ];
 });
 
-const wordsFrom = (text, limit) => {
-  const symbols = extractSymbols(text);
-  const words = [[''], symbols];
-
-  return base(limit - 1, { symbols, words });
-};
+Object.assign(wordsFrom, {
+  withCache: wordsFrom.withMiddleware(memoize),
+});
 
 module.exports = wordsFrom;

@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import wordsFrom from './wordsFrom';
 
 export const toRegex = value => {
   try {
@@ -15,17 +16,11 @@ export const toRegex = value => {
 export const extractSymbols = text => _.sortBy(_.uniq(text.match(/[a-zA-Z]/g)));
 
 export const generateWords = (text, limit = 3) => {
-  const symbols = extractSymbols(text);
-  const words = [[''], symbols];
-
-  while (words.length < limit) {
-    const last = _.last(words);
-    const newValues = _.flatMap(last, value => symbols.map(symbol => value + symbol));
-
-    words.push(newValues);
+  if (Number.isNaN(limit) || limit < 0) {
+    return [];
   }
 
-  return words;
+  return wordsFrom.withCache(text, limit);
 };
 
 export const validWords = (text, limit = 3) => {

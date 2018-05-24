@@ -2,18 +2,25 @@ const _ = require('lodash');
 
 const extractSymbols = text => _.sortBy(_.uniq(text.match(/[a-zA-Z]/g)));
 
-const wordsFrom = (text, limit = 3) => {
+const base = (limit, { symbols, words }) => {
+  if (limit === 0) {
+    return words;
+  }
+
+  const currentLevel = _.last(words);
+  const nextLevel = _.flatMap(currentLevel, word => symbols.map(symbol => word + symbol));
+
+  return base(limit - 1, {
+    symbols,
+    words: [...words, nextLevel],
+  });
+};
+
+const wordsFrom = (text, limit) => {
   const symbols = extractSymbols(text);
   const words = [[''], symbols];
 
-  while ((words.length - 1) < limit) {
-    const last = _.last(words);
-    const newValues = _.flatMap(last, value => symbols.map(symbol => value + symbol));
-
-    words.push(newValues);
-  }
-
-  return words;
+  return base(limit - 1, { symbols, words });
 };
 
 module.exports = wordsFrom;

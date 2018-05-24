@@ -25,7 +25,7 @@ const Solutions = ({ solutions: { valids, invalids } }) => (
           </thead>
           <tbody>
             {toEntries(valids).map(([solution, array]) => (
-              <tr>
+              <tr key={solution}>
                 <td className="text-center">
                   {solution}
                 </td>
@@ -48,7 +48,7 @@ const Solutions = ({ solutions: { valids, invalids } }) => (
           </thead>
           <tbody>
             {toEntries(invalids).map(([solution, array]) => (
-              <tr>
+              <tr key={solution}>
                 <td className="text-center">
                   {solution}
                 </td>

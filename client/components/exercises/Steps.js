@@ -102,11 +102,12 @@ class ExerciseSteps extends React.Component {
                               {generateWords(value, limit).map((words, i) => (
                                 <span key={i.toString()}>
                                   {words.map(word => (
-                                    toRegex(value).test(word) ? (
-                                      <Fragment>
-                                        <mark>{word || '∈'}</mark>
-                                        {' '}
-                                      </Fragment>) : `${word || '∈'} `
+                                    <Fragment key={word}>
+                                      {toRegex(value).test(word)
+                                        ? <mark>{word || '∈'}</mark>
+                                        : (word || '∈')}
+                                      {' '}
+                                    </Fragment>
                                   ))}<br />
                                 </span>
                               ))}

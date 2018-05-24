@@ -1,10 +1,10 @@
 const getNextStep = ({
-  exercise,
+  exercise: { steps },
   currentStep,
 }) => {
-  const currentStepIndexOf = exercise.steps.findIndex(step => step.limit === currentStep.limit);
+  const currentStepIndexOf = steps.findIndex(step => step.limit === currentStep.limit);
   const nextStep = currentStepIndexOf !== -1
-    ? exercise.steps[currentStepIndexOf + 1]
+    ? steps[currentStepIndexOf + 1]
     : null;
 
   return nextStep || null;

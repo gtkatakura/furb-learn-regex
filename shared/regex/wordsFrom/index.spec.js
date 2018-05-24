@@ -7,15 +7,19 @@ describe('shared/regex/wordsFrom', () => {
     describe('deve retornar as combinacoes possiveis para', () => {
       const regularExpression = 'abc';
 
-      const level1 = [
+      const limit0 = [
         [''],
+      ];
+
+      const limit1 = [
+        ...limit0,
         [
           'a', 'b', 'c',
         ],
       ];
 
-      const level2 = [
-        ...level1,
+      const limit2 = [
+        ...limit1,
         [
           'aa', 'ab', 'ac',
           'ba', 'bb', 'bc',
@@ -23,8 +27,8 @@ describe('shared/regex/wordsFrom', () => {
         ],
       ];
 
-      const level3 = [
-        ...level2,
+      const limit3 = [
+        ...limit2,
         [
           'aaa', 'aab', 'aac',
           'aba', 'abb', 'abc',
@@ -38,15 +42,14 @@ describe('shared/regex/wordsFrom', () => {
         ],
       ];
 
-      const levels = [
-        level1,
-        level2,
-        level3,
+      const limits = [
+        limit0,
+        limit1,
+        limit2,
+        limit3,
       ];
 
-      levels.forEach((level, index) => {
-        const limit = index + 1;
-
+      limits.forEach((level, limit) => {
         it(`limit = ${limit}`, () => {
           const result = wordsFrom(regularExpression, limit);
 

@@ -1,20 +1,28 @@
 import React, { Fragment } from 'react';
 import { CreateButton, DeleteButton } from 'components/buttons';
 import { Field } from 'components/forms';
-import { required } from 'validations';
+import { required, number } from 'validations';
 import _ from 'lodash';
 import { generateWords } from 'regex';
+import warning from 'util/warning';
 
 import ExerciseStep from './Step';
 import RegularExpressionField from './RegularExpressionField';
 
 const newStep = steps => {
   const maxLimit = _.max(_.map(steps.getAll(), 'limit')) || 2;
+  const limit = Number(maxLimit) + 1;
 
-  steps.push({
-    limit: Number(maxLimit) + 1,
-  });
+  if (limit >= generateWords.limit) {
+    warning(`Não foi possível criar uma nova etapa. A próxima etapa seria gerada com quantidade de símbolos igual a ${generateWords.limit}, ultrapassando o limite permitido.`);
+  } else {
+    steps.push({
+      limit,
+    });
+  }
 };
+
+const generateWordsLimit = number.lessThanOrEqual(generateWords.limit);
 
 class ExerciseSteps extends React.Component {
   state = {
@@ -79,7 +87,7 @@ class ExerciseSteps extends React.Component {
                     type="number"
                     name={`steps[${this.state.currentStep}].limit`}
                     className="form-control col-sm-1"
-                    validate={required}
+                    validate={[required, generateWordsLimit]}
                   />
                 </div>
                 <div className="form-group" style={{ marginBottom: '0px' }}>

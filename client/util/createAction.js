@@ -1,10 +1,10 @@
-import confirm from './confirm';
+import warning from './warning';
 
 const createAction = dispatch => action => async (...args) => {
   try {
     await action(...args)(dispatch);
   } catch (err) {
-    await confirm(err.message);
+    await warning(err.message);
   }
 };
 

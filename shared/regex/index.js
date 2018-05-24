@@ -20,8 +20,10 @@ export const generateWords = (text, limit = 3) => {
     return [];
   }
 
-  return wordsFrom.withCache(text, limit);
+  return wordsFrom.withCache(text, Math.min(limit, generateWords.limit));
 };
+
+generateWords.limit = 10;
 
 export const validWords = (text, limit = 3) => {
   const re = new RegExp(`^(${text})$`);

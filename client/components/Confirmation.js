@@ -7,6 +7,7 @@ class Confirmation extends React.Component {
   render() {
     const {
       okLabbel = 'OK',
+      cancelable,
       cancelLabel = 'Cancel',
       title = 'Atenção!',
       confirmation,
@@ -24,7 +25,7 @@ class Confirmation extends React.Component {
           {confirmation}
         </ModalBody>
         <ModalFooter>
-          <Button onClick={cancel}>{cancelLabel}</Button>
+          {cancelable && <Button onClick={cancel}>{cancelLabel}</Button>}
           <Button color="primary" onClick={proceed}>{okLabbel}</Button>
         </ModalFooter>
       </Modal>
@@ -42,6 +43,11 @@ Confirmation.propTypes = {
   cancel: PropTypes.func,
   dismiss: PropTypes.func,
   enableEscape: PropTypes.bool,
+  cancelable: PropTypes.bool,
+};
+
+Confirmation.defaultProps = {
+  cancelable: true,
 };
 
 export default confirmable(Confirmation);

@@ -53,8 +53,6 @@ app.get('/me', async (request, response) => {
       });
     }));
 
-    response.json(student[0]); _.flatMap(_.flatMap(student[0].classRooms, 'classworks'), 'activity.exercises');
-
     await Promise.all(exercises.map(async exercise => {
       const answer = await AnswerRepository.find({
         exercise,

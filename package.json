@@ -12,7 +12,7 @@
     "dev": "babel-node app.dev.js --presets=env",
     "test": "npm run coverage",
     "test:watch": "mocha --compilers js:babel-core/register --watch shared/**/*.spec.js",
-    "coverage": "nyc -r=lcov -r=text -i babel-core/register mocha shared/**/*.spec.js"
+    "coverage": "nyc --all -r=lcov -r=text -i babel-core/register mocha shared/**/*.spec.js"
   },
   "repository": {
     "type": "git",

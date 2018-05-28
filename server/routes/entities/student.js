@@ -126,7 +126,12 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
       exercises: exercise._id,
     });
 
+    const student = await StudentRepository.find({
+      user: request.user,
+    });
+
     const classRooms = await ClassRoomsRepository.all({
+      '_id': student.classRooms,
       'classworks.activity': activities,
     }).populate('createdBy');
 

@@ -7,4 +7,21 @@ module.exports = Object.assign({}, repository, {
   all(params) {
     return repository.all(params).populate('student', 'name');
   },
+  async findOrCreate({ student, exercise }) {
+    const record = await this.find({
+      student,
+      exercise,
+    });
+
+    if (record) {
+      return record;
+    }
+
+    return this.create({
+      currentStep: exercise.steps[0],
+      student,
+      exercise,
+      valid: false,
+    });
+  },
 });

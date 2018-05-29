@@ -97,14 +97,9 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
     _id: request.params.exerciseId,
   });
 
-  const answer = await AnswerRepository.find({
+  const answer = await AnswerRepository.findOrCreate({
     student: request.user,
     exercise,
-  }) || await AnswerRepository.create({
-    currentStep: exercise.steps[0],
-    student: request.user,
-    exercise,
-    valid: false,
   });
 
   if (solutionIsValid(exercise, request.body.solution)) {

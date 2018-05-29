@@ -67,8 +67,8 @@ const Solutions = ({ solutions: { valids, invalids } }) => (
 const mapStateToProps = (state, { params: { exerciseId } }) => ({
   exerciseId,
   solutions: {
-    valids: _.filter(_.flatMap(state.answer.entities, 'solutions'), 'valid'),
-    invalids: _.reject(_.flatMap(state.answer.entities, 'solutions'), 'valid'),
+    valids: _.filter(_.flatMap(_.filter(state.answer.entities, ['exercise', exerciseId]), 'solutions'), 'valid'),
+    invalids: _.reject(_.flatMap(_.filter(state.answer.entities, ['exercise', exerciseId]), 'solutions'), 'valid'),
   },
 });
 

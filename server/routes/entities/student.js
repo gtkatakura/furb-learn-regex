@@ -15,6 +15,8 @@ const getNextStep = require('../../../shared/policies/solutions/getNextStep');
 const solutionIsValid = require('../../../shared/policies/solutions/isValid');
 const symbolsParser = require('../../../shared/regex/symbols/parser');
 
+const notifySolutionService = require('../../domain/services/exercise/notifySolution');
+
 const app = express.Router();
 
 app.get('/', async (request, response) => {
@@ -117,35 +119,11 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
 
     response.json(true);
 
-    const activities = await ActivityRepository.all({
-      exercises: exercise._id,
-    });
-
-    const student = await StudentRepository.find({
+    await notifySolutionService({
+      solution: request.body.solution,
       user: request.user,
+      exercise,
     });
-
-    const classRooms = await ClassRoomsRepository.all({
-      '_id': student.classRooms,
-      'classworks.activity': activities,
-    }).populate('createdBy');
-
-    if (classRooms.length !== 0) {
-      _.each(classRooms, classRoom => {
-        const classwork = _.find(classRoom.classworks, currentClassWork => (
-          currentClassWork.notifyExerciseConclusions &&
-          _.some(activities, activity => activity.equals(currentClassWork.activity))
-        ));
-
-        if (classwork) {
-          mailer.send({
-            to: classRoom.createdBy.email,
-            subject: `${classRoom.name} - ${request.user.name} concluiu um exercício`,
-            html: `<b>${exercise.description}</b> resolvido com a seguinte expressão regular: <b>${request.body.solution}</b>`,
-          });
-        }
-      });
-    }
   } else {
     answer.solutions.push({
       value: request.body.solution,

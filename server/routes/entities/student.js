@@ -185,14 +185,14 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
           },
         },
       });
+    } else {
+      response.status(HttpStatus.NOT_ACCEPTABLE).json({
+        message: [
+          'A expressão regular especificada não validou todas as palavras que pertencem à linguagem ou validou palavras que não pertencem.',
+          'No entanto, não existem mais etapas com outras palavras válidas e inválidas para auxiliar na resolução.'
+        ].join(' '),
+      });
     }
-
-    response.status(HttpStatus.NOT_ACCEPTABLE).json({
-      message: [
-        'A expressão regular especificada não validou todas as palavras que pertencem à linguagem ou validou palavras que não pertencem.',
-        'No entanto, não existem mais etapas com outras palavras válidas e inválidas para auxiliar na resolução.'
-      ].join(' '),
-    });
   }
 });
 

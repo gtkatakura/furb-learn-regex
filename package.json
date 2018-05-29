@@ -10,9 +10,8 @@
     "build:pegjs": "pegjs -o shared/regex/symbols/pegjs/parser.js shared/regex/symbols/pegjs/grammar.pegjs",
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "dev": "babel-node app.dev.js --presets=env",
-    "test": "npm run coverage",
-    "test:watch": "mocha --compilers js:babel-core/register --watch shared/**/*.spec.js",
-    "coverage": "nyc --all -r=lcov -r=text -i babel-core/register mocha shared/**/*.spec.js"
+    "test": "jest --coverage",
+    "test:watch": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -44,11 +43,11 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "3.2.0",
     "husky": "^0.14.3",
+    "jest": "^23.0.1",
     "less": "^3.0.1",
     "less-loader": "^4.0.6",
     "lodash-webpack-plugin": "^0.11.4",
     "mocha": "^5.1.1",
-    "nyc": "^11.8.0",
     "parcel-bundler": "^1.6.2",
     "style-loader": "^0.20.2",
     "url-loader": "^0.6.2",

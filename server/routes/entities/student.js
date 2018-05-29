@@ -177,6 +177,7 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
         error: true,
         data: {
           nextStep: {
+            symbols: symbolsParser.parse(exercise.regularExpression),
             words: {
               valids: validWords(exercise.regularExpression, nextStep.limit),
               invalids: invalidWords(exercise.regularExpression, nextStep.limit),

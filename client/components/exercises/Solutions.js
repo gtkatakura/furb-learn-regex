@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import withLifeCycle from 'util/withLifeCycle';
+import Link from 'components/Link';
 import _ from 'lodash';
 
 import fetchAll from 'actions/professor/exercises/answers/fetchAll';
@@ -11,7 +12,7 @@ const toEntries = solutions => _.sortBy(
   ([solution, array]) => array.length
 ).reverse();
 
-const Solutions = ({ solutions: { valids, invalids } }) => (
+const Solutions = ({ exerciseId, solutions: { valids, invalids } }) => (
   <div className="container">
     <div className="row">
       <div className="col-md-6 p-3">
@@ -27,7 +28,9 @@ const Solutions = ({ solutions: { valids, invalids } }) => (
             {toEntries(valids).map(([solution, array]) => (
               <tr key={solution}>
                 <td className="text-center">
-                  {solution}
+                  <Link to={`/professor/exercicios/${exerciseId}/solucoes/${encodeURIComponent(solution)}`}>
+                    {solution}
+                  </Link>
                 </td>
                 <td className="text-center">
                   {array.length}
@@ -50,7 +53,9 @@ const Solutions = ({ solutions: { valids, invalids } }) => (
             {toEntries(invalids).map(([solution, array]) => (
               <tr key={solution}>
                 <td className="text-center">
-                  {solution}
+                  <Link to={`/professor/exercicios/${exerciseId}/solucoes/${encodeURIComponent(solution)}`}>
+                    {solution}
+                  </Link>
                 </td>
                 <td className="text-center">
                   {array.length}

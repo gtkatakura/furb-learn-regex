@@ -6,6 +6,7 @@ import ProfessorDashboardScreen from 'screens/ProfessorScreen/DashboardScreen';
 import ActivityScreen from 'screens/ProfessorScreen/ActivityScreen';
 import ClassRoomScreen from 'screens/ProfessorScreen/ClassRoomScreen';
 import ExerciseScreen from 'screens/ProfessorScreen/ExerciseScreen';
+import ExerciseSoltutionScreen from 'screens/ProfessorScreen/ExerciseScreen/SolutionScreen';
 import StudentScreen from 'screens/StudentScreen';
 import StudentDashboardScreen from 'screens/StudentScreen/DashboardScreen';
 import ResolutionScreen from 'screens/StudentScreen/ResolutionScreen';
@@ -30,6 +31,7 @@ const AppContainer = () => (
         <Route path="turmas/:name" component={ClassRoomScreen} />
         <Route path="exercicios/criar" component={ExerciseScreen} />
         <Route path="exercicios/:exerciseId" component={ExerciseScreen} />
+        <Route path="exercicios/:exerciseId/solucoes/:solution" component={ExerciseSoltutionScreen} />
       </Route>
       <Route path="minhas-atividades" component={StudentScreen}>
         <Route path=":section" component={StudentDashboardScreen} />

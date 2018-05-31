@@ -151,6 +151,11 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
     } else {
       await AnswerRepository.update(answer);
 
+      request.app.io.emit(`professors/${exercise.professor}/action`, {
+        type: 'ANSWER_UPDATE',
+        payload: Object.assign(answer, { exercise: exercise._id, student: request.user }),
+      });
+
       response.status(HttpStatus.NOT_ACCEPTABLE).json({
         message: [
           'A expressão regular especificada não validou todas as palavras que pertencem à linguagem ou validou palavras que não pertencem.',

@@ -149,6 +149,8 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
         },
       });
     } else {
+      await AnswerRepository.update(answer);
+
       response.status(HttpStatus.NOT_ACCEPTABLE).json({
         message: [
           'A expressão regular especificada não validou todas as palavras que pertencem à linguagem ou validou palavras que não pertencem.',

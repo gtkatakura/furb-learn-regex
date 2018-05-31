@@ -9,7 +9,10 @@ const fetchAll = ({ exerciseId } = {}) => async dispatch => {
     const exercises = _.uniq(_.flatMap('exercises', activities));
 
     dispatch({ type: 'ACTIVITY_FETCH_SUCCEEDED', payload: activities });
-    dispatch({ type: 'EXERCISE_FETCH_SUCCEEDED', payload: exercises });
+
+    if (!exerciseId) {
+      dispatch({ type: 'EXERCISE_FETCH_SUCCEEDED', payload: exercises });
+    }
   } catch (err) {
     dispatch({ type: 'ACTIVITY_FETCH_FAILED', payload: err });
   }

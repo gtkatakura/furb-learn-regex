@@ -19,7 +19,7 @@ class ClassworkAnswers extends React.Component {
   }
 
   render() {
-    const { classwork, answers, students } = this.props;
+    const { classwork, answers, students, classRoom } = this.props;
 
     const getAnswersByStudent = (answers, student) => _.filter(answers, ['student._id', student._id]);
 
@@ -61,6 +61,7 @@ class ClassworkAnswers extends React.Component {
                 <ul className="list-group" style={{ marginTop: '24px' }}>
                   {students.map(student => (
                     <Link
+                      to={`/professor/turmas/${encodeURIComponent(classRoom.name)}/estudantes/${student._id}/tarefas/${classwork._id}`}
                       className={classNames("list-group-item list-group-item-action d-flex justify-content-between", {
                       })}
                     >
@@ -100,9 +101,10 @@ const getStudentsByClassWork = (classwork, students) => (
   students.filter(student => _.map(_.flatMap(student.classRooms, 'classworks'), '_id').includes(classwork._id))
 );
 
-const ClassworksAnswers = ({ classworks, students, answers }) => (
+const ClassworksAnswers = ({ classRoom, classworks, students, answers }) => (
   _.orderBy(classworks, 'deadline', 'desc').map(classwork => (
     <ClassworkAnswers
+      classRoom={classRoom}
       classwork={classwork}
       answers={getAnswer(classwork, answers)}
       students={getStudentsByClassWork(classwork, students)}

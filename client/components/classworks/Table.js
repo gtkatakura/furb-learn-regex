@@ -15,18 +15,18 @@ const ClassworkTable = ({ ...props }) => (
           </Link>
         </th>
         <td>
-          {classwork.notifyExerciseConclusions ? 'Sim' : 'Não'}
+          {moment(classwork.deadline).format('L')}
         </td>
         <td>
-          {moment(classwork.deadline).format('L')}
+          {classwork.notifyExerciseConclusions ? 'Sim' : 'Não'}
         </td>
       </Fragment>
     )}
     {...props}
   >
     <th>Descrição</th>
-    <th style={{ width: '180px' }}>Notificar conclusões</th>
     <th style={{ width: '200px' }}>Prazo de Entrega</th>
+    <th style={{ width: '180px' }}>Notificar conclusões</th>
   </ResourceTable>
 );
 

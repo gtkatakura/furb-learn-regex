@@ -11,8 +11,13 @@ const SolutionNavigator = ({ exerciseId, exerciseDescription, solution }) => (
               <Link to="/professor/exercicios">Exercícios</Link>
             </li>
             <li className="breadcrumb-item">
-              <Link to={`/professor/exercicios/${exerciseId}#solucoes`}>
+              <Link to={`/professor/exercicios/${exerciseId}`}>
                 {exerciseDescription}
+              </Link>
+            </li>
+            <li className="breadcrumb-item">
+              <Link to={`/professor/exercicios/${exerciseId}#solucoes`}>
+                Soluções
               </Link>
             </li>
             <li className="breadcrumb-item active">

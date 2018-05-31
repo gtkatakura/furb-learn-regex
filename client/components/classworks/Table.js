@@ -15,6 +15,9 @@ const ClassworkTable = ({ ...props }) => (
           </Link>
         </th>
         <td>
+          {classwork.notifyExerciseConclusions ? 'Sim' : 'Não'}
+        </td>
+        <td>
           {moment(classwork.deadline).format('L')}
         </td>
       </Fragment>
@@ -22,6 +25,7 @@ const ClassworkTable = ({ ...props }) => (
     {...props}
   >
     <th>Descrição</th>
+    <th style={{ width: '180px' }}>Notificar conclusões</th>
     <th style={{ width: '200px' }}>Prazo de Entrega</th>
   </ResourceTable>
 );

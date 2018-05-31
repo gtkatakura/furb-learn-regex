@@ -11,7 +11,7 @@ const solutionIsValid = currentStep => solution => {
   }
 
   const allInvalid = currentStep.words.invalids.every(
-    words => words.split(' ').every(word => !toRegex(solution).test(word)),
+    words => words.every(word => !toRegex(solution).test(word)),
   );
 
   if (!allInvalid) {
@@ -19,7 +19,7 @@ const solutionIsValid = currentStep => solution => {
   }
 
   const allValid = currentStep.words.valids.every(
-    words => words.split(' ').every(word => toRegex(solution).test(word)),
+    words => words.every(word => toRegex(solution).test(word)),
   );
 
   if (!allValid) {

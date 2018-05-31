@@ -21,7 +21,7 @@ const WordsWithMark = ({ words: manyWords, regex }) => (
   manyWords.map((words, i) => (
     <React.Fragment key={i.toString()}>
       <span>
-        {words.split(' ').map(word => <Word word={word} regex={regex} />)}
+        {words.map(word => <Word word={word} regex={regex} />)}
       </span>
       <br />
     </React.Fragment>

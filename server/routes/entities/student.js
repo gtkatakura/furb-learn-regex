@@ -2,18 +2,14 @@ const express = require('express');
 const HttpStatus = require('http-status-codes');
 const _ = require('lodash');
 
-const mailer = require('../../mailer');
-
 const StudentRepository = require('../../domain/repositories/student');
 const ExerciseRepository = require('../../domain/repositories/exercise');
 const AnswerRepository = require('../../domain/repositories/answer');
-const ActivityRepository = require('../../domain/repositories/activity');
-const ClassRoomsRepository = require('../../domain/repositories/classRoom');
 
-const { validWords, invalidWords } = require('../../../shared/regex');
 const getNextStep = require('../../../shared/policies/solutions/getNextStep');
 const solutionIsValid = require('../../../shared/policies/solutions/isValid');
-const symbolsParser = require('../../../shared/regex/symbols/parser');
+
+const detailsFromStep = require('../../../shared/exercises/steps/detailsFrom');
 
 const notifySolutionService = require('../../domain/services/exercise/notifySolution');
 
@@ -83,15 +79,12 @@ app.get('/me/exercises/:id/currentStep', async (request, response) => {
     exercise,
   });
 
-  const { limit } = answer ? answer.currentStep : exercise.steps[0];
+  const step = answer ? answer.currentStep : exercise.steps[0];
 
-  response.json({
-    symbols: symbolsParser.parse(exercise.regularExpression),
-    words: {
-      valids: validWords(exercise.regularExpression, limit),
-      invalids: invalidWords(exercise.regularExpression, limit),
-    },
-  });
+  response.json(detailsFromStep({
+    exercise,
+    step,
+  }));
 });
 
 app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
@@ -149,13 +142,10 @@ app.post('/me/exercises/:exerciseId/solution', async (request, response) => {
       response.json({
         error: true,
         data: {
-          nextStep: {
-            symbols: symbolsParser.parse(exercise.regularExpression),
-            words: {
-              valids: validWords(exercise.regularExpression, nextStep.limit),
-              invalids: invalidWords(exercise.regularExpression, nextStep.limit),
-            },
-          },
+          nextStep: detailsFromStep({
+            exercise,
+            step: nextStep,
+          }),
         },
       });
     } else {

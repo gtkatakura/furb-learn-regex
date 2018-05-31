@@ -3,7 +3,7 @@ import { CreateButton, DeleteButton } from 'components/buttons';
 import { Field } from 'components/forms';
 import { required, number } from 'validations';
 import _ from 'lodash';
-import { generateWords } from 'regex';
+import wordsExtractFrom from 'regex/words/extractFrom/withSafeMode';
 import warning from 'util/warning';
 
 import ExerciseStep from './Step';
@@ -13,8 +13,8 @@ const newStep = steps => {
   const maxLimit = _.max(_.map(steps.getAll(), 'limit')) || 2;
   const limit = Number(maxLimit) + 1;
 
-  if (limit >= generateWords.limit) {
-    warning(`Não foi possível criar uma nova etapa. A próxima etapa seria gerada com quantidade de símbolos igual a ${generateWords.limit}, ultrapassando o limite permitido.`);
+  if (limit >= wordsExtractFrom.LIMIT.MAX) {
+    warning(`Não foi possível criar uma nova etapa. A próxima etapa seria gerada com quantidade de símbolos igual a ${wordsExtractFrom.LIMIT.MAX}, ultrapassando o limite permitido.`);
   } else {
     steps.push({
       limit,
@@ -22,7 +22,7 @@ const newStep = steps => {
   }
 };
 
-const generateWordsLimit = number.lessThanOrEqual(generateWords.limit);
+const generateWordsLimit = number.lessThanOrEqual(wordsExtractFrom.LIMIT.MAX);
 
 class ExerciseSteps extends React.Component {
   state = {
@@ -99,7 +99,7 @@ class ExerciseSteps extends React.Component {
                           name="regularExpression"
                           component={({ input: { value } }) => (
                             <span>
-                              {generateWords(value, limit).map((words, i) => (
+                              {wordsExtractFrom(value, limit).map((words, i) => (
                                 <span key={i.toString()}>
                                   {words.map(word => (
                                     <Fragment key={word}>

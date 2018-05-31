@@ -1,8 +1,8 @@
 const { expect } = require('chai');
 
-const wordsFrom = require('./index');
+const extractFrom = require('./index');
 
-describe('shared/regex/wordsFrom', () => {
+describe('shared/regex/extractFrom', () => {
   describe('quando for a expressão regular: abc', () => {
     describe('deve retornar as combinacoes possiveis para', () => {
       const regularExpression = 'abc';
@@ -51,7 +51,7 @@ describe('shared/regex/wordsFrom', () => {
 
       limits.forEach((level, limit) => {
         it(`limit = ${limit}`, () => {
-          const result = wordsFrom(regularExpression, limit);
+          const result = extractFrom(regularExpression, limit);
 
           expect(result).to.eql(level);
         });

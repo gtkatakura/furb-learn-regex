@@ -61,6 +61,7 @@ const ResolutionForm = ({ currentStep, onSubmit, submitting }) => (
                       <div className="card-body">
                         <Field
                           name="regularExpression"
+                          validate={[regexIsValid, solutionIsValid(currentStep)]}
                           component={({ input: { value } }) => (
                             <p className="card-text">
                               <WordsWithMark
@@ -79,6 +80,7 @@ const ResolutionForm = ({ currentStep, onSubmit, submitting }) => (
                       <div className="card-body">
                         <Field
                           name="regularExpression"
+                          validate={[regexIsValid, solutionIsValid(currentStep)]}
                           component={({ input: { value } }) => (
                             <p className="card-text">
                               <WordsWithMark

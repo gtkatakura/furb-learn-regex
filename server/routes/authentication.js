@@ -28,7 +28,10 @@ function generateUserToken(req, res) {
   res.cookie('X-User-Id', req.user.id);
   res.cookie('X-User-Name', req.user.name);
   res.cookie('X-User-Email', req.user.email || req.user.providers[0].email);
-  res.cookie('X-User-IsProfessor', req.user.isProfessor);
+
+  if (req.user.isProfessor) {
+    res.cookie('X-User-IsProfessor', req.user.isProfessor);
+  }
 
   res.redirect(req.session.returnUrl || '/');
   delete req.session.returnUrl;

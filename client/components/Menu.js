@@ -11,7 +11,7 @@ const getInitials = _.flow(
   _.join(''),
 );
 
-const Menu = ({ logout, userName }) => (
+const Menu = ({ logout, user }) => (
   <nav className="navbar navbar-expand-md  navbar-light bg-light">
     <div className="container">
       <Link className="navbar-brand" to="/minhas-atividades/em-andamento">
@@ -22,11 +22,13 @@ const Menu = ({ logout, userName }) => (
       </button>
       <div className="collapse navbar-collapse text-center justify-content-end" id="navbarLightSupportedContent">
         <ul className="navbar-nav">
-          <li className="nav-item mx-1">
-            <Link className="nav-link" to="/professor/turmas">
-              Professor
-            </Link>
-          </li>
+          {user.isProfessor && (
+            <li className="nav-item mx-1">
+              <Link className="nav-link" to="/professor/turmas">
+                Professor
+              </Link>
+            </li>)
+          }
           <li className="nav-item mx-1">
             <Link className="nav-link" to="/minhas-atividades/em-andamento">
               Minhas Atividades
@@ -38,7 +40,7 @@ const Menu = ({ logout, userName }) => (
                 className="fa d-inline fa-lg"
                 icon={faUserCircle}
               />
-              <span>{` ${getInitials(userName)}`}</span>
+              <span>{` ${getInitials(user.name)}`}</span>
             </Link>
           </li>
           <li className="nav-item">

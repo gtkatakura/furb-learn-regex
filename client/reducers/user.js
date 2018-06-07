@@ -4,6 +4,7 @@ const initialValue = {
   _id: cookies.find('X-User-Id'),
   name: cookies.find('X-User-Name'),
   email: cookies.find('X-User-Email'),
+  isProfessor: cookies.find('X-User-IsProfessor') === 'true',
 };
 
 const userReducer = (state = initialValue, { type, payload }) => {

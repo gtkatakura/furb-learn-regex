@@ -5,7 +5,7 @@ import Menu from 'components/Menu';
 import { logout } from 'actions/users';
 
 const mapStateToProps = state => ({
-  userName: state.user.name,
+  user: state.user,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

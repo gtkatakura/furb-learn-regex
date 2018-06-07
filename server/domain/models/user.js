@@ -7,6 +7,10 @@ const UserSchema = new mongoose.Schema({
   name: String,
   email: String,
   providers: [ProviderSchema],
+  isProfessor: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const User = database.model('User', UserSchema);

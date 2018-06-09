@@ -26,7 +26,9 @@ socket.on(`professors/${cookies.find('X-User-Id')}/action`, action => {
 const { user } = store.getState();
 const logged = !!user.name;
 
-if (logged) {
+const { pathname } = browserHistory.getCurrentLocation();
+
+if (logged && pathname === '/') {
   const redirectTo = user.isProfessor ? '/professor/turmas' : '/minhas-atividades/em-andamento';
   store.dispatch(push(redirectTo));
 }

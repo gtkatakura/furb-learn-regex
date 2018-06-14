@@ -6,6 +6,10 @@ const config = require('./config');
 const createServer = (path, { app = express() } = {}) => {
   const port = config.get('http.port');
 
+  app.get('/politica-de-privacidade.html', (request, response) => {
+    response.sendFile(`${__dirname}/public/politica-de-privacidade.html`);
+  });
+
   app.use((request, response, next) => {
     require('./routes')(request, response, next);
   });

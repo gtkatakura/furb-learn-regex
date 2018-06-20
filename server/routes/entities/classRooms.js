@@ -48,20 +48,22 @@ app.get('/subscribe/:token', async (request, response) => {
     token: request.params.token,
   });
 
-  let student = await StudentRepository.find({
-    user: request.user,
-  });
+  if (classRoom) {
+    let student = await StudentRepository.find({
+      user: request.user,
+    });
 
-  student = student || await StudentRepository.create({
-    user: request.user,
-  });
+    student = student || await StudentRepository.create({
+      user: request.user,
+    });
 
-  if (!student.classRooms.find(el => el.equals(classRoom._id))) {
-    student.classRooms.push(classRoom);
-    await student.save();
+    if (!student.classRooms.find(el => el.equals(classRoom._id))) {
+      student.classRooms.push(classRoom);
+      await student.save();
+    }
   }
 
-  response.json(classRoom);
+  response.json(classRoom || null);
 });
 
 app.get('/:id/answers', async (request, response) => {

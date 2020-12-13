@@ -1,14 +1,17 @@
 {
   "presets": [
     [
-      "env",
-      { "modules": false }
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
     ],
-    "react"
+    "@babel/preset-react",
+    "@babel/preset-typescript"
   ],
   "plugins": [
-    "transform-object-rest-spread",
-    "transform-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-proposal-class-properties",
     "react-hot-loader/babel",
     "lodash"
   ]
